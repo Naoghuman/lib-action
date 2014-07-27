@@ -97,7 +97,7 @@ Contribution<a name="Contribution" />
 License<a name="License" />
 -------
 
-PRo-Preferences is licensed under [General Public License 3.0].
+PRo-Action is licensed under [General Public License 3.0].
 
 
 
