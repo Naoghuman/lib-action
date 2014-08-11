@@ -3,7 +3,7 @@ Lib-Action
 
 A library for `easy` storing and accessing [EventHandler]&lt;[ActionEvent]&gt; in a [JavaFX] & [Maven] application.
 
-Current `version` is `0.0.1-SNAPSHOT` (07.2014).
+Current `version` is `0.0.2-SNAPSHOT` (08.2014).
 
 
 
