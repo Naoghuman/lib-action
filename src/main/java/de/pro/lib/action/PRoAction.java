@@ -38,20 +38,35 @@ public class PRoAction implements IAction {
     
     @Override
     public void handle(String actionKey, Object source) {
-        if (ACTIONS.containsKey(actionKey)) {
-            LoggerFactory.getDefault().info(IAction.class, "Handle action: " + actionKey); // NOI18N
-            
-            final ActionEvent event = new ActionEvent(source, null);
-            ACTIONS.get(actionKey).handle(event);
+        if (!ACTIONS.containsKey(actionKey)) {
+            return;
         }
+        
+        LoggerFactory.getDefault().info(IAction.class, "Handle action: " + actionKey); // NOI18N
+
+        final ActionEvent event = new ActionEvent(source, null);
+        ACTIONS.get(actionKey).handle(event);
     }
 
     @Override
     public void register(String actionKey, EventHandler<ActionEvent> action) {
-        if (!ACTIONS.containsKey(actionKey)) {
-            LoggerFactory.getDefault().info(IAction.class, "Register action: " + actionKey); // NOI18N
-            
-            ACTIONS.put(actionKey, action);
+        if (ACTIONS.containsKey(actionKey)) {
+            return;
         }
+        
+        LoggerFactory.getDefault().info(IAction.class, "Register action: " + actionKey); // NOI18N
+
+        ACTIONS.put(actionKey, action);
+    }
+
+    @Override
+    public void remove(String actionKey) {
+        if (!ACTIONS.containsKey(actionKey)) {
+            return;
+        }
+        
+        LoggerFactory.getDefault().info(IAction.class, "Remove action: " + actionKey); // NOI18N
+
+        ACTIONS.remove(actionKey);
     }
 }

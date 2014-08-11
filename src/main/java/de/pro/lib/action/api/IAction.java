@@ -47,10 +47,17 @@ public interface IAction {
     public void handle(String actionKey, Object source);
     
     /**
-     * Register an action with the specific key in this module.
+     * Register an action with the specific key.
      * 
      * @param actionKey The key which allowed access to the associated action.
      * @param action The action which should be registered.
      */
     public void register(String actionKey, EventHandler<ActionEvent> action);
+    
+    /**
+     * Remove the action with the specific key.
+     * 
+     * @param actionKey The action which should be removed.
+     */
+    public void remove(String actionKey);
 }

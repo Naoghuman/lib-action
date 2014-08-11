@@ -37,7 +37,16 @@ public final class ActionFactory
 
 ```java
 /**
- * Register an action with the specific key in this module.
+ * Fire an event with the associated action.
+ * 
+ * @param actionKey The key which allowed access to the associated action.
+ */
+ActionFactory.getDefault().handle(String actionKey);
+```
+
+```java
+/**
+ * Register an action with the specific key.
  * 
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
@@ -47,11 +56,11 @@ ActionFactory.getDefault().register(String actionKey, EventHandler<ActionEvent> 
 
 ```java
 /**
- * Fire an event with the associated action.
+ * Remove the action with the specific key.
  * 
- * @param actionKey The key which allowed access to the associated action.
+ * @param actionKey The action which should be removed.
  */
-ActionFactory.getDefault().handle(String actionKey);
+public void remove(String actionKey);
 ```
 
 
@@ -62,8 +71,8 @@ Requirements<a name="Requirements" />
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Action-0.0.1-SNAPSHOT.jar](#Installation).
 * The library [Lib-Logger-0.0.1-SNAPSHOT.jar](#Installation).
-  * Included is the [log4j-api-2.0-rc2.jar].
-  * Included is the [log4j-core-2.0-rc2.jar].
+  * Included is the [log4j-api-2.0.jar].
+  * Included is the [log4j-core-2.0.jar].
 
 
 
@@ -129,8 +138,8 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Action]:https://github.com/Naoghuman/lib-action
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.0-rc2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.0-rc2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [Pull Request]:https://help.github.com/articles/using-pull-requests
