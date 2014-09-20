@@ -24,11 +24,11 @@ import javafx.event.EventHandler;
 
 /**
  * The implementation from the Interface {@link de.pro.lib.action.api.IAction}.<br />
- * Access to this class is over the provider {@link de.pro.lib.action.api.ActionProvider}.
+ * Access to this class is over the facade {@link de.pro.lib.action.api.ActionFacade}.
  * 
  * @author PRo
  * @see de.pro.lib.action.api.IAction
- * @see de.pro.lib.action.api.ActionProvider
+ * @see de.pro.lib.action.api.ActionFacade
  * 
  * @author PRo
  */

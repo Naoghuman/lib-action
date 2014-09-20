@@ -19,13 +19,13 @@ package de.pro.lib.action.api;
 import de.pro.lib.action.PRoAction;
 
 /**
- * The provider {@link de.pro.lib.action.api.ActionProvider} supplies a 
+ * The facade {@link de.pro.lib.action.api.ActionFacade} supplies a 
  * singleton instance of the Interface {@link de.pro.lib.action.api.IAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.IAction
  */
-public final class ActionProvider {
+public final class ActionFacade {
     private static IAction instance = null;
     
     /**
@@ -43,5 +43,5 @@ public final class ActionProvider {
         return instance;
     }
     
-    private ActionProvider() { }
+    private ActionFacade() { }
 }

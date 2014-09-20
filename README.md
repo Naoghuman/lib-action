@@ -26,13 +26,13 @@ Example<a name="Example" />
 
 ```java
 /**
- * The provider {@link de.pro.lib.action.api.ActionProvider} supplies a 
+ * The facade {@link de.pro.lib.action.api.ActionFacade} supplies a 
  * singleton instance of the Interface {@link de.pro.lib.action.api.IAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.IAction
  */
-public final class ActionProvider
+public final class ActionFacade
 ```
 
 ```java
@@ -41,7 +41,7 @@ public final class ActionProvider
  * 
  * @param actionKey The key which allowed access to the associated action.
  */
-ActionProvider.getDefault().handle(String actionKey);
+ActionFacade.getDefault().handle(String actionKey);
 ```
 
 ```java
@@ -51,7 +51,7 @@ ActionProvider.getDefault().handle(String actionKey);
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
  */
-ActionProvider.getDefault().register(String actionKey, EventHandler<ActionEvent> action);
+ActionFacade.getDefault().register(String actionKey, EventHandler<ActionEvent> action);
 ```
 
 ```java
@@ -60,7 +60,7 @@ ActionProvider.getDefault().register(String actionKey, EventHandler<ActionEvent>
  * 
  * @param actionKey The action which should be removed.
  */
-ActionProvider.getDefault().remove(String actionKey);
+ActionFacade.getDefault().remove(String actionKey);
 ```
 
 
