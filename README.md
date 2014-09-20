@@ -70,9 +70,9 @@ Requirements<a name="Requirements" />
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Action-0.0.2-SNAPSHOT.jar](#Installation).
-* The library [Lib-Logger-0.0.2-SNAPSHOT.jar](#Installation).
-  * Included is the [log4j-api-2.0.jar].
-  * Included is the [log4j-core-2.0.jar].
+* The library [Lib-Logger-0.0.3.jar](#Installation).
+  * Included is the [log4j-api-2.0.2.jar].
+  * Included is the [log4j-core-2.0.2.jar].
 
 
 
@@ -98,7 +98,7 @@ Momentary only the [JavaDoc] in the library itself is available.
 Contribution<a name="Contribution" />
 ------------
 
-* If you find a bug I will be glad if you will report an [Issue].
+* If you find a `Bug` I will be glad if you could report an [Issue].
 * If you want to contribute to the project plz fork the project and do a [Pull Request].
 
 
@@ -106,14 +106,14 @@ Contribution<a name="Contribution" />
 License<a name="License" />
 -------
 
-PRo-Action is licensed under [General Public License 3.0].
+The project `PRo-Action` is licensed under [General Public License 3.0].
 
 
 
 Autor<a name="Autor" />
 ----
 
-Pro-Action is maintained by me, Peter Rogge. See [Contact](#Contact).
+The project `Pro-Action` is maintained by me, Peter Rogge. See [Contact](#Contact).
 
 
 
@@ -138,8 +138,8 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Action]:https://github.com/Naoghuman/lib-action
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.0.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.0.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [Pull Request]:https://help.github.com/articles/using-pull-requests

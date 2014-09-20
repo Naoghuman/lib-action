@@ -17,7 +17,7 @@
 package de.pro.lib.action;
 
 import de.pro.lib.action.api.IAction;
-import de.pro.lib.logger.api.LoggerFactory;
+import de.pro.lib.logger.api.LoggerFacade;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,7 +42,7 @@ public class PRoAction implements IAction {
             return;
         }
         
-        LoggerFactory.getDefault().info(IAction.class, "Handle action: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().info(IAction.class, "Handle action: " + actionKey); // NOI18N
 
         final ActionEvent event = new ActionEvent(source, null);
         ACTIONS.get(actionKey).handle(event);
@@ -54,7 +54,7 @@ public class PRoAction implements IAction {
             return;
         }
         
-        LoggerFactory.getDefault().info(IAction.class, "Register action: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().info(IAction.class, "Register action: " + actionKey); // NOI18N
 
         ACTIONS.put(actionKey, action);
     }
@@ -65,7 +65,7 @@ public class PRoAction implements IAction {
             return;
         }
         
-        LoggerFactory.getDefault().info(IAction.class, "Remove action: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().info(IAction.class, "Remove action: " + actionKey); // NOI18N
 
         ACTIONS.remove(actionKey);
     }
