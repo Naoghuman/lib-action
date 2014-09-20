@@ -20,13 +20,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The <code>Interface</code> for the class <code>de.pro.lib.action.PRoAction</code>.
- * Over the factory <code>de.pro.lib.action.api.ActionFactory</code> you can 
- * access the methods in this <code>Interface</code>.
+ * The <code>Interface</code> for the class {@link de.pro.lib.action.PRoAction}.
+ * Over the provider {@link de.pro.lib.action.api.ActionProvider} you can access
+ * the methods in this <code>Interface</code>.
  *
  * @author PRo
  * @see de.pro.lib.action.PRoAction
- * @see de.pro.lib.action.api.ActionFactory
+ * @see de.pro.lib.action.api.ActionProvider
  */
 public interface IAction {
     /**

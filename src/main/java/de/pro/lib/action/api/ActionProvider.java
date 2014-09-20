@@ -19,19 +19,19 @@ package de.pro.lib.action.api;
 import de.pro.lib.action.PRoAction;
 
 /**
- * The factory <code>de.pro.lib.action.api.ActionFactory</code> provides a 
- * singleton instance of the Interface <code>de.pro.lib.action.api.IAction</code>.
+ * The provider {@link de.pro.lib.action.api.ActionProvider} supplies a 
+ * singleton instance of the Interface {@link de.pro.lib.action.api.IAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.IAction
  */
-public final class ActionFactory {
+public final class ActionProvider {
     private static IAction instance = null;
     
     /**
-     * Provides a singleton instance from the Interface <code>de.pro.lib.action.api.IAction</code>.
+     * Provides a singleton instance from the Interface {@link de.pro.lib.action.api.IAction}.
      * 
-     * @return A singleton instance of <code>de.pro.lib.action.api.IAction</code>.
+     * @return A singleton instance of {@link de.pro.lib.action.api.IAction}.
      * @see de.pro.lib.action.api.IAction
      */
     public static IAction getDefault() {
@@ -43,5 +43,5 @@ public final class ActionFactory {
         return instance;
     }
     
-    private ActionFactory() { }
+    private ActionProvider() { }
 }

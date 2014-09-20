@@ -26,13 +26,13 @@ Example<a name="Example" />
 
 ```java
 /**
- * The factory <code>de.pro.lib.action.api.ActionFactory</code> provides a 
- * singleton instance of the Interface <code>de.pro.lib.action.api.IAction</code>.
+ * The provider {@link de.pro.lib.action.api.ActionProvider} supplies a 
+ * singleton instance of the Interface {@link de.pro.lib.action.api.IAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.IAction
  */
-public final class ActionFactory
+public final class ActionProvider
 ```
 
 ```java
@@ -41,7 +41,7 @@ public final class ActionFactory
  * 
  * @param actionKey The key which allowed access to the associated action.
  */
-ActionFactory.getDefault().handle(String actionKey);
+ActionProvider.getDefault().handle(String actionKey);
 ```
 
 ```java
@@ -51,7 +51,7 @@ ActionFactory.getDefault().handle(String actionKey);
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
  */
-ActionFactory.getDefault().register(String actionKey, EventHandler<ActionEvent> action);
+ActionProvider.getDefault().register(String actionKey, EventHandler<ActionEvent> action);
 ```
 
 ```java
@@ -60,7 +60,7 @@ ActionFactory.getDefault().register(String actionKey, EventHandler<ActionEvent> 
  * 
  * @param actionKey The action which should be removed.
  */
-public void remove(String actionKey);
+ActionProvider.getDefault().remove(String actionKey);
 ```
 
 
