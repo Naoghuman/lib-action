@@ -29,8 +29,6 @@ import javafx.event.EventHandler;
  * @author PRo
  * @see de.pro.lib.action.api.IAction
  * @see de.pro.lib.action.api.ActionFacade
- * 
- * @author PRo
  */
 public class PRoAction implements IAction {
     

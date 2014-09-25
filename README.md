@@ -106,14 +106,14 @@ Contribution<a name="Contribution" />
 License<a name="License" />
 -------
 
-The project `PRo-Action` is licensed under [General Public License 3.0].
+The project `Lib-Action` is licensed under [General Public License 3.0].
 
 
 
 Autor<a name="Autor" />
-----
+-----
 
-The project `Pro-Action` is maintained by me, Peter Rogge. See [Contact](#Contact).
+The project `Lib-Action` is maintained by me, Peter Rogge. See [Contact](#Contact).
 
 
 

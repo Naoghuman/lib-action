@@ -21,12 +21,12 @@ import javafx.event.EventHandler;
 
 /**
  * The <code>Interface</code> for the class {@link de.pro.lib.action.PRoAction}.
- * Over the facade {@link de.pro.lib.action.api.Facade} you can access
+ * Over the facade {@link de.pro.lib.action.api.ActionFacade} you can access
  * the methods in this <code>Interface</code>.
  *
  * @author PRo
  * @see de.pro.lib.action.PRoAction
- * @see de.pro.lib.action.api.Facade
+ * @see de.pro.lib.action.api.ActionFacade
  */
 public interface IAction {
     /**
