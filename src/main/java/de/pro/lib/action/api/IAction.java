@@ -20,15 +20,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.action.PRoAction}.
- * Over the facade {@link de.pro.lib.action.api.ActionFacade} you can access
- * the methods in this <code>Interface</code>.
+ * The <code>Interface</code> for the class {@link de.pro.lib.action.PRoAction}.<br />
+ * Over the facade {@link de.pro.lib.action.api.ActionFacade} you can access the
+ * methods in this <code>Interface</code>.
  *
  * @author PRo
  * @see de.pro.lib.action.PRoAction
  * @see de.pro.lib.action.api.ActionFacade
  */
 public interface IAction {
+    
     /**
      * Fire an event with the associated action.
      * 
@@ -37,12 +38,12 @@ public interface IAction {
     public void handle(String actionKey);
     
     /**
-     * Fire an event with the associated action. The optional <code>Object</code>
-     * can reached over <code>event.getSource(): Object</code> in the overriden
-     * {@link javafx.event.ActionEvent}.
+     * Fire an event with the associated action.<br />
+     * The optional <code>Object</code> can reached over 
+     * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
      * 
      * @param actionKey The key which allowed access to the associated action.
-     * @param source A optional <code>Object</code> which can stored.
+     * @param source A optional <code>Object</code> which can be stored.
      */
     public void handle(String actionKey, Object source);
     
@@ -60,4 +61,5 @@ public interface IAction {
      * @param actionKey The action which should be removed.
      */
     public void remove(String actionKey);
+    
 }
