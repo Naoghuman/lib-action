@@ -52,6 +52,19 @@ public class PRoAction implements IAction {
     }
 
     @Override
+    public Boolean isRegistered(String actionKey) {
+        if (ACTIONS.containsKey(actionKey)) {
+            LoggerFacade.getDefault().info(IAction.class, "The action exists: " + actionKey); // NOI18N
+
+            return Boolean.TRUE;
+        }
+        
+        LoggerFacade.getDefault().warn(IAction.class, "The action doesn't exists: " + actionKey); // NOI18N
+                
+        return Boolean.FALSE;
+    }
+
+    @Override
     public void register(String actionKey, EventHandler<ActionEvent> action) {
         if (ACTIONS.containsKey(actionKey)) {
             return;
