@@ -48,7 +48,7 @@ public interface IAction {
     public void handle(String actionKey, Object source);
     
     /**
-     * Checks if the specific action key registered.
+     * Checks if the specific action key is registered.
      * 
      * @param actionKey The action which should be check if it exists.
      * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
