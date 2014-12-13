@@ -4,7 +4,7 @@
     
     <groupId>de.pro</groupId>
     <artifactId>Lib-Action</artifactId>
-    <version>0.0.4-SNAPSHOT</version> <!-- -SNAPSHOT -->
+    <version>0.0.5-SNAPSHOT</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
     <description>A library for easy storing and accessing actions (EventHandler&lt;ActionEvent&gt;) in a JavaFX &amp; Maven application. See https://github.com/Naoghuman/lib-action for more details.</description>
     <name>Lib-Action</name>
