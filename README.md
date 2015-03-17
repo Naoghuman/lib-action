@@ -64,6 +64,17 @@ ActionFacade.getDefault().remove(String actionKey);
 ```
 
 
+Here you can see an example how to define an action.
+```java
+public void registerOnActionOpenDream() {
+    ActionFacade.getDefault().register(ACTION__OPEN_DREAM__FROM_NAVIGATION,
+            (ActionEvent ae) -> {
+                final Long idToOpen = (Long) ae.getSource();
+                this.show(idToOpen);
+            });
+}
+```
+
 
 Requirements<a name="Requirements" />
 ------------
