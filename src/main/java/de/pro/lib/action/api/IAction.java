@@ -39,13 +39,13 @@ public interface IAction {
     
     /**
      * Fire an event with the associated action.<br />
-     * The optional <code>Object</code> can reached over 
+     * The optional <code>TransferModel</code> can reached over 
      * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
      * 
      * @param actionKey The key which allowed access to the associated action.
-     * @param source A optional <code>Object</code> which can be stored.
+     * @param model A optional <code>TransferModel</code> which can be stored with additional parameters.
      */
-    public void handle(String actionKey, Object source);
+    public void handle(String actionKey, TransferModel model);
     
     /**
      * Checks if the specific action key is registered.

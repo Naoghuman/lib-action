@@ -17,6 +17,7 @@
 package de.pro.lib.action;
 
 import de.pro.lib.action.api.IAction;
+import de.pro.lib.action.api.TransferModel;
 import de.pro.lib.logger.api.LoggerFacade;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
@@ -40,14 +41,14 @@ public class PRoAction implements IAction {
     }
     
     @Override
-    public void handle(String actionKey, Object source) {
+    public void handle(String actionKey, TransferModel model) {
         if (!ACTIONS.containsKey(actionKey)) {
             return;
         }
         
         LoggerFacade.getDefault().info(IAction.class, "Handle action: " + actionKey); // NOI18N
 
-        final ActionEvent event = new ActionEvent(source, null);
+        final ActionEvent event = new ActionEvent(model, null);
         ACTIONS.get(actionKey).handle(event);
     }
 
@@ -85,4 +86,5 @@ public class PRoAction implements IAction {
 
         ACTIONS.remove(actionKey);
     }
+    
 }
