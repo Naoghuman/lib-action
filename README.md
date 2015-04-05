@@ -69,10 +69,18 @@ Here you can see an example how to define an action.
 public void registerOnActionOpenDream() {
     ActionFacade.getDefault().register(ACTION__OPEN_DREAM__FROM_NAVIGATION,
             (ActionEvent ae) -> {
-                final Long idToOpen = (Long) ae.getSource();
-                this.show(idToOpen);
+                final TransferModel model = (TransferModel) ae.getSource();
+                this.show(model.getLongParameter());
             });
 }
+```
+
+
+and how the above defined action is fired.
+```java
+final TransferModel model = new TransferModel();
+model.setLongParameter(idToOpen);
+ActionFacade.getDefault().handle(ACTION__OPEN_DREAM__FROM_NAVIGATION, model);
 ```
 
 
