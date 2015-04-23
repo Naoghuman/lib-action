@@ -23,7 +23,7 @@ package de.pro.lib.action.api;
  * and/or the ReadMe.md (at the end in the section example).
  *
  * @author PRo
- * @see IAction#handle(java.lang.String, de.pro.lib.action.api.TransferModel) 
+ * @see IAction#handle(de.pro.lib.action.api.TransferModel) 
  */
 public class TransferModel {
     
@@ -31,8 +31,10 @@ public class TransferModel {
     private Double doubleParameter = 0.0d;
     private Integer integerParameter = 0;
     private Long longParameter = 0l;
+    private Object objectParameter = null;
     private String stringParameter = "";
     
+    private String actionKey = null;
     private String responseActionKey = null;
 
     /**
@@ -124,7 +126,43 @@ public class TransferModel {
     public void setStringParameter(String stringParameter) {
         this.stringParameter = stringParameter;
     }
+    
+    /**
+     * Get the stored <code>Object</code> parameter.
+     * 
+     * @return The stored <code>Object</code> parameter.
+     */
+    public Object getObjectParameter() {
+        return objectParameter;
+    }
+    
+    /**
+     * Set the <code>Object</code> parameter.
+     * 
+     * @param objectParameter The <code>Object</code> parameter.
+     */
+    public void setObjectParameter(Object objectParameter) {
+        this.objectParameter = objectParameter;
+    }
+    
+    /**
+     * Get the <code>action key</code>.
+     * 
+     * @return The <code>action key</code>.
+     */
+    public String getActionKey() {
+        return actionKey;
+    }
 
+    /**
+     * Set the <code>action key</code>.
+     * 
+     * @param actionKey The <code>action key</code>.
+     */
+    public void setActionKey(String actionKey) {
+        this.actionKey = actionKey;
+    }
+    
     /**
      * Get the <code>responce action key</code>.
      * 
