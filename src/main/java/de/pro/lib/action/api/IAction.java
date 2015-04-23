@@ -16,6 +16,7 @@
  */
 package de.pro.lib.action.api;
 
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -31,21 +32,31 @@ import javafx.event.EventHandler;
 public interface IAction {
     
     /**
-     * Fire an event with the associated action.
+     * Fire an event with the associated actionKey.
      * 
      * @param actionKey The key which allowed access to the associated action.
      */
     public void handle(String actionKey);
     
     /**
-     * Fire an event with the associated action.<br />
-     * The optional <code>TransferModel</code> can reached over 
+     * Fire an event with the associated actionKey defined in the <code>TransferModel</code>.<br />
+     * 
+     * The <code>TransferModel</code> will be stored in the action event and can reached over 
      * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
      * 
-     * @param actionKey The key which allowed access to the associated action.
-     * @param model A optional <code>TransferModel</code> which can be stored with additional parameters.
+     * @param model A <code>TransferModel</code> which contains the actionKey and additional parameters.
      */
-    public void handle(String actionKey, TransferModel model);
+    public void handle(TransferModel model);
+    
+    /**
+     * Fire an event for every <code>TransferModel</code> with the associated actionKey in the model.<br />
+     * 
+     * The <code>TransferModel</code> will be stored in the action event and can reached over 
+     * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
+     * 
+     * @param models A List with <code>TransferModel</code> which contains the actionKeys and additional parameters.
+     */
+    public void handle(List<TransferModel> models);
     
     /**
      * Checks if the specific action key is registered.

@@ -20,6 +20,7 @@ import de.pro.lib.action.api.IAction;
 import de.pro.lib.action.api.TransferModel;
 import de.pro.lib.logger.api.LoggerFacade;
 import java.util.HashMap;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -37,19 +38,29 @@ public class PRoAction implements IAction {
 
     @Override
     public void handle(String actionKey) {
-        this.handle(actionKey, null);
+        final TransferModel model = new TransferModel();
+        model.setActionKey(actionKey);
+        
+        this.handle(model);
     }
     
     @Override
-    public void handle(String actionKey, TransferModel model) {
-        if (!ACTIONS.containsKey(actionKey)) {
+    public void handle(TransferModel model) {
+        if (!ACTIONS.containsKey(model.getActionKey())) {
             return;
         }
         
-        LoggerFacade.getDefault().info(IAction.class, "Handle action: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().info(IAction.class, "Handle action: " + model.getActionKey()); // NOI18N
 
         final ActionEvent event = new ActionEvent(model, null);
-        ACTIONS.get(actionKey).handle(event);
+        ACTIONS.get(model.getActionKey()).handle(event);
+    }
+    
+    @Override
+    public void handle(List<TransferModel> models) {
+        models.stream().forEach((model) -> {
+            this.handle(model);
+        });
     }
 
     @Override
