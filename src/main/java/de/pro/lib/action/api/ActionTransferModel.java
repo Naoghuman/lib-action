@@ -42,7 +42,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Boolean</code> parameter.
      */
-    public Boolean getBooleanParameter() {
+    public Boolean getBoolean() {
         return booleanParameter;
     }
 
@@ -51,7 +51,7 @@ public class ActionTransferModel {
      * 
      * @param booleanParameter The <code>Boolean</code> parameter.
      */
-    public void setBooleanParameter(Boolean booleanParameter) {
+    public void setBoolean(Boolean booleanParameter) {
         this.booleanParameter = booleanParameter;
     }
 
@@ -60,7 +60,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Double</code> parameter.
      */
-    public Double getDoubleParameter() {
+    public Double getDouble() {
         return doubleParameter;
     }
 
@@ -69,7 +69,7 @@ public class ActionTransferModel {
      * 
      * @param doubleParameter The <code>Double</code> parameter.
      */
-    public void setDoubleParameter(Double doubleParameter) {
+    public void setDouble(Double doubleParameter) {
         this.doubleParameter = doubleParameter;
     }
 
@@ -78,7 +78,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Integer</code> parameter.
      */
-    public Integer getIntegerParameter() {
+    public Integer getInteger() {
         return integerParameter;
     }
 
@@ -87,7 +87,7 @@ public class ActionTransferModel {
      * 
      * @param integerParameter The <code>Integer</code> parameter.
      */
-    public void setIntegerParameter(Integer integerParameter) {
+    public void setInteger(Integer integerParameter) {
         this.integerParameter = integerParameter;
     }
 
@@ -96,7 +96,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Long</code> parameter.
      */
-    public Long getLongParameter() {
+    public Long getLong() {
         return longParameter;
     }
 
@@ -105,7 +105,7 @@ public class ActionTransferModel {
      * 
      * @param longParameter The <code>Long</code> parameter.
      */
-    public void setLongParameter(Long longParameter) {
+    public void setLong(Long longParameter) {
         this.longParameter = longParameter;
     }
 
@@ -114,7 +114,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>String</code> parameter.
      */
-    public String getStringParameter() {
+    public String getString() {
         return stringParameter;
     }
 
@@ -123,7 +123,7 @@ public class ActionTransferModel {
      * 
      * @param stringParameter The <code>String</code> parameter.
      */
-    public void setStringParameter(String stringParameter) {
+    public void setString(String stringParameter) {
         this.stringParameter = stringParameter;
     }
     
@@ -132,7 +132,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Object</code> parameter.
      */
-    public Object getObjectParameter() {
+    public Object getObject() {
         return objectParameter;
     }
     
@@ -141,7 +141,7 @@ public class ActionTransferModel {
      * 
      * @param objectParameter The <code>Object</code> parameter.
      */
-    public void setObjectParameter(Object objectParameter) {
+    public void setObject(Object objectParameter) {
         this.objectParameter = objectParameter;
     }
     
