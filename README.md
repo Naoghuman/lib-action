@@ -46,14 +46,14 @@ ActionFacade.getDefault().handle(String actionKey);
 
 ```java
 /**
- * Fire an event with the associated actionKey defined in the <code>TransferModel</code>.<br />
+ * Fire an event with the associated actionKey defined in the <code>ActionTransferModel</code>.<br />
  * 
- * The <code>TransferModel</code> will be stored in the action event and can reached over 
+ * The <code>ActionTransferModel</code> will be stored in the action event and can reached over 
  * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
  * 
- * @param model A <code>TransferModel</code> which contains the actionKey and additional parameters.
+ * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
  */
-public void handle(TransferModel model);
+    public void handle(ActionTransferModel model);
 ```
 
 ```java
@@ -82,7 +82,7 @@ public void registerOnActionOpenDream() {
     ActionFacade.getDefault().register(
             ACTION__OPEN_DREAM__FROM_NAVIGATION,
             (ActionEvent ae) -> {
-                final TransferModel model = (TransferModel) ae.getSource();
+                final ActionTransferModel model = (ActionTransferModel) ae.getSource();
                 this.show(model.getLongParameter());
             });
 }
@@ -91,9 +91,10 @@ public void registerOnActionOpenDream() {
 
 and how the above defined action is fired.
 ```java
-final TransferModel model = new TransferModel();
+final ActionTransferModel model = new ActionTransferModel();
 model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
 model.setLongParameter(idToOpen);
+
 ActionFacade.getDefault().handle(model);
 ```
 

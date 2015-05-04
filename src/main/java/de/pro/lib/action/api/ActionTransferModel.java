@@ -17,7 +17,7 @@
 package de.pro.lib.action.api;
 
 /**
- * The class <code>TransferModel</code> is a simple POJO to store optional
+ * The class <code>ActionTransferModel</code> is a simple POJO to store optional
  * parameters in an action. For more information see the Interface 
  * <code>de.pro.lib.action.api.IAction</code>
  * and/or the ReadMe.md (at the end in the section example).
@@ -25,7 +25,7 @@ package de.pro.lib.action.api;
  * @author PRo
  * @see IAction#handle(de.pro.lib.action.api.TransferModel) 
  */
-public class TransferModel {
+public class ActionTransferModel {
     
     private Boolean booleanParameter = Boolean.FALSE;
     private Double doubleParameter = 0.0d;

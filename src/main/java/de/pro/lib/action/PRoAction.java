@@ -17,7 +17,7 @@
 package de.pro.lib.action;
 
 import de.pro.lib.action.api.IAction;
-import de.pro.lib.action.api.TransferModel;
+import de.pro.lib.action.api.ActionTransferModel;
 import de.pro.lib.logger.api.LoggerFacade;
 import java.util.HashMap;
 import java.util.List;
@@ -38,14 +38,14 @@ public class PRoAction implements IAction {
 
     @Override
     public void handle(String actionKey) {
-        final TransferModel model = new TransferModel();
+        final ActionTransferModel model = new ActionTransferModel();
         model.setActionKey(actionKey);
         
         this.handle(model);
     }
     
     @Override
-    public void handle(TransferModel model) {
+    public void handle(ActionTransferModel model) {
         if (!ACTIONS.containsKey(model.getActionKey())) {
             return;
         }
@@ -57,7 +57,7 @@ public class PRoAction implements IAction {
     }
     
     @Override
-    public void handle(List<TransferModel> models) {
+    public void handle(List<ActionTransferModel> models) {
         models.stream().forEach((model) -> {
             this.handle(model);
         });
