@@ -19,8 +19,8 @@ package de.pro.lib.action.api;
 /**
  * The class <code>ActionTransferModel</code> is a simple POJO to store optional
  * parameters in an action. For more information see the Interface 
- * <code>de.pro.lib.action.api.IAction</code>
- * and/or the ReadMe.md (at the end in the section example).
+ * <code>de.pro.lib.action.api.IAction</code> and/or the ReadMe.md (at the end 
+ * of the section examples).
  *
  * @author PRo
  * @see IAction#handle(de.pro.lib.action.api.TransferModel) 
