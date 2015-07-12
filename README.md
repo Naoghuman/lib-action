@@ -46,14 +46,16 @@ ActionFacade.getDefault().handle(String actionKey);
 
 ```java
 /**
- * Fire an event with the associated actionKey defined in the <code>ActionTransferModel</code>.<br />
+ * Fire an event with the associated actionKey defined in the 
+ * {@link de.pro.lib.action.api.ActionTransferModel}.<br />
  * 
- * The <code>ActionTransferModel</code> will be stored in the action event and can reached over 
- * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
+ * The {@link de.pro.lib.action.api.ActionTransferModel} will be stored in 
+ * the action event and can reached over <code>event.getSource(): Object</code> 
+ * in the overriden {@link javafx.event.ActionEvent}.
  * 
  * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
  */
-    public void handle(ActionTransferModel model);
+public void handle(ActionTransferModel model);
 ```
 
 ```java

@@ -17,10 +17,11 @@
 package de.pro.lib.action.api;
 
 /**
- * The class <code>ActionTransferModel</code> is a simple POJO to store optional
- * parameters in an action. For more information see the Interface 
- * <code>de.pro.lib.action.api.ILibAction</code> and/or the ReadMe.md (at the end 
- * of the section examples).
+ * The class {@link ActionTransferModel} is a simple POJO to store optional
+ * parameters in an action.
+ * <p>
+ * For more information see the Interface {@link de.pro.lib.action.api.ILibAction}
+ * and/or the ReadMe.md (at the end of the section examples).
  *
  * @author PRo
  * @see ILibAction#handle(de.pro.lib.action.api.ActionTransferModel)
@@ -38,7 +39,7 @@ public class ActionTransferModel {
     private String responseActionKey = null;
 
     /**
-     * Get the stored <code>Boolean</code> parameter.
+     * Get the stored {@link java.lang.Boolean} parameter.
      * 
      * @return The stored <code>Boolean</code> parameter.
      */
@@ -47,7 +48,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the <code>Boolean</code> parameter.
+     * Set the {@link java.lang.Boolean} parameter.
      * 
      * @param booleanParameter The <code>Boolean</code> parameter.
      */
@@ -56,7 +57,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored <code>Double</code> parameter.
+     * Get the stored {@link java.langDouble} parameter.
      * 
      * @return The stored <code>Double</code> parameter.
      */
@@ -65,7 +66,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the <code>Double</code> parameter.
+     * Set the {@link java.langDouble} parameter.
      * 
      * @param doubleParameter The <code>Double</code> parameter.
      */
@@ -74,7 +75,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored <code>Integer</code> parameter.
+     * Get the stored {@link java.langInteger} parameter.
      * 
      * @return The stored <code>Integer</code> parameter.
      */
@@ -83,7 +84,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the <code>Integer</code> parameter.
+     * Set the {@link java.langInteger} parameter.
      * 
      * @param integerParameter The <code>Integer</code> parameter.
      */
@@ -92,7 +93,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored <code>Long</code> parameter.
+     * Get the stored {@link java.langLong} parameter.
      * 
      * @return The stored <code>Long</code> parameter.
      */
@@ -101,7 +102,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the <code>Long</code> parameter.
+     * Set the {@link java.langLong} parameter.
      * 
      * @param longParameter The <code>Long</code> parameter.
      */
@@ -110,7 +111,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored <code>String</code> parameter.
+     * Get the stored {@link java.langString} parameter.
      * 
      * @return The stored <code>String</code> parameter.
      */
@@ -119,7 +120,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the <code>String</code> parameter.
+     * Set the {@link java.langString} parameter.
      * 
      * @param stringParameter The <code>String</code> parameter.
      */
@@ -128,7 +129,7 @@ public class ActionTransferModel {
     }
     
     /**
-     * Get the stored <code>Object</code> parameter.
+     * Get the stored {@link java.langObject} parameter.
      * 
      * @return The stored <code>Object</code> parameter.
      */
@@ -137,7 +138,7 @@ public class ActionTransferModel {
     }
     
     /**
-     * Set the <code>Object</code> parameter.
+     * Set the {@link java.langObject} parameter.
      * 
      * @param objectParameter The <code>Object</code> parameter.
      */

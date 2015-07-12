@@ -28,7 +28,7 @@ import javafx.event.EventHandler;
  * The implementation from the Interface {@link de.pro.lib.action.api.ILibAction}.<br />
  * Access to this class is over the facade {@link de.pro.lib.action.api.ActionFacade}.
  * 
- * @author PRoI
+ * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  * @see de.pro.lib.action.api.ActionFacade
  */

@@ -39,20 +39,24 @@ public interface ILibAction {
     public void handle(String actionKey);
     
     /**
-     * Fire an event with the associated actionKey defined in the <code>ActionTransferModel</code>.<br />
+     * Fire an event with the associated actionKey defined in the 
+     * {@link de.pro.lib.action.api.ActionTransferModel}.<br />
      * 
-     * The <code>ActionTransferModel</code> will be stored in the action event and can reached over 
-     * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
+     * The {@link de.pro.lib.action.api.ActionTransferModel} will be stored in 
+     * the action event and can reached over <code>event.getSource(): Object</code> 
+     * in the overriden {@link javafx.event.ActionEvent}.
      * 
      * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
      */
     public void handle(ActionTransferModel model);
     
     /**
-     * Fire an event for every <code>ActionTransferModel</code> with the associated actionKey in the model.<br />
+     * Fire an event for every {@link de.pro.lib.action.api.ActionTransferModel} 
+     * with the associated actionKey in the model.<br />
      * 
-     * The <code>ActionTransferModel</code> will be stored in the action event and can reached over 
-     * <code>event.getSource(): Object</code> in the overriden {@link javafx.event.ActionEvent}.
+     * The {@link de.pro.lib.action.api.ActionTransferModel} will be stored in 
+     * the action event and can reached over <code>event.getSource(): Object</code> 
+     * in the overriden {@link javafx.event.ActionEvent}.
      * 
      * @param models A List with <code>ActionTransferModel</code> which contains the actionKeys and additional parameters.
      */
