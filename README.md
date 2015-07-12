@@ -93,7 +93,7 @@ and how the above defined action is fired.
 ```java
 final ActionTransferModel model = new ActionTransferModel();
 model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
-model.setLongParameter(idToOpen);
+model.setLong(idToOpen);
 
 ActionFacade.getDefault().handle(model);
 ```
