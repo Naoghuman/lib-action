@@ -16,7 +16,7 @@
  */
 package de.pro.lib.action;
 
-import de.pro.lib.action.api.IAction;
+import de.pro.lib.action.api.ILibAction;
 import de.pro.lib.action.api.ActionTransferModel;
 import de.pro.lib.logger.api.LoggerFacade;
 import java.util.HashMap;
@@ -25,14 +25,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The implementation from the Interface {@link de.pro.lib.action.api.IAction}.<br />
+ * The implementation from the Interface {@link de.pro.lib.action.api.ILibAction}.<br />
  * Access to this class is over the facade {@link de.pro.lib.action.api.ActionFacade}.
  * 
- * @author PRo
- * @see de.pro.lib.action.api.IAction
+ * @author PRoI
+ * @see de.pro.lib.action.api.ILibAction
  * @see de.pro.lib.action.api.ActionFacade
  */
-public class PRoAction implements IAction {
+public class LibAction implements ILibAction {
     
     private final static HashMap<String, EventHandler<ActionEvent>> ACTIONS = new HashMap<>();
 
@@ -50,7 +50,7 @@ public class PRoAction implements IAction {
             return;
         }
         
-        LoggerFacade.getDefault().info(IAction.class, "Handle action: " + model.getActionKey()); // NOI18N
+        LoggerFacade.getDefault().info(ILibAction.class, "Handle action: " + model.getActionKey()); // NOI18N
 
         final ActionEvent event = new ActionEvent(model, null);
         ACTIONS.get(model.getActionKey()).handle(event);
@@ -66,12 +66,12 @@ public class PRoAction implements IAction {
     @Override
     public Boolean isRegistered(String actionKey) {
         if (ACTIONS.containsKey(actionKey)) {
-            LoggerFacade.getDefault().info(IAction.class, "The action exists: " + actionKey); // NOI18N
+            LoggerFacade.getDefault().info(ILibAction.class, "The action exists: " + actionKey); // NOI18N
 
             return Boolean.TRUE;
         }
         
-        LoggerFacade.getDefault().warn(IAction.class, "The action doesn't exists: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().warn(ILibAction.class, "The action doesn't exists: " + actionKey); // NOI18N
                 
         return Boolean.FALSE;
     }
@@ -82,7 +82,7 @@ public class PRoAction implements IAction {
             return;
         }
         
-        LoggerFacade.getDefault().info(IAction.class, "Register action: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().info(ILibAction.class, "Register action: " + actionKey); // NOI18N
 
         ACTIONS.put(actionKey, action);
     }
@@ -93,7 +93,7 @@ public class PRoAction implements IAction {
             return;
         }
         
-        LoggerFacade.getDefault().info(IAction.class, "Remove action: " + actionKey); // NOI18N
+        LoggerFacade.getDefault().info(ILibAction.class, "Remove action: " + actionKey); // NOI18N
 
         ACTIONS.remove(actionKey);
     }

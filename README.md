@@ -27,10 +27,10 @@ Examples<a name="Examples" />
 ```java
 /**
  * The facade {@link de.pro.lib.action.api.ActionFacade} supplies a 
- * singleton instance of the Interface {@link de.pro.lib.action.api.IAction}.
+ * singleton instance of the Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo
- * @see de.pro.lib.action.api.IAction
+ * @see de.pro.lib.action.api.ILibAction
  */
 public final class ActionFacade
 ```

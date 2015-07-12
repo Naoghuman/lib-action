@@ -21,15 +21,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.action.PRoAction}.<br />
+ * The <code>Interface</code> for the class {@link de.pro.lib.action.LibAction}.<br />
  * Over the facade {@link de.pro.lib.action.api.ActionFacade} you can access the
  * methods in this <code>Interface</code>.
  *
  * @author PRo
- * @see de.pro.lib.action.PRoAction
+ * @see de.pro.lib.action.LibAction
  * @see de.pro.lib.action.api.ActionFacade
  */
-public interface IAction {
+public interface ILibAction {
     
     /**
      * Fire an event with the associated actionKey.

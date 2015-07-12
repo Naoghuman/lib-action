@@ -16,32 +16,34 @@
  */
 package de.pro.lib.action.api;
 
-import de.pro.lib.action.PRoAction;
+import de.pro.lib.action.LibAction;
 
 /**
  * The facade {@link de.pro.lib.action.api.ActionFacade} supplies a 
- * singleton instance of the Interface {@link de.pro.lib.action.api.IAction}.
+ * singleton instance of the Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo
- * @see de.pro.lib.action.api.IAction
+ * @see de.pro.lib.action.api.ILibAction
  */
 public final class ActionFacade {
-    private static IAction instance = null;
+    
+    private static ILibAction instance = null;
     
     /**
-     * Provides a singleton instance from the Interface {@link de.pro.lib.action.api.IAction}.
+     * Provides a singleton instance from the Interface {@link de.pro.lib.action.api.ILibAction}.
      * 
-     * @return A singleton instance of {@link de.pro.lib.action.api.IAction}.
-     * @see de.pro.lib.action.api.IAction
+     * @return A singleton instance of {@link de.pro.lib.action.api.ILibAction}.
+     * @see de.pro.lib.action.api.ILibAction
      */
-    public static IAction getDefault() {
+    public static ILibAction getDefault() {
         
         if (instance == null) {
-            instance = new PRoAction();
+            instance = new LibAction();
         }
         
         return instance;
     }
     
     private ActionFacade() { }
+    
 }
