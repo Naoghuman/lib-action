@@ -23,7 +23,7 @@ package de.pro.lib.action.api;
  * of the section examples).
  *
  * @author PRo
- * @see ILibAction#handle(de.pro.lib.action.api.TransferModel) 
+ * @see ILibAction#handle(de.pro.lib.action.api.ActionTransferModel)
  */
 public class ActionTransferModel {
     
