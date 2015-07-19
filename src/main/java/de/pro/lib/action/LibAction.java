@@ -50,7 +50,7 @@ public class LibAction implements ILibAction {
             return;
         }
         
-        LoggerFacade.getDefault().own(ILibAction.class, "Handle action: " + model.getActionKey()); // NOI18N
+        LoggerFacade.INSTANCE.getLogger().own(ILibAction.class, "Handle action: " + model.getActionKey()); // NOI18N
 
         final ActionEvent event = new ActionEvent(model, null);
         ACTIONS.get(model.getActionKey()).handle(event);
@@ -66,12 +66,12 @@ public class LibAction implements ILibAction {
     @Override
     public Boolean isRegistered(String actionKey) {
         if (ACTIONS.containsKey(actionKey)) {
-            LoggerFacade.getDefault().own(ILibAction.class, "The action exists: " + actionKey); // NOI18N
+            LoggerFacade.INSTANCE.getLogger().own(ILibAction.class, "The action exists: " + actionKey); // NOI18N
 
             return Boolean.TRUE;
         }
         
-        LoggerFacade.getDefault().warn(ILibAction.class, "The action doesn't exists: " + actionKey); // NOI18N
+        LoggerFacade.INSTANCE.getLogger().warn(ILibAction.class, "The action doesn't exists: " + actionKey); // NOI18N
                 
         return Boolean.FALSE;
     }
@@ -82,7 +82,7 @@ public class LibAction implements ILibAction {
             return;
         }
         
-        LoggerFacade.getDefault().own(ILibAction.class, "Register action: " + actionKey); // NOI18N
+        LoggerFacade.INSTANCE.getLogger().own(ILibAction.class, "Register action: " + actionKey); // NOI18N
 
         ACTIONS.put(actionKey, action);
     }
@@ -93,7 +93,7 @@ public class LibAction implements ILibAction {
             return;
         }
         
-        LoggerFacade.getDefault().own(ILibAction.class, "Remove action: " + actionKey); // NOI18N
+        LoggerFacade.INSTANCE.getLogger().own(ILibAction.class, "Remove action: " + actionKey); // NOI18N
 
         ACTIONS.remove(actionKey);
     }
