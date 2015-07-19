@@ -19,31 +19,38 @@ package de.pro.lib.action.api;
 import de.pro.lib.action.LibAction;
 
 /**
- * The facade {@link de.pro.lib.action.api.ActionFacade} supplies a 
- * singleton instance of the Interface {@link de.pro.lib.action.api.ILibAction}.
+ * The facade {@link de.pro.lib.action.api.ActionFacade} provides access to
+ * the action methods during Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  */
-public final class ActionFacade {
-    
-    private static ILibAction instance = null;
+public enum ActionFacade {
     
     /**
-     * Provides a singleton instance from the Interface {@link de.pro.lib.action.api.ILibAction}.
-     * 
-     * @return A singleton instance of {@link de.pro.lib.action.api.ILibAction}.
-     * @see de.pro.lib.action.api.ILibAction
+     * Over the value <code>INSTANCE</code> the developer have access to the
+     * functionality in <code>ActionFacade</code>.
      */
-    public static ILibAction getDefault() {
-        
-        if (instance == null) {
-            instance = new LibAction();
-        }
-        
-        return instance;
+    INSTANCE;
+    
+    private ILibAction action = null;
+
+    private ActionFacade() {
+        this.initialize();
     }
     
-    private ActionFacade() { }
+    private void initialize() {
+        action = new LibAction();
+    }
+    
+    /**
+     * Over the Interface {@link de.pro.lib.action.api.ILibAction} the developer
+     * have access to the action methods.
+     * 
+     * @return a singleton instance from ILibAction.
+     */
+    public ILibAction getAction() {
+        return action;
+    }
     
 }

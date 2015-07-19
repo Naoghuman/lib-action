@@ -26,13 +26,13 @@ Examples<a name="Examples" />
 
 ```java
 /**
- * The facade {@link de.pro.lib.action.api.ActionFacade} supplies a 
- * singleton instance of the Interface {@link de.pro.lib.action.api.ILibAction}.
+ * The facade {@link de.pro.lib.action.api.ActionFacade} provides access to
+ * the action methods during Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  */
-public final class ActionFacade
+public enum ActionFacade
 ```
 
 ```java
@@ -41,7 +41,7 @@ public final class ActionFacade
  * 
  * @param actionKey The key which allowed access to the associated action.
  */
-ActionFacade.getDefault().handle(String actionKey);
+ActionFacade.INSTANCE.getAction().handle(String actionKey);
 ```
 
 ```java
@@ -55,7 +55,7 @@ ActionFacade.getDefault().handle(String actionKey);
  * 
  * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
  */
-public void handle(ActionTransferModel model);
+ActionFacade.INSTANCE.getAction().handle(ActionTransferModel model);
 ```
 
 ```java
@@ -65,7 +65,7 @@ public void handle(ActionTransferModel model);
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
  */
-ActionFacade.getDefault().register(String actionKey, EventHandler<ActionEvent> action);
+ActionFacade.INSTANCE.getAction().register(String actionKey, EventHandler<ActionEvent> action);
 ```
 
 ```java
@@ -74,14 +74,14 @@ ActionFacade.getDefault().register(String actionKey, EventHandler<ActionEvent> a
  * 
  * @param actionKey The action which should be removed.
  */
-ActionFacade.getDefault().remove(String actionKey);
+ActionFacade.INSTANCE.getAction().remove(String actionKey);
 ```
 
 
 Here you can see an example how to define an action
 ```java
 public void registerOnActionOpenDream() {
-    ActionFacade.getDefault().register(
+    ActionFacade.INSTANCE.getAction().register(
             ACTION__OPEN_DREAM__FROM_NAVIGATION,
             (ActionEvent ae) -> {
                 final ActionTransferModel model = (ActionTransferModel) ae.getSource();
@@ -97,7 +97,7 @@ final ActionTransferModel model = new ActionTransferModel();
 model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
 model.setLong(idToOpen);
 
-ActionFacade.getDefault().handle(model);
+ActionFacade.INSTANCE.getAction().handle(model);
 ```
 
 
@@ -106,7 +106,7 @@ Requirements<a name="Requirements" />
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Action-0.1.4.jar](#Installation).
-* The library [Lib-Logger-0.1.1.jar](#Installation).
+* The library [Lib-Logger-0.2.0.jar](#Installation).
   * Included is the [log4j-api-2.3.jar].
   * Included is the [log4j-core-2.3.jar].
 
