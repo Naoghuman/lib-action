@@ -27,7 +27,7 @@ Examples<a name="Examples" />
 ```java
 /**
  * The facade {@link de.pro.lib.action.api.ActionFacade} provides access to
- * the action methods during Interface {@link de.pro.lib.action.api.ILibAction}.
+ * the action methods during the Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
