@@ -57,7 +57,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored {@link java.langDouble} parameter.
+     * Get the stored {@link java.lang.Double} parameter.
      * 
      * @return The stored <code>Double</code> parameter.
      */
@@ -66,7 +66,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the {@link java.langDouble} parameter.
+     * Set the {@link java.lang.Double} parameter.
      * 
      * @param doubleParameter The <code>Double</code> parameter.
      */
@@ -75,7 +75,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored {@link java.langInteger} parameter.
+     * Get the stored {@link java.lang.Integer} parameter.
      * 
      * @return The stored <code>Integer</code> parameter.
      */
@@ -84,7 +84,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the {@link java.langInteger} parameter.
+     * Set the {@link java.lang.Integer} parameter.
      * 
      * @param integerParameter The <code>Integer</code> parameter.
      */
@@ -93,7 +93,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored {@link java.langLong} parameter.
+     * Get the stored {@link java.lang.Long} parameter.
      * 
      * @return The stored <code>Long</code> parameter.
      */
@@ -102,7 +102,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the {@link java.langLong} parameter.
+     * Set the {@link java.lang.Long} parameter.
      * 
      * @param longParameter The <code>Long</code> parameter.
      */
@@ -111,7 +111,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Get the stored {@link java.langString} parameter.
+     * Get the stored {@link java.lang.String} parameter.
      * 
      * @return The stored <code>String</code> parameter.
      */
@@ -120,7 +120,7 @@ public class ActionTransferModel {
     }
 
     /**
-     * Set the {@link java.langString} parameter.
+     * Set the {@link java.lang.String} parameter.
      * 
      * @param stringParameter The <code>String</code> parameter.
      */
@@ -129,7 +129,7 @@ public class ActionTransferModel {
     }
     
     /**
-     * Get the stored {@link java.langObject} parameter.
+     * Get the stored {@link java.lang.Object} parameter.
      * 
      * @return The stored <code>Object</code> parameter.
      */
@@ -138,7 +138,7 @@ public class ActionTransferModel {
     }
     
     /**
-     * Set the {@link java.langObject} parameter.
+     * Set the {@link java.lang.Object} parameter.
      * 
      * @param objectParameter The <code>Object</code> parameter.
      */
