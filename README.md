@@ -3,7 +3,7 @@ Lib-Action
 
 A library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) in a [JavaFX] &amp; [Maven] application.
 
-Current `version` is `0.1.4` (07.2015).
+Current `version` is `0.2.0` (07.2015).
 
 
 
@@ -105,7 +105,7 @@ Requirements<a name="Requirements" />
 ------------
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Action-0.1.4.jar](#Installation).
+* The library [Lib-Action-0.2.0.jar](#Installation).
 * The library [Lib-Logger-0.2.0.jar](#Installation).
   * Included is the [log4j-api-2.3.jar].
   * Included is the [log4j-core-2.3.jar].
