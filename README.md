@@ -10,6 +10,9 @@ Current `version` is `0.2.0` (07.2015).
 Content
 -------
 
+* [Api](#Api)
+    - [ActionFacade](#ActionFacade)
+    - [ActionTransferModel](#ActionTransferModel)
 * [Examples](#Examples)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -21,8 +24,10 @@ Content
 
 
 
-Examples<a name="Examples" />
+Api<a name="Api" />
 -------
+
+### ActionFacade<a name="ActionFacade" />
 
 ```java
 /**
@@ -32,7 +37,7 @@ Examples<a name="Examples" />
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  */
-public enum ActionFacade
+public enum ActionFacade implements ILibAction
 ```
 
 ```java
@@ -41,7 +46,7 @@ public enum ActionFacade
  * 
  * @param actionKey The key which allowed access to the associated action.
  */
-ActionFacade.INSTANCE.getAction().handle(String actionKey);
+ActionFacade.INSTANCE.handle(String actionKey);
 ```
 
 ```java
@@ -55,7 +60,31 @@ ActionFacade.INSTANCE.getAction().handle(String actionKey);
  * 
  * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
  */
-ActionFacade.INSTANCE.getAction().handle(ActionTransferModel model);
+ActionFacade.INSTANCE.handle(ActionTransferModel model);
+```
+
+```java
+/**
+ * Fire an event for every {@link de.pro.lib.action.api.ActionTransferModel} 
+ * with the associated actionKey in the model.<br />
+ * 
+ * The {@link de.pro.lib.action.api.ActionTransferModel} will be stored in 
+ * the action event and can reached over <code>event.getSource(): Object</code> 
+ * in the overriden {@link javafx.event.ActionEvent}.
+ * 
+ * @param models A List with <code>ActionTransferModel</code> which contains the actionKeys and additional parameters.
+ */
+ActionFacade.INSTANCE.handle(List<ActionTransferModel> models);
+```
+
+```java
+/**
+ * Checks if the specific action key is registered.
+ * 
+ * @param actionKey The action which should be check if it exists.
+ * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
+ */
+ActionFacade.INSTANCE.isRegistered(String actionKey);
 ```
 
 ```java
@@ -65,7 +94,7 @@ ActionFacade.INSTANCE.getAction().handle(ActionTransferModel model);
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
  */
-ActionFacade.INSTANCE.getAction().register(String actionKey, EventHandler<ActionEvent> action);
+ActionFacade.INSTANCE.register(String actionKey, EventHandler<ActionEvent> action);
 ```
 
 ```java
@@ -74,18 +103,168 @@ ActionFacade.INSTANCE.getAction().register(String actionKey, EventHandler<Action
  * 
  * @param actionKey The action which should be removed.
  */
-ActionFacade.INSTANCE.getAction().remove(String actionKey);
+ActionFacade.INSTANCE.remove(String actionKey);
 ```
 
+
+### ActionTransferModel<a name="ActionTransferModel" />
+
+```java
+/**
+ * Get the stored {@link java.lang.Boolean} parameter.
+ * 
+ * @return The stored <code>Boolean</code> parameter.
+ */
+public Boolean getBoolean()
+```
+
+```java
+/**
+ * Set the {@link java.lang.Boolean} parameter.
+ * 
+ * @param booleanParameter The <code>Boolean</code> parameter.
+ */
+public void setBoolean(Boolean booleanParameter)
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Double} parameter.
+ * 
+ * @return The stored <code>Double</code> parameter.
+ */
+public Double getDouble()
+```
+
+```java
+/**
+ * Set the {@link java.lang.Double} parameter.
+ * 
+ * @param doubleParameter The <code>Double</code> parameter.
+ */
+public void setDouble(Double doubleParameter)
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Integer} parameter.
+ * 
+ * @return The stored <code>Integer</code> parameter.
+ */
+public Integer getInteger()
+```
+
+```java
+/**
+ * Set the {@link java.lang.Integer} parameter.
+ * 
+ * @param integerParameter The <code>Integer</code> parameter.
+ */
+public void setInteger(Integer integerParameter)
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Long} parameter.
+ * 
+ * @return The stored <code>Long</code> parameter.
+ */
+public Long getLong()
+```
+
+```java
+/**
+ * Set the {@link java.lang.Long} parameter.
+ * 
+ * @param longParameter The <code>Long</code> parameter.
+ */
+public void setLong(Long longParameter)
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.String} parameter.
+ * 
+ * @return The stored <code>String</code> parameter.
+ */
+public String getString()
+```
+
+```java
+/**
+ * Set the {@link java.lang.String} parameter.
+ * 
+ * @param stringParameter The <code>String</code> parameter.
+ */
+public void setString(String stringParameter)
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Object} parameter.
+ * 
+ * @return The stored <code>Object</code> parameter.
+ */
+public Object getObject()
+```
+
+```java
+/**
+ * Set the {@link java.lang.Object} parameter.
+ * 
+ * @param objectParameter The <code>Object</code> parameter.
+ */
+public void setObject(Object objectParameter)
+```
+
+```java
+/**
+ * Get the <code>action key</code>.
+ * 
+ * @return The <code>action key</code>.
+ */
+public String getActionKey()
+```
+
+```java
+/**
+ * Set the <code>action key</code>.
+ * 
+ * @param actionKey The <code>action key</code>.
+ */
+public void setActionKey(String actionKey)
+```
+
+```java
+/**
+ * Get the <code>responce action key</code>.
+ * 
+ * @return The <code>responce action key</code>.
+ */
+public String getResponseActionKey()
+```
+
+```java
+/**
+ * Set the <code>responce action key</code>.
+ * 
+ * @param responseActionKey The <code>responce action key</code>.
+ */
+public void setResponseActionKey(String responseActionKey)
+```
+
+
+Examples<a name="Examples" />
+-------
 
 Here you can see an example how to define an action
 ```java
 public void registerOnActionOpenDream() {
-    ActionFacade.INSTANCE.getAction().register(
+    ActionFacade.INSTANCE.register(
             ACTION__OPEN_DREAM__FROM_NAVIGATION,
             (ActionEvent ae) -> {
                 final ActionTransferModel model = (ActionTransferModel) ae.getSource();
-                this.show(model.getLongParameter());
+                this.show(model.getLong());
             });
 }
 ```
@@ -97,7 +276,7 @@ final ActionTransferModel model = new ActionTransferModel();
 model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
 model.setLong(idToOpen);
 
-ActionFacade.INSTANCE.getAction().handle(model);
+ActionFacade.INSTANCE.handle(model);
 ```
 
 

@@ -17,6 +17,9 @@
 package de.pro.lib.action.api;
 
 import de.pro.lib.action.LibAction;
+import java.util.List;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 /**
  * The facade {@link de.pro.lib.action.api.ActionFacade} provides access to
@@ -25,7 +28,7 @@ import de.pro.lib.action.LibAction;
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  */
-public enum ActionFacade {
+public enum ActionFacade implements ILibAction {
     
     /**
      * Over the value <code>INSTANCE</code> the developer have access to the
@@ -42,15 +45,35 @@ public enum ActionFacade {
     private void initialize() {
         action = new LibAction();
     }
-    
-    /**
-     * Over the Interface {@link de.pro.lib.action.api.ILibAction} the developer
-     * have access to the action methods.
-     * 
-     * @return a singleton instance from ILibAction.
-     */
-    public ILibAction getAction() {
-        return action;
+
+    @Override
+    public void handle(String actionKey) {
+        action.handle(actionKey);
+    }
+
+    @Override
+    public void handle(ActionTransferModel model) {
+        action.handle(model);
+    }
+
+    @Override
+    public void handle(List<ActionTransferModel> models) {
+        action.handle(models);
+    }
+
+    @Override
+    public Boolean isRegistered(String actionKey) {
+        return action.isRegistered(actionKey);
+    }
+
+    @Override
+    public void register(String actionKey, EventHandler<ActionEvent> action) {
+        this.action.register(actionKey, action);
+    }
+
+    @Override
+    public void remove(String actionKey) {
+        action.remove(actionKey);
     }
     
 }
