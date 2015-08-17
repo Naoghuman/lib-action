@@ -17,6 +17,8 @@ Content
 -------
 
 * [Examples](#Examples)
+    - [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
+    - [handle(ActionTransferModel model)](#HandleActionTransferModel)
 * [Api](#Api)
     - [de.pro.lib.action.api.ActionFacade](#ActionFacade)
     - [de.pro.lib.action.api.ActionTransferModel](#ActionTransferModel)
@@ -33,6 +35,8 @@ Content
 Examples<a name="Examples" />
 -------
 
+### registerOnActionOpenDream()<a name="RegisterOnActionOpenDream" />
+
 Here you can see an example how to define an action
 ```java
 public void registerOnActionOpenDream() {
@@ -45,6 +49,8 @@ public void registerOnActionOpenDream() {
 }
 ```
 
+
+### handle(ActionTransferModel model)<a name="HandleActionTransferModel" />
 
 and how the above defined action is fired.
 ```java
