@@ -16,10 +16,10 @@ Current `version` is `0.2.0` (07.2015).
 Content
 -------
 
+* [Examples](#Examples)
 * [Api](#Api)
     - [ActionFacade](#ActionFacade)
     - [ActionTransferModel](#ActionTransferModel)
-* [Examples](#Examples)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
 * [Documentation](#Documentation)
@@ -27,6 +27,33 @@ Content
 * [License](#License)
 * [Autor](#Autor)
 * [Contact](#Contact)
+
+
+
+Examples<a name="Examples" />
+-------
+
+Here you can see an example how to define an action
+```java
+public void registerOnActionOpenDream() {
+    ActionFacade.INSTANCE.register(
+            ACTION__OPEN_DREAM__FROM_NAVIGATION,
+            (ActionEvent ae) -> {
+                final ActionTransferModel model = (ActionTransferModel) ae.getSource();
+                this.show(model.getLong());
+            });
+}
+```
+
+
+and how the above defined action is fired.
+```java
+final ActionTransferModel model = new ActionTransferModel();
+model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
+model.setLong(idToOpen);
+
+ActionFacade.INSTANCE.handle(model);
+```
 
 
 
@@ -257,32 +284,6 @@ public String getResponseActionKey()
  * @param responseActionKey The <code>responce action key</code>.
  */
 public void setResponseActionKey(String responseActionKey)
-```
-
-
-Examples<a name="Examples" />
--------
-
-Here you can see an example how to define an action
-```java
-public void registerOnActionOpenDream() {
-    ActionFacade.INSTANCE.register(
-            ACTION__OPEN_DREAM__FROM_NAVIGATION,
-            (ActionEvent ae) -> {
-                final ActionTransferModel model = (ActionTransferModel) ae.getSource();
-                this.show(model.getLong());
-            });
-}
-```
-
-
-and how the above defined action is fired.
-```java
-final ActionTransferModel model = new ActionTransferModel();
-model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
-model.setLong(idToOpen);
-
-ActionFacade.INSTANCE.handle(model);
 ```
 
 
