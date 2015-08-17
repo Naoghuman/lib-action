@@ -1,7 +1,13 @@
 Lib-Action
 ===============
 
-A library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) in a [JavaFX] &amp; [Maven] desktop application.
+
+
+Intention
+---------
+
+A library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) 
+in a [JavaFX] &amp; [Maven] desktop application.
 
 Current `version` is `0.2.0` (07.2015).
 
