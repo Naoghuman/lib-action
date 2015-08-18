@@ -4,7 +4,7 @@
     
     <groupId>de.pro</groupId>
     <artifactId>Lib-Action</artifactId>
-    <version>0.2.1-SNAPSHOT</version> <!-- -SNAPSHOT -->
+    <version>0.2.1</version> <!-- -SNAPSHOT -->
     <packaging>jar</packaging>
     <description>Lib-Action is library for `easy` storing and accessing actions (EventHandler&lt;ActionEvent&gt;) in a JavaFX &amp; Maven desktop application. See https://github.com/Naoghuman/lib-action for more details.</description>
     <name>Lib-Action</name>
@@ -44,7 +44,7 @@
     
     <build>
         <plugins>
-            <!-- for RELEASE 
+            <!-- for RELEASE -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -58,7 +58,7 @@
                     </execution>
                 </executions>
             </plugin>
-            -->
+            <!-- -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -67,7 +67,7 @@
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
                 
-                <!-- for RELEASE
+                <!-- for RELEASE -->
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -76,7 +76,7 @@
                         </goals>
                     </execution>
                 </executions>
-                -->
+                <!-- -->
             </plugin>
         </plugins>
     </build>
