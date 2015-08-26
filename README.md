@@ -86,7 +86,7 @@ public enum ActionFacade implements ILibAction
  * 
  * @param actionKey The key which allowed access to the associated action.
  */
-ActionFacade.INSTANCE.handle(String actionKey);
+public void handle(String actionKey);
 ```
 
 ```java
@@ -100,7 +100,7 @@ ActionFacade.INSTANCE.handle(String actionKey);
  * 
  * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
  */
-ActionFacade.INSTANCE.handle(ActionTransferModel model);
+public void handle(ActionTransferModel model);
 ```
 
 ```java
@@ -114,7 +114,7 @@ ActionFacade.INSTANCE.handle(ActionTransferModel model);
  * 
  * @param models A List with <code>ActionTransferModel</code> which contains the actionKeys and additional parameters.
  */
-ActionFacade.INSTANCE.handle(List<ActionTransferModel> models);
+public void handle(List<ActionTransferModel> models);
 ```
 
 ```java
@@ -124,7 +124,7 @@ ActionFacade.INSTANCE.handle(List<ActionTransferModel> models);
  * @param actionKey The action which should be check if it exists.
  * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
  */
-ActionFacade.INSTANCE.isRegistered(String actionKey);
+public Boolean isRegistered(String actionKey);
 ```
 
 ```java
@@ -134,7 +134,7 @@ ActionFacade.INSTANCE.isRegistered(String actionKey);
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
  */
-ActionFacade.INSTANCE.register(String actionKey, EventHandler<ActionEvent> action);
+public void register(String actionKey, EventHandler<ActionEvent> action);
 ```
 
 ```java
@@ -143,7 +143,7 @@ ActionFacade.INSTANCE.register(String actionKey, EventHandler<ActionEvent> actio
  * 
  * @param actionKey The action which should be removed.
  */
-ActionFacade.INSTANCE.remove(String actionKey);
+public void remove(String actionKey);
 ```
 
 
@@ -155,7 +155,7 @@ ActionFacade.INSTANCE.remove(String actionKey);
  * 
  * @return The stored <code>Boolean</code> parameter.
  */
-public Boolean getBoolean()
+public Boolean getBoolean();
 ```
 
 ```java
@@ -164,7 +164,7 @@ public Boolean getBoolean()
  * 
  * @param booleanParameter The <code>Boolean</code> parameter.
  */
-public void setBoolean(Boolean booleanParameter)
+public void setBoolean(Boolean booleanParameter);
 ```
 
 ```java
@@ -173,7 +173,7 @@ public void setBoolean(Boolean booleanParameter)
  * 
  * @return The stored <code>Double</code> parameter.
  */
-public Double getDouble()
+public Double getDouble();
 ```
 
 ```java
@@ -182,7 +182,7 @@ public Double getDouble()
  * 
  * @param doubleParameter The <code>Double</code> parameter.
  */
-public void setDouble(Double doubleParameter)
+public void setDouble(Double doubleParameter);
 ```
 
 ```java
@@ -191,7 +191,7 @@ public void setDouble(Double doubleParameter)
  * 
  * @return The stored <code>Integer</code> parameter.
  */
-public Integer getInteger()
+public Integer getInteger();
 ```
 
 ```java
@@ -200,7 +200,7 @@ public Integer getInteger()
  * 
  * @param integerParameter The <code>Integer</code> parameter.
  */
-public void setInteger(Integer integerParameter)
+public void setInteger(Integer integerParameter);
 ```
 
 ```java
@@ -209,7 +209,7 @@ public void setInteger(Integer integerParameter)
  * 
  * @return The stored <code>Long</code> parameter.
  */
-public Long getLong()
+public Long getLong();
 ```
 
 ```java
@@ -218,7 +218,7 @@ public Long getLong()
  * 
  * @param longParameter The <code>Long</code> parameter.
  */
-public void setLong(Long longParameter)
+public void setLong(Long longParameter);
 ```
 
 ```java
@@ -227,7 +227,7 @@ public void setLong(Long longParameter)
  * 
  * @return The stored <code>String</code> parameter.
  */
-public String getString()
+public String getString();
 ```
 
 ```java
@@ -236,7 +236,7 @@ public String getString()
  * 
  * @param stringParameter The <code>String</code> parameter.
  */
-public void setString(String stringParameter)
+public void setString(String stringParameter);
 ```
 
 ```java
@@ -245,7 +245,7 @@ public void setString(String stringParameter)
  * 
  * @return The stored <code>Object</code> parameter.
  */
-public Object getObject()
+public Object getObject();
 ```
 
 ```java
@@ -254,7 +254,7 @@ public Object getObject()
  * 
  * @param objectParameter The <code>Object</code> parameter.
  */
-public void setObject(Object objectParameter)
+public void setObject(Object objectParameter);
 ```
 
 ```java
@@ -263,7 +263,7 @@ public void setObject(Object objectParameter)
  * 
  * @return The <code>action key</code>.
  */
-public String getActionKey()
+public String getActionKey();
 ```
 
 ```java
@@ -272,7 +272,7 @@ public String getActionKey()
  * 
  * @param actionKey The <code>action key</code>.
  */
-public void setActionKey(String actionKey)
+public void setActionKey(String actionKey);
 ```
 
 ```java
@@ -281,7 +281,7 @@ public void setActionKey(String actionKey)
  * 
  * @return The <code>responce action key</code>.
  */
-public String getResponseActionKey()
+public String getResponseActionKey();
 ```
 
 ```java
@@ -290,7 +290,7 @@ public String getResponseActionKey()
  * 
  * @param responseActionKey The <code>responce action key</code>.
  */
-public void setResponseActionKey(String responseActionKey)
+public void setResponseActionKey(String responseActionKey);
 ```
 
 
