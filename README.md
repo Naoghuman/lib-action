@@ -9,7 +9,7 @@ Intention
 Lib-Action is a library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) 
 in a [JavaFX] &amp; [Maven] desktop application.
 
-Current `version` is `0.2.1` (08.2015).
+Current `version` is `0.2.2` (09.2015).
 
 
 
@@ -298,15 +298,11 @@ public void setResponseActionKey(String responseActionKey);
 Download<a name="Download" />
 ---
 
-Current `version` is `0.2.1`. Main points in this release are:
-* Implement in `ActionFacade` the interface `ILibAction` directly for easier handling.
-* Add new section `Api` in the ReadMe.
-* Add new section `Download` in the ReadMe.
-* Add new section `Intention` in the ReadMe.
-* Extend the section `Examples` in the ReadMe.
+Current `version` is `0.2.2`. Main points in this release are:
+* Fix missing update from the library Lib-Logger to v0.2.1 in sourcecode.
 
 Download:
-* [Release v0.2.1 (08.2015)]
+* [Release v0.2.2 (09.2015)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Action]
@@ -317,7 +313,7 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Action-0.2.1.jar](#Installation).
+* The library [Lib-Action-0.2.2.jar](#Installation).
 * The library [Lib-Logger-0.2.1.jar](#Installation).
   * Included is the [log4j-api-2.3.jar].
   * Included is the [log4j-core-2.3.jar].
@@ -398,6 +394,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.2.1 (08.2015)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.2.1
+[Release v0.2.2 (09.2015)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.2.2
 
 
