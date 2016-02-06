@@ -26,11 +26,11 @@ import javafx.event.EventHandler;
 
 /**
  * The implementation from the Interface {@link de.pro.lib.action.api.ILibAction}.<br />
- * Access to this class is over the facade {@link de.pro.lib.action.api.ActionFacade}.
+ * Access to this class is over the facade {@link com.github.naoghuman.ActionFacade}.
  * 
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
- * @see de.pro.lib.action.api.ActionFacade
+ * @see com.github.naoghuman.ActionFacade
  */
     @Deprecated
 public class LibAction implements ILibAction {

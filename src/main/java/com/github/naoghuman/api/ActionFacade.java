@@ -14,15 +14,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pro.lib.action.api;
+package com.github.naoghuman.api;
 
 import de.pro.lib.action.LibAction;
+import de.pro.lib.action.api.ActionTransferModel;
+import de.pro.lib.action.api.ILibAction;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The facade {@link de.pro.lib.action.api.ActionFacade} provides access to
+ * The facade {@link com.github.naoghuman.api.ActionFacade} provides access to
  * the action methods during the Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo
