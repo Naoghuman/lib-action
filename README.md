@@ -21,7 +21,7 @@ Content
     - [handle(ActionTransferModel model)](#HandleActionTransferModel)
 * [Api](#Api)
     - [com.github.naoghuman.lib.action.api.ActionData](#ActionData)
-    - [de.pro.lib.action.api.ActionFacade](#ActionFacade)
+    - [com.github.naoghuman.lib.action.api.ActionFacade](#ActionFacade)
     - [de.pro.lib.action.api.ActionTransferModel](#ActionTransferModel) (deprecated)
 * [Download](#Download)
 * [Requirements](#Requirements)
@@ -243,7 +243,58 @@ public void setResponseActionKey(String responseActionKey);
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  */
-public enum ActionFacade implements ~~ILibAction~~
+public enum ActionFacade implements ILibAction
+```
+
+
+```java
+/**
+ * Triggers in the given <code>clazz</code> the action method which is associated
+ * with the <code>actionKey</code>.
+ * 
+ * @param clazz The clazz where the action method is defined.
+ * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+ */
+public void onAction(Class clazz, String actionKey);
+```
+
+```java
+/**
+ * Triggers in the given <code>clazz</code> the action method which is associated
+ * with the <code>actionKey</code>.
+ * <p>
+ * The parameter <code>clazz</code> have the format: {@link java.lang.Class#getName()}.
+ * 
+ * @param clazz The clazz where the action method is defined.
+ * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+ */
+public void onAction(String clazz, String actionKey);
+```
+
+```java
+/**
+ * Triggers in the given <code>clazz</code> the action method (with the parameter
+ * <code>data</code>) which is associated with the <code>actionKey</code>.
+ * 
+ * @param clazz The clazz where the action method is defined.
+ * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+ * @param data The data which will delivered the action method as parameter.
+ */
+public void onAction(Class clazz, String actionKey, ActionData data);
+```
+
+```java
+/**
+ * Triggers in the given <code>clazz</code> the action method (with the parameter
+ * <code>data</code>) which is associated with the <code>actionKey</code>.
+ * <p>
+ * The parameter <code>clazz</code> have the format: {@link java.lang.Class#getName()}.
+ * 
+ * @param clazz The clazz where the action method is defined.
+ * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+ * @param data The data which will delivered the action method as parameter.
+ */
+public void onAction(String clazz, String actionKey, ActionData data);
 ```
 
 ```java
@@ -252,6 +303,7 @@ public enum ActionFacade implements ~~ILibAction~~
  * 
  * @param actionKey The key which allowed access to the associated action.
  */
+@Deprecated
 public void handle(String actionKey);
 ```
 
@@ -266,6 +318,7 @@ public void handle(String actionKey);
  * 
  * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
  */
+@Deprecated
 public void handle(ActionTransferModel model);
 ```
 
@@ -280,6 +333,7 @@ public void handle(ActionTransferModel model);
  * 
  * @param models A List with <code>ActionTransferModel</code> which contains the actionKeys and additional parameters.
  */
+@Deprecated
 public void handle(List<ActionTransferModel> models);
 ```
 
@@ -290,6 +344,7 @@ public void handle(List<ActionTransferModel> models);
  * @param actionKey The action which should be check if it exists.
  * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
  */
+@Deprecated
 public Boolean isRegistered(String actionKey);
 ```
 
@@ -300,6 +355,7 @@ public Boolean isRegistered(String actionKey);
  * @param actionKey The key which allowed access to the associated action.
  * @param action The action which should be registered.
  */
+@Deprecated
 public void register(String actionKey, EventHandler<ActionEvent> action);
 ```
 
@@ -309,6 +365,7 @@ public void register(String actionKey, EventHandler<ActionEvent> action);
  * 
  * @param actionKey The action which should be removed.
  */
+@Deprecated
 public void remove(String actionKey);
 ```
 
@@ -321,6 +378,7 @@ public void remove(String actionKey);
  * 
  * @return The stored <code>Boolean</code> parameter.
  */
+@Deprecated
 public Boolean getBoolean();
 ```
 
@@ -330,6 +388,7 @@ public Boolean getBoolean();
  * 
  * @param booleanParameter The <code>Boolean</code> parameter.
  */
+@Deprecated
 public void setBoolean(Boolean booleanParameter);
 ```
 
@@ -339,6 +398,7 @@ public void setBoolean(Boolean booleanParameter);
  * 
  * @return The stored <code>Double</code> parameter.
  */
+@Deprecated
 public Double getDouble();
 ```
 
@@ -348,6 +408,7 @@ public Double getDouble();
  * 
  * @param doubleParameter The <code>Double</code> parameter.
  */
+@Deprecated
 public void setDouble(Double doubleParameter);
 ```
 
@@ -357,6 +418,7 @@ public void setDouble(Double doubleParameter);
  * 
  * @return The stored <code>Integer</code> parameter.
  */
+@Deprecated
 public Integer getInteger();
 ```
 
@@ -366,6 +428,7 @@ public Integer getInteger();
  * 
  * @param integerParameter The <code>Integer</code> parameter.
  */
+@Deprecated
 public void setInteger(Integer integerParameter);
 ```
 
@@ -375,6 +438,7 @@ public void setInteger(Integer integerParameter);
  * 
  * @return The stored <code>Long</code> parameter.
  */
+@Deprecated
 public Long getLong();
 ```
 
@@ -384,6 +448,7 @@ public Long getLong();
  * 
  * @param longParameter The <code>Long</code> parameter.
  */
+@Deprecated
 public void setLong(Long longParameter);
 ```
 
@@ -393,6 +458,7 @@ public void setLong(Long longParameter);
  * 
  * @return The stored <code>String</code> parameter.
  */
+@Deprecated
 public String getString();
 ```
 
@@ -402,6 +468,7 @@ public String getString();
  * 
  * @param stringParameter The <code>String</code> parameter.
  */
+@Deprecated
 public void setString(String stringParameter);
 ```
 
@@ -411,6 +478,7 @@ public void setString(String stringParameter);
  * 
  * @return The stored <code>Object</code> parameter.
  */
+@Deprecated
 public Object getObject();
 ```
 
@@ -420,6 +488,7 @@ public Object getObject();
  * 
  * @param objectParameter The <code>Object</code> parameter.
  */
+@Deprecated
 public void setObject(Object objectParameter);
 ```
 
@@ -429,6 +498,7 @@ public void setObject(Object objectParameter);
  * 
  * @return The <code>action key</code>.
  */
+@Deprecated
 public String getActionKey();
 ```
 
@@ -438,6 +508,7 @@ public String getActionKey();
  * 
  * @param actionKey The <code>action key</code>.
  */
+@Deprecated
 public void setActionKey(String actionKey);
 ```
 
@@ -447,6 +518,7 @@ public void setActionKey(String actionKey);
  * 
  * @return The <code>responce action key</code>.
  */
+@Deprecated
 public String getResponseActionKey();
 ```
 
@@ -456,6 +528,7 @@ public String getResponseActionKey();
  * 
  * @param responseActionKey The <code>responce action key</code>.
  */
+@Deprecated
 public void setResponseActionKey(String responseActionKey);
 ```
 

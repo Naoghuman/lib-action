@@ -16,9 +16,13 @@
  */
 package com.github.naoghuman.lib.action.api;
 
+import com.github.naoghuman.lib.logger.api.LoggerFacade;
 import de.pro.lib.action.LibAction;
 import de.pro.lib.action.api.ActionTransferModel;
 import de.pro.lib.action.api.ILibAction;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -46,6 +50,84 @@ public enum ActionFacade implements ILibAction {
     
     private void initialize() {
         action = new LibAction();
+    }
+    
+    /**
+     * Triggers in the given <code>clazz</code> the action method which is associated
+     * with the <code>actionKey</code>.
+     * 
+     * @param clazz The clazz where the action method is defined.
+     * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+     */
+    public void onAction(Class clazz, String actionKey) {
+        this.onAction(clazz.getName(), actionKey, null);
+    }
+    
+    /**
+     * Triggers in the given <code>clazz</code> the action method which is associated
+     * with the <code>actionKey</code>.
+     * <p>
+     * The parameter <code>clazz</code> have the format: {@link java.lang.Class#getName()}.
+     * 
+     * @param clazz The clazz where the action method is defined.
+     * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+     */
+    public void onAction(String clazz, String actionKey) {
+        this.onAction(clazz, actionKey, null);
+    }
+    
+    /**
+     * Triggers in the given <code>clazz</code> the action method (with the parameter
+     * <code>data</code>) which is associated with the <code>actionKey</code>.
+     * 
+     * @param clazz The clazz where the action method is defined.
+     * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+     * @param data The data which will delivered the action method as parameter.
+     */
+    public void onAction(Class clazz, String actionKey, ActionData data) {
+        this.onAction(clazz.getName(), actionKey, data);
+    }
+    
+    /**
+     * Triggers in the given <code>clazz</code> the action method (with the parameter
+     * <code>data</code>) which is associated with the <code>actionKey</code>.
+     * <p>
+     * The parameter <code>clazz</code> have the format: {@link java.lang.Class#getName()}.
+     * 
+     * @param clazz The clazz where the action method is defined.
+     * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
+     * @param data The data which will delivered the action method as parameter.
+     */
+    public void onAction(String clazz, String actionKey, ActionData data) {
+        Class clazz1 = null;
+        try {
+            clazz1 = Class.forName(clazz);
+        } catch (ClassNotFoundException ex) {
+            LoggerFacade.INSTANCE.error(this.getClass(), "Class not found via reflection: " + clazz, ex); // NOI18N
+        }
+        
+        for (Method method : clazz1.getDeclaredMethods()) {
+            if (method.isAnnotationPresent(OnAction.class)) {
+                final Annotation annotation = method.getAnnotation(OnAction.class);
+                final OnAction registerOnAction = (OnAction) annotation;
+                if (registerOnAction.actionKey().equals(actionKey)) {
+                    try {
+                        if (data != null) {
+                            method.invoke(clazz1.newInstance(), data);
+                        }
+                        else {
+                            method.invoke(clazz1.newInstance());
+                        }
+                    } catch (IllegalAccessException
+                            | IllegalArgumentException
+                            | InvocationTargetException
+                            | InstantiationException ex
+                    ) {
+                        LoggerFacade.INSTANCE.error(this.getClass(), "Error during invoking the method", ex); // NOI18N
+                    }
+                }
+            }
+        }
     }
 
     @Deprecated
