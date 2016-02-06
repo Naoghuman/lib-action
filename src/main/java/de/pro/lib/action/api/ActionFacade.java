@@ -46,31 +46,37 @@ public enum ActionFacade implements ILibAction {
         action = new LibAction();
     }
 
+    @Deprecated
     @Override
     public void handle(String actionKey) {
         action.handle(actionKey);
     }
 
+    @Deprecated
     @Override
     public void handle(ActionTransferModel model) {
         action.handle(model);
     }
 
+    @Deprecated
     @Override
     public void handle(List<ActionTransferModel> models) {
         action.handle(models);
     }
 
+    @Deprecated
     @Override
     public Boolean isRegistered(String actionKey) {
         return action.isRegistered(actionKey);
     }
 
+    @Deprecated
     @Override
     public void register(String actionKey, EventHandler<ActionEvent> action) {
         this.action.register(actionKey, action);
     }
 
+    @Deprecated
     @Override
     public void remove(String actionKey) {
         action.remove(actionKey);

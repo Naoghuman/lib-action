@@ -28,6 +28,7 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 #### Refactoring
+#7 [Project] Deprecated all files expect the class ActionFacade.
 #6 [Project] Rename jar file to lowercase.
 
 
@@ -37,5 +38,5 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 [//]: # (Issues which will be integrated in this release)
+#9 [Project] Rewrite project description.
 #8 [Projekt] Change group-id to com.github.naoghuman.
-#7 [Project] Deprecated all files expect the class ActionFacade.

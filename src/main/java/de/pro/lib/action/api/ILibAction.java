@@ -29,6 +29,7 @@ import javafx.event.EventHandler;
  * @see de.pro.lib.action.LibAction
  * @see de.pro.lib.action.api.ActionFacade
  */
+@Deprecated
 public interface ILibAction {
     
     /**
@@ -36,6 +37,7 @@ public interface ILibAction {
      * 
      * @param actionKey The key which allowed access to the associated action.
      */
+    @Deprecated
     public void handle(String actionKey);
     
     /**
@@ -48,6 +50,7 @@ public interface ILibAction {
      * 
      * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
      */
+    @Deprecated
     public void handle(ActionTransferModel model);
     
     /**
@@ -60,6 +63,7 @@ public interface ILibAction {
      * 
      * @param models A List with <code>ActionTransferModel</code> which contains the actionKeys and additional parameters.
      */
+    @Deprecated
     public void handle(List<ActionTransferModel> models);
     
     /**
@@ -68,6 +72,7 @@ public interface ILibAction {
      * @param actionKey The action which should be check if it exists.
      * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
      */
+    @Deprecated
     public Boolean isRegistered(String actionKey);
     
     /**
@@ -76,6 +81,7 @@ public interface ILibAction {
      * @param actionKey The key which allowed access to the associated action.
      * @param action The action which should be registered.
      */
+    @Deprecated
     public void register(String actionKey, EventHandler<ActionEvent> action);
     
     /**
@@ -83,6 +89,7 @@ public interface ILibAction {
      * 
      * @param actionKey The action which should be removed.
      */
+    @Deprecated
     public void remove(String actionKey);
     
 }

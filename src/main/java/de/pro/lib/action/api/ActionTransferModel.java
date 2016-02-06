@@ -26,6 +26,7 @@ package de.pro.lib.action.api;
  * @author PRo
  * @see ILibAction#handle(de.pro.lib.action.api.ActionTransferModel)
  */
+@Deprecated
 public class ActionTransferModel {
     
     private Boolean booleanParameter = Boolean.FALSE;
@@ -43,6 +44,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Boolean</code> parameter.
      */
+    @Deprecated
     public Boolean getBoolean() {
         return booleanParameter;
     }
@@ -52,6 +54,7 @@ public class ActionTransferModel {
      * 
      * @param booleanParameter The <code>Boolean</code> parameter.
      */
+    @Deprecated
     public void setBoolean(Boolean booleanParameter) {
         this.booleanParameter = booleanParameter;
     }
@@ -61,6 +64,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Double</code> parameter.
      */
+    @Deprecated
     public Double getDouble() {
         return doubleParameter;
     }
@@ -70,6 +74,7 @@ public class ActionTransferModel {
      * 
      * @param doubleParameter The <code>Double</code> parameter.
      */
+    @Deprecated
     public void setDouble(Double doubleParameter) {
         this.doubleParameter = doubleParameter;
     }
@@ -79,6 +84,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Integer</code> parameter.
      */
+    @Deprecated
     public Integer getInteger() {
         return integerParameter;
     }
@@ -88,6 +94,7 @@ public class ActionTransferModel {
      * 
      * @param integerParameter The <code>Integer</code> parameter.
      */
+    @Deprecated
     public void setInteger(Integer integerParameter) {
         this.integerParameter = integerParameter;
     }
@@ -97,6 +104,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Long</code> parameter.
      */
+    @Deprecated
     public Long getLong() {
         return longParameter;
     }
@@ -106,6 +114,7 @@ public class ActionTransferModel {
      * 
      * @param longParameter The <code>Long</code> parameter.
      */
+    @Deprecated
     public void setLong(Long longParameter) {
         this.longParameter = longParameter;
     }
@@ -115,6 +124,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>String</code> parameter.
      */
+    @Deprecated
     public String getString() {
         return stringParameter;
     }
@@ -124,6 +134,7 @@ public class ActionTransferModel {
      * 
      * @param stringParameter The <code>String</code> parameter.
      */
+    @Deprecated
     public void setString(String stringParameter) {
         this.stringParameter = stringParameter;
     }
@@ -133,6 +144,7 @@ public class ActionTransferModel {
      * 
      * @return The stored <code>Object</code> parameter.
      */
+    @Deprecated
     public Object getObject() {
         return objectParameter;
     }
@@ -142,6 +154,7 @@ public class ActionTransferModel {
      * 
      * @param objectParameter The <code>Object</code> parameter.
      */
+    @Deprecated
     public void setObject(Object objectParameter) {
         this.objectParameter = objectParameter;
     }
@@ -151,6 +164,7 @@ public class ActionTransferModel {
      * 
      * @return The <code>action key</code>.
      */
+    @Deprecated
     public String getActionKey() {
         return actionKey;
     }
@@ -160,6 +174,7 @@ public class ActionTransferModel {
      * 
      * @param actionKey The <code>action key</code>.
      */
+    @Deprecated
     public void setActionKey(String actionKey) {
         this.actionKey = actionKey;
     }
@@ -169,6 +184,7 @@ public class ActionTransferModel {
      * 
      * @return The <code>responce action key</code>.
      */
+    @Deprecated
     public String getResponseActionKey() {
         return responseActionKey;
     }
@@ -178,6 +194,7 @@ public class ActionTransferModel {
      * 
      * @param responseActionKey The <code>responce action key</code>.
      */
+    @Deprecated
     public void setResponseActionKey(String responseActionKey) {
         this.responseActionKey = responseActionKey;
     }

@@ -16,9 +16,9 @@
  */
 package de.pro.lib.action;
 
+import com.github.naoghuman.lib.logger.api.LoggerFacade;
 import de.pro.lib.action.api.ILibAction;
 import de.pro.lib.action.api.ActionTransferModel;
-import de.pro.lib.logger.api.LoggerFacade;
 import java.util.HashMap;
 import java.util.List;
 import javafx.event.ActionEvent;
@@ -32,10 +32,12 @@ import javafx.event.EventHandler;
  * @see de.pro.lib.action.api.ILibAction
  * @see de.pro.lib.action.api.ActionFacade
  */
+    @Deprecated
 public class LibAction implements ILibAction {
     
     private final static HashMap<String, EventHandler<ActionEvent>> ACTIONS = new HashMap<>();
 
+    @Deprecated
     @Override
     public void handle(String actionKey) {
         final ActionTransferModel model = new ActionTransferModel();
@@ -44,6 +46,7 @@ public class LibAction implements ILibAction {
         this.handle(model);
     }
     
+    @Deprecated
     @Override
     public void handle(ActionTransferModel model) {
         if (!ACTIONS.containsKey(model.getActionKey())) {
@@ -56,6 +59,7 @@ public class LibAction implements ILibAction {
         ACTIONS.get(model.getActionKey()).handle(event);
     }
     
+    @Deprecated
     @Override
     public void handle(List<ActionTransferModel> models) {
         models.stream().forEach((model) -> {
@@ -63,6 +67,7 @@ public class LibAction implements ILibAction {
         });
     }
 
+    @Deprecated
     @Override
     public Boolean isRegistered(String actionKey) {
         if (ACTIONS.containsKey(actionKey)) {
@@ -76,6 +81,7 @@ public class LibAction implements ILibAction {
         return Boolean.FALSE;
     }
 
+    @Deprecated
     @Override
     public void register(String actionKey, EventHandler<ActionEvent> action) {
         if (ACTIONS.containsKey(actionKey)) {
@@ -87,6 +93,7 @@ public class LibAction implements ILibAction {
         ACTIONS.put(actionKey, action);
     }
 
+    @Deprecated
     @Override
     public void remove(String actionKey) {
         if (!ACTIONS.containsKey(actionKey)) {
