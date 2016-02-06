@@ -15,7 +15,8 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 #### Enhancement
-#5 [Dependencies] Update the project to the new version from lib-logger-0.3.0.
+#10 [Api] Create new DAO ActionData which will replaced ActionTransferModel.
+#5  [Dependencies] Update the project to the new version from lib-logger-0.3.0.
 
 
 

@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.api;
+package com.github.naoghuman.lib.action.api;
 
 import de.pro.lib.action.LibAction;
 import de.pro.lib.action.api.ActionTransferModel;
@@ -24,7 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The facade {@link com.github.naoghuman.api.ActionFacade} provides access to
+ * The facade {@link com.github.naoghuman.lib.action.api.ActionFacade} provides access to
  * the action methods during the Interface {@link de.pro.lib.action.api.ILibAction}.
  *
  * @author PRo

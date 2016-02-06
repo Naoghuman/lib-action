@@ -20,8 +20,9 @@ Content
     - [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
     - [handle(ActionTransferModel model)](#HandleActionTransferModel)
 * [Api](#Api)
+    - [com.github.naoghuman.lib.action.api.ActionData](#ActionData)
     - [de.pro.lib.action.api.ActionFacade](#ActionFacade)
-    - [de.pro.lib.action.api.ActionTransferModel](#ActionTransferModel)
+    - [de.pro.lib.action.api.ActionTransferModel](#ActionTransferModel) (deprecated)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -67,6 +68,171 @@ ActionFacade.INSTANCE.handle(model);
 Api<a name="Api" />
 ---
 
+### com.github.naoghuman.lib.action.api.ActionData<a name="ActionData" />
+
+```java
+/**
+ * Get the stored {@link java.lang.Boolean} parameter.
+ * 
+ * @return The stored <code>Boolean</code> parameter.
+ */
+public Boolean getBoolean();
+```
+
+```java
+/**
+ * Set the {@link java.lang.Boolean} parameter.
+ * 
+ * @param booleanParameter The <code>Boolean</code> parameter.
+ */
+public void setBoolean(Boolean booleanParameter);
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Character} parameter.
+ * 
+ * @return The stored <code>Character</code> parameter.
+ */
+public Character getBoolean();
+```
+
+```java
+/**
+ * Set the {@link java.lang.Character} parameter.
+ * 
+ * @param booleanParameter The <code>Character</code> parameter.
+ */
+public void setBoolean(Character characterParameter);
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Double} parameter.
+ * 
+ * @return The stored <code>Double</code> parameter.
+ */
+public Double getDouble();
+```
+
+```java
+/**
+ * Set the {@link java.lang.Double} parameter.
+ * 
+ * @param doubleParameter The <code>Double</code> parameter.
+ */
+public void setDouble(Double doubleParameter);
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Integer} parameter.
+ * 
+ * @return The stored <code>Integer</code> parameter.
+ */
+public Integer getInteger();
+```
+
+```java
+/**
+ * Set the {@link java.lang.Integer} parameter.
+ * 
+ * @param integerParameter The <code>Integer</code> parameter.
+ */
+public void setInteger(Integer integerParameter);
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Long} parameter.
+ * 
+ * @return The stored <code>Long</code> parameter.
+ */
+public Long getLong();
+```
+
+```java
+/**
+ * Set the {@link java.lang.Long} parameter.
+ * 
+ * @param longParameter The <code>Long</code> parameter.
+ */
+public void setLong(Long longParameter);
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.String} parameter.
+ * 
+ * @return The stored <code>String</code> parameter.
+ */
+public String getString();
+```
+
+```java
+/**
+ * Set the {@link java.lang.String} parameter.
+ * 
+ * @param stringParameter The <code>String</code> parameter.
+ */
+public void setString(String stringParameter);
+```
+
+```java
+/**
+ * Get the stored {@link java.lang.Object} parameter.
+ * 
+ * @return The stored <code>Object</code> parameter.
+ */
+public Object getObject();
+```
+
+```java
+/**
+ * Set the {@link java.lang.Object} parameter.
+ * 
+ * @param objectParameter The <code>Object</code> parameter.
+ */
+public void setObject(Object objectParameter);
+```
+
+```java
+/**
+ * Get the <code>action key</code>.
+ * 
+ * @return The <code>action key</code>.
+ */
+public String getActionKey();
+```
+
+```java
+/**
+ * Set the <code>action key</code>.
+ * 
+ * @param actionKey The <code>action key</code>.
+ */
+public void setActionKey(String actionKey);
+```
+
+```java
+/**
+ * Get the <code>responce action key</code>.
+ * 
+ * @return The <code>responce action key</code>.
+ */
+public String getResponseActionKey();
+```
+
+```java
+/**
+ * Set the <code>responce action key</code>.
+ * 
+ * @param responseActionKey The <code>responce action key</code>.
+ */
+public void setResponseActionKey(String responseActionKey);
+```
+
+
 ### de.pro.lib.action.api.ActionFacade<a name="ActionFacade" />
 
 ```java
@@ -77,7 +243,7 @@ Api<a name="Api" />
  * @author PRo
  * @see de.pro.lib.action.api.ILibAction
  */
-public enum ActionFacade implements ILibAction
+public enum ActionFacade implements ~~ILibAction~~
 ```
 
 ```java
