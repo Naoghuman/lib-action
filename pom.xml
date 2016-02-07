@@ -91,7 +91,7 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.github.naoghuman</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>lib-logger</artifactId>
             <version>0.3.0</version>
             <type>jar</type>
