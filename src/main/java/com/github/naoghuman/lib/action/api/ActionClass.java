@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 PRo
+ * Copyright (C) 2016 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,21 +22,19 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Marks a <code>method</code> in a <code>class</code> as an <code>action</code>.
+ * Marks a <code>class</code> as a class which contains action methods which must 
+ * be marked with the annotation {@link com.github.naoghuman.lib.action.api.AnnotatedMethod }.
  * <p>
- * Access to the action will be happen through reflection during runtime.
+ * Only classes which are marked with this annotations will be scaned for 
+ * action methods. The registration should be happen during starttime through the method 
+ * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
  *
- * @author PRo
+ * @author Naoghuman
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
+ * @see com.github.naoghuman.lib.action.api.AnnotatedMethod
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD) 
-public @interface OnAction {
-    
-    /**
-     * Define the <code>actionKey</code> which will triggers the marked method.
-     * 
-     * @return The actionKey. 
-     */
-    public String actionKey() default "";
+@Target(ElementType.TYPE) 
+public @interface ActionClass {
     
 }

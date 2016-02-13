@@ -17,12 +17,13 @@ Content
 ---
 
 * [Examples](#Examples)
-    - [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
-    - [handle(ActionTransferModel model)](#HandleActionTransferModel)
+    - TODO UPDATE [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
+    - TODO UPDATE [handle(ActionTransferModel model)](#HandleActionTransferModel)
 * [Api](#Api)
-    - [com.github.naoghuman.lib.action.api.ActionData](#ActionData)
     - [com.github.naoghuman.lib.action.api.ActionFacade](#ActionFacade)
-    - [de.pro.lib.action.api.ActionTransferModel](#ActionTransferModel) (deprecated)
+    - [com.github.naoghuman.lib.action.api.ActionClass](#ActionClass)
+    - [com.github.naoghuman.lib.action.api.ActionMethod](#ActionMethod)
+    - [com.github.naoghuman.lib.action.api.TransferData](#TransferData)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -68,7 +69,146 @@ ActionFacade.INSTANCE.handle(model);
 Api<a name="Api" />
 ---
 
-### com.github.naoghuman.lib.action.api.ActionData<a name="ActionData" />
+### com.github.naoghuman.lib.action.api.ActionFacade<a name="ActionFacade" />
+
+```java
+/**
+ * The facade {@link com.github.naoghuman.lib.action.api.ActionFacade} provides 
+ * access to registered action methods.
+ * <ul>
+ * <li>Only classes with the annotation {@link com.github.naoghuman.lib.action.api.ActionClass }
+ * will be scanned in the method {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.</li>
+ * <li>Only methods which are marked with the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }
+ * will be registered as action method through the scanning.</li>
+ * </ul>
+ * 
+ * @author Naoghuman
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
+ * @see com.github.naoghuman.lib.action.api.ActionClass
+ * @see com.github.naoghuman.lib.action.api.ActionMethod
+ */
+public enum ActionFacade
+```
+
+```java
+/**
+ * Over the value <code>INSTANCE</code> the developer have access to the
+ * functionality in the enum <code>ActionFacade</code>.
+ */
+ INSTANCE;
+```
+
+```java
+/**
+ * Scans all classes for the annotation {@link com.github.naoghuman.lib.action.api.ActionClass }.
+ * <ul>
+ * <li>If annotated classes will be found all methods in this classes will be 
+ * scanned for the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.</li>
+ * <li>All founded method will be stored internal.</li>
+ * <li>Access to the stored action methods happens through the parameter <code>id</code>.</li>
+ * </ul>
+ * 
+ * @throws IOException 
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#trigger(java.lang.String) 
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#trigger(java.lang.String, com.github.naoghuman.lib.action.api.TransferData) 
+ */
+public void scan() throws IOException
+```
+
+```java
+/**
+ * Triggers the registerd action method which is associated with the <code>id</code>.
+ * <ul>
+ * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+ * </ul>
+ * 
+ * @param id The id which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
+ */
+public void trigger(String id)
+```
+
+```java
+/**
+ * Triggers the registerd action method with the <code>TransferData</code> 
+ * which is associated with the <code>id</code>.
+ * <ul>
+ * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
+ * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
+ * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+ * </ul>
+ * 
+ * @param id The id which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
+ * @param transferData The transferData which should be received in the registerd action method.
+ */
+public void trigger(String id, TransferData transferData)
+```
+
+
+### com.github.naoghuman.lib.action.api.ActionClass<a name="ActionClass" />
+
+```java
+/**
+ * Marks a <code>class</code> as a class which contains action methods which must 
+ * be marked with the annotation {@link com.github.naoghuman.lib.action.api.AnnotatedMethod }.
+ * <p>
+ * Only classes which are marked with this annotations will be scaned for 
+ * action methods. The registration should be happen during starttime through the method 
+ * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
+ *
+ * @author Naoghuman
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
+ * @see com.github.naoghuman.lib.action.api.AnnotatedMethod
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE) 
+public @interface ActionClass
+```
+
+
+### com.github.naoghuman.lib.action.api.ActionMethod<a name="ActionMethod" />
+
+```java
+/**
+ * Marks a <code>method</code> as an <code>action</code> method.
+ * <p>
+ * The marked action method will be only registered if the <code>class</code> 
+ * which contains the marked method is registered with the annotation 
+ * {@link com.github.naoghuman.lib.action.api.AnnotatedClass }. The registration 
+ * should be happen during starttime through the method 
+ * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
+ *
+ * @author Naoghuman
+ * @see com.github.naoghuman.lib.action.api.AnnotatedClass
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD) 
+public @interface ActionMethod
+```
+
+```java
+/**
+ * Define the <code>id</code> for the marked action method.
+ * 
+ * @return The unique id. 
+ */
+public String id() default "unique-id"; // NOI18N
+```
+
+
+### com.github.naoghuman.lib.action.api.TransferData<a name="TransferData" />
+
+```java
+/**
+ * The class {@link com.github.naoghuman.lib.action.api.TransferData} is a 
+ * simple POJO to store optional parameters in an action.
+ * <p>
+ * For more information see the ReadMe.md (at the end of the section examples).
+ *
+ * @author Naoghuman
+ */
+public class TransferData
+```
 
 ```java
 /**
@@ -76,7 +216,7 @@ Api<a name="Api" />
  * 
  * @return The stored <code>Boolean</code> parameter.
  */
-public Boolean getBoolean();
+public Boolean getBoolean()
 ```
 
 ```java
@@ -85,7 +225,7 @@ public Boolean getBoolean();
  * 
  * @param booleanParameter The <code>Boolean</code> parameter.
  */
-public void setBoolean(Boolean booleanParameter);
+public void setBoolean(Boolean booleanParameter)
 ```
 
 ```java
@@ -94,16 +234,16 @@ public void setBoolean(Boolean booleanParameter);
  * 
  * @return The stored <code>Character</code> parameter.
  */
-public Character getBoolean();
+public Character getCharacter()
 ```
 
 ```java
 /**
  * Set the {@link java.lang.Character} parameter.
  * 
- * @param booleanParameter The <code>Character</code> parameter.
+ * @param characterParameter The <code>Character</code> parameter.
  */
-public void setBoolean(Character characterParameter);
+public void setCharacter(Character characterParameter)
 ```
 
 ```java
@@ -112,7 +252,7 @@ public void setBoolean(Character characterParameter);
  * 
  * @return The stored <code>Double</code> parameter.
  */
-public Double getDouble();
+public Double getDouble()
 ```
 
 ```java
@@ -121,7 +261,7 @@ public Double getDouble();
  * 
  * @param doubleParameter The <code>Double</code> parameter.
  */
-public void setDouble(Double doubleParameter);
+public void setDouble(Double doubleParameter)
 ```
 
 ```java
@@ -130,7 +270,7 @@ public void setDouble(Double doubleParameter);
  * 
  * @return The stored <code>Integer</code> parameter.
  */
-public Integer getInteger();
+public Integer getInteger()
 ```
 
 ```java
@@ -139,7 +279,7 @@ public Integer getInteger();
  * 
  * @param integerParameter The <code>Integer</code> parameter.
  */
-public void setInteger(Integer integerParameter);
+public void setInteger(Integer integerParameter)
 ```
 
 ```java
@@ -148,7 +288,7 @@ public void setInteger(Integer integerParameter);
  * 
  * @return The stored <code>Long</code> parameter.
  */
-public Long getLong();
+public Long getLong()
 ```
 
 ```java
@@ -157,7 +297,7 @@ public Long getLong();
  * 
  * @param longParameter The <code>Long</code> parameter.
  */
-public void setLong(Long longParameter);
+public void setLong(Long longParameter)
 ```
 
 ```java
@@ -166,7 +306,7 @@ public void setLong(Long longParameter);
  * 
  * @return The stored <code>String</code> parameter.
  */
-public String getString();
+public String getString()
 ```
 
 ```java
@@ -175,7 +315,7 @@ public String getString();
  * 
  * @param stringParameter The <code>String</code> parameter.
  */
-public void setString(String stringParameter);
+public void setString(String stringParameter)
 ```
 
 ```java
@@ -184,7 +324,7 @@ public void setString(String stringParameter);
  * 
  * @return The stored <code>Object</code> parameter.
  */
-public Object getObject();
+public Object getObject()
 ```
 
 ```java
@@ -193,343 +333,43 @@ public Object getObject();
  * 
  * @param objectParameter The <code>Object</code> parameter.
  */
-public void setObject(Object objectParameter);
+public void setObject(Object objectParameter)
 ```
 
 ```java
 /**
- * Get the <code>action key</code>.
+ * Get the <code>id</code>.
  * 
- * @return The <code>action key</code>.
+ * @return The <code>id</code>.
  */
-public String getActionKey();
+public String getId()
 ```
 
 ```java
 /**
- * Set the <code>action key</code>.
+ * Set the <code>id</code>.
  * 
- * @param actionKey The <code>action key</code>.
+ * @param id The <code>id</code>.
  */
-public void setActionKey(String actionKey);
+public void setId(String id)
 ```
 
 ```java
 /**
- * Get the <code>responce action key</code>.
+ * Get the <code>responce id</code>.
  * 
- * @return The <code>responce action key</code>.
+ * @return The <code>responce id</code>.
  */
-public String getResponseActionKey();
+public String getResponseId()
 ```
 
 ```java
 /**
- * Set the <code>responce action key</code>.
+ * Set the <code>responce id</code>.
  * 
- * @param responseActionKey The <code>responce action key</code>.
+ * @param responseId The <code>responce id</code>.
  */
-public void setResponseActionKey(String responseActionKey);
-```
-
-
-### de.pro.lib.action.api.ActionFacade<a name="ActionFacade" />
-
-```java
-/**
- * The facade {@link de.pro.lib.action.api.ActionFacade} provides access to
- * the action methods during the Interface {@link de.pro.lib.action.api.ILibAction}.
- *
- * @author PRo
- * @see de.pro.lib.action.api.ILibAction
- */
-public enum ActionFacade implements ILibAction
-```
-
-
-```java
-/**
- * Triggers in the given <code>clazz</code> the action method which is associated
- * with the <code>actionKey</code>.
- * 
- * @param clazz The clazz where the action method is defined.
- * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
- */
-public void onAction(Class clazz, String actionKey);
-```
-
-```java
-/**
- * Triggers in the given <code>clazz</code> the action method which is associated
- * with the <code>actionKey</code>.
- * <p>
- * The parameter <code>clazz</code> have the format: {@link java.lang.Class#getName()}.
- * 
- * @param clazz The clazz where the action method is defined.
- * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
- */
-public void onAction(String clazz, String actionKey);
-```
-
-```java
-/**
- * Triggers in the given <code>clazz</code> the action method (with the parameter
- * <code>data</code>) which is associated with the <code>actionKey</code>.
- * 
- * @param clazz The clazz where the action method is defined.
- * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
- * @param data The data which will delivered the action method as parameter.
- */
-public void onAction(Class clazz, String actionKey, ActionData data);
-```
-
-```java
-/**
- * Triggers in the given <code>clazz</code> the action method (with the parameter
- * <code>data</code>) which is associated with the <code>actionKey</code>.
- * <p>
- * The parameter <code>clazz</code> have the format: {@link java.lang.Class#getName()}.
- * 
- * @param clazz The clazz where the action method is defined.
- * @param actionKey The actionKey which is defined in the annotation {@link com.github.naoghuman.lib.action.api.OnAction}.
- * @param data The data which will delivered the action method as parameter.
- */
-public void onAction(String clazz, String actionKey, ActionData data);
-```
-
-```java
-/**
- * Fire an event with the associated actionKey.
- * 
- * @param actionKey The key which allowed access to the associated action.
- */
-@Deprecated
-public void handle(String actionKey);
-```
-
-```java
-/**
- * Fire an event with the associated actionKey defined in the 
- * {@link de.pro.lib.action.api.ActionTransferModel}.<br />
- * 
- * The {@link de.pro.lib.action.api.ActionTransferModel} will be stored in 
- * the action event and can reached over <code>event.getSource(): Object</code> 
- * in the overriden {@link javafx.event.ActionEvent}.
- * 
- * @param model A <code>ActionTransferModel</code> which contains the actionKey and additional parameters.
- */
-@Deprecated
-public void handle(ActionTransferModel model);
-```
-
-```java
-/**
- * Fire an event for every {@link de.pro.lib.action.api.ActionTransferModel} 
- * with the associated actionKey in the model.<br />
- * 
- * The {@link de.pro.lib.action.api.ActionTransferModel} will be stored in 
- * the action event and can reached over <code>event.getSource(): Object</code> 
- * in the overriden {@link javafx.event.ActionEvent}.
- * 
- * @param models A List with <code>ActionTransferModel</code> which contains the actionKeys and additional parameters.
- */
-@Deprecated
-public void handle(List<ActionTransferModel> models);
-```
-
-```java
-/**
- * Checks if the specific action key is registered.
- * 
- * @param actionKey The action which should be check if it exists.
- * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
- */
-@Deprecated
-public Boolean isRegistered(String actionKey);
-```
-
-```java
-/**
- * Register an action with the specific key.
- * 
- * @param actionKey The key which allowed access to the associated action.
- * @param action The action which should be registered.
- */
-@Deprecated
-public void register(String actionKey, EventHandler<ActionEvent> action);
-```
-
-```java
-/**
- * Remove the action with the specific key.
- * 
- * @param actionKey The action which should be removed.
- */
-@Deprecated
-public void remove(String actionKey);
-```
-
-
-### de.pro.lib.action.api.ActionTransferModel<a name="ActionTransferModel" />
-
-```java
-/**
- * Get the stored {@link java.lang.Boolean} parameter.
- * 
- * @return The stored <code>Boolean</code> parameter.
- */
-@Deprecated
-public Boolean getBoolean();
-```
-
-```java
-/**
- * Set the {@link java.lang.Boolean} parameter.
- * 
- * @param booleanParameter The <code>Boolean</code> parameter.
- */
-@Deprecated
-public void setBoolean(Boolean booleanParameter);
-```
-
-```java
-/**
- * Get the stored {@link java.lang.Double} parameter.
- * 
- * @return The stored <code>Double</code> parameter.
- */
-@Deprecated
-public Double getDouble();
-```
-
-```java
-/**
- * Set the {@link java.lang.Double} parameter.
- * 
- * @param doubleParameter The <code>Double</code> parameter.
- */
-@Deprecated
-public void setDouble(Double doubleParameter);
-```
-
-```java
-/**
- * Get the stored {@link java.lang.Integer} parameter.
- * 
- * @return The stored <code>Integer</code> parameter.
- */
-@Deprecated
-public Integer getInteger();
-```
-
-```java
-/**
- * Set the {@link java.lang.Integer} parameter.
- * 
- * @param integerParameter The <code>Integer</code> parameter.
- */
-@Deprecated
-public void setInteger(Integer integerParameter);
-```
-
-```java
-/**
- * Get the stored {@link java.lang.Long} parameter.
- * 
- * @return The stored <code>Long</code> parameter.
- */
-@Deprecated
-public Long getLong();
-```
-
-```java
-/**
- * Set the {@link java.lang.Long} parameter.
- * 
- * @param longParameter The <code>Long</code> parameter.
- */
-@Deprecated
-public void setLong(Long longParameter);
-```
-
-```java
-/**
- * Get the stored {@link java.lang.String} parameter.
- * 
- * @return The stored <code>String</code> parameter.
- */
-@Deprecated
-public String getString();
-```
-
-```java
-/**
- * Set the {@link java.lang.String} parameter.
- * 
- * @param stringParameter The <code>String</code> parameter.
- */
-@Deprecated
-public void setString(String stringParameter);
-```
-
-```java
-/**
- * Get the stored {@link java.lang.Object} parameter.
- * 
- * @return The stored <code>Object</code> parameter.
- */
-@Deprecated
-public Object getObject();
-```
-
-```java
-/**
- * Set the {@link java.lang.Object} parameter.
- * 
- * @param objectParameter The <code>Object</code> parameter.
- */
-@Deprecated
-public void setObject(Object objectParameter);
-```
-
-```java
-/**
- * Get the <code>action key</code>.
- * 
- * @return The <code>action key</code>.
- */
-@Deprecated
-public String getActionKey();
-```
-
-```java
-/**
- * Set the <code>action key</code>.
- * 
- * @param actionKey The <code>action key</code>.
- */
-@Deprecated
-public void setActionKey(String actionKey);
-```
-
-```java
-/**
- * Get the <code>responce action key</code>.
- * 
- * @return The <code>responce action key</code>.
- */
-@Deprecated
-public String getResponseActionKey();
-```
-
-```java
-/**
- * Set the <code>responce action key</code>.
- * 
- * @param responseActionKey The <code>responce action key</code>.
- */
-@Deprecated
-public void setResponseActionKey(String responseActionKey);
+public void setResponseActionKey(String responseId)
 ```
 
 
@@ -553,9 +393,9 @@ Requirements<a name="Requirements" />
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Action-0.2.2.jar](#Installation).
-* The library [Lib-Logger-0.2.1.jar](#Installation).
-  * Included is the [log4j-api-2.3.jar].
-  * Included is the [log4j-core-2.3.jar].
+* The library [Lib-Logger-0.3.0.jar](#Installation).
+  * Included is the [log4j-api-2.4.1.jar].
+  * Included is the [log4j-core-2.4.1.jar].
 
 
 
@@ -627,8 +467,8 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Action]:https://github.com/Naoghuman/lib-action
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.3.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.3.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.4.1.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.4.1.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
