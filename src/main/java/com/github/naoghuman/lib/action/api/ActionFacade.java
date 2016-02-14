@@ -39,8 +39,8 @@ import java.util.List;
  * </ul>
  * 
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
  * @see com.github.naoghuman.lib.action.api.ActionClass
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
  * @see com.github.naoghuman.lib.action.api.ActionMethod
  */
 public enum ActionFacade {
@@ -77,7 +77,8 @@ public enum ActionFacade {
      * <li>If annotated classes will be found all methods in this classes will be 
      * scanned for the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.</li>
      * <li>All founded method will be stored internal.</li>
-     * <li>Access to the stored action methods happens through the parameter <code>id</code>.</li>
+     * <li>Access to the stored action methods happens through the parameter 
+     * {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.</li>
      * </ul>
      * 
      * @throws IOException 
@@ -106,22 +107,23 @@ public enum ActionFacade {
                 final ActionData annotatedData = new ActionData();
                 annotatedData.setClazz(clazz);
                 annotatedData.setMethod(method);
-                annotatedData.setActionKey(annotatedMethod.id());
+                annotatedData.setActionKey(annotatedMethod.actionId());
                 actionDatas.add(annotatedData);
             }
         }
     }
     
     /**
-     * Triggers the registerd action method which is associated with the <code>id</code>.
+     * Triggers the registerd action method which is associated with 
+     * {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
      * <ul>
-     * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+     * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
      * </ul>
      * 
-     * @param id The id which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
+     * @param actionId The actionId which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
      */
-    public void trigger(String id) {
-        this.trigger(id, TransferData.EMPTY);
+    public void trigger(String actionId) {
+        this.trigger(actionId, TransferData.EMPTY);
     }
     
     /**
@@ -130,47 +132,48 @@ public enum ActionFacade {
      * <ul>
      * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
      * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
-     * <li>If no id in this TransferData is registerd, then no action event will be triggerd.</li>
-     * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+     * <li>If no actionId in this TransferData is registerd, then no action event will be triggerd.</li>
+     * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
      * </ul>
      * 
      * @param transferData The transferData which should be received in the registerd action method.
      */
     public void trigger(TransferData transferData) {
-        this.trigger(transferData.getId(), transferData);
+        this.trigger(transferData.getActionId(), transferData);
     }
     
     /**
      * Triggers the registerd action method with the <code>TransferData</code> 
-     * which is associated with the <code>id</code>.
+     * which is associated with the {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
      * <ul>
-     * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
+     * <li>Access to the <code>TransferData</code> can be happen in the action method during
+     * {@link javafx.event.ActionEvent#getSource() }.</li>
      * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
-     * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+     * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
      * </ul>
      * 
-     * @param id The id which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
+     * @param actionId The actionId which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
      * @param transferData The transferData which should be received in the registerd action method.
      */
-    public void trigger(String id, TransferData transferData) {
-        if (id == null || id.trim().isEmpty()) {
-            LoggerFacade.INSTANCE.warn(this.getClass(), "Don't trigger action method because: (id == null || id.trim().isEmpty())"); // NOI18N
+    public void trigger(String actionId, TransferData transferData) {
+        if (actionId == null || actionId.trim().isEmpty()) {
+            LoggerFacade.INSTANCE.warn(this.getClass(), "Don't trigger action method because: (actionId == null || actionId.trim().isEmpty())"); // NOI18N
             return;
         }
         
-        final ActionData annotatedData = getActionData(id);
+        final ActionData annotatedData = getActionData(actionId);
         if (annotatedData == null) {
-            LoggerFacade.INSTANCE.warn(this.getClass(), "Don't trigger action method because no action method is associated with the id: " + id); // NOI18N
+            LoggerFacade.INSTANCE.warn(this.getClass(), "Don't trigger action method because no action method is associated with the actionId: " + actionId); // NOI18N
             return;
         }
         
         try {
             if (transferData != null) {
-                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method with id: " + id + " and TransferData"); // NOI18N
+                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method with actionId: " + actionId + " and TransferData"); // NOI18N
                 annotatedData.getMethod().invoke(annotatedData.getClazz().newInstance(), transferData);
             }
             else {
-                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method with id: " + id); // NOI18N
+                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method with actionId: " + actionId); // NOI18N
                 annotatedData.getMethod().invoke(annotatedData.getClazz().newInstance());
             }
         } catch (IllegalAccessException
@@ -178,7 +181,7 @@ public enum ActionFacade {
                 | InvocationTargetException
                 | InstantiationException ex
         ) {
-            LoggerFacade.INSTANCE.error(this.getClass(), "Can't invoke action method with id: " + id, ex); // NOI18N
+            LoggerFacade.INSTANCE.error(this.getClass(), "Can't invoke action method with actionId: " + actionId, ex); // NOI18N
         }
     }
     

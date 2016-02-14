@@ -83,8 +83,8 @@ Api<a name="Api" />
  * </ul>
  * 
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
  * @see com.github.naoghuman.lib.action.api.ActionClass
+ * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
  * @see com.github.naoghuman.lib.action.api.ActionMethod
  */
 public enum ActionFacade
@@ -105,7 +105,8 @@ public enum ActionFacade
  * <li>If annotated classes will be found all methods in this classes will be 
  * scanned for the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.</li>
  * <li>All founded method will be stored internal.</li>
- * <li>Access to the stored action methods happens through the parameter <code>id</code>.</li>
+ * <li>Access to the stored action methods happens through the parameter 
+ * {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.</li>
  * </ul>
  * 
  * @throws IOException 
@@ -117,14 +118,15 @@ public void scan() throws IOException
 
 ```java
 /**
- * Triggers the registerd action method which is associated with the <code>id</code>.
+ * Triggers the registerd action method which is associated with 
+ * {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
  * <ul>
- * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+ * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
  * </ul>
  * 
- * @param id The id which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
+ * @param actionId The actionId which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
  */
-public void trigger(String id)
+public void trigger(String actionId)
 ```
 
 ```java
@@ -134,8 +136,8 @@ public void trigger(String id)
  * <ul>
  * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
  * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
- * <li>If no id in this TransferData is registerd, then no action event will be triggerd.</li>
- * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+ * <li>If no actionId in this TransferData is registerd, then no action event will be triggerd.</li>
+ * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
  * </ul>
  * 
  * @param transferData The transferData which should be received in the registerd action method.
@@ -146,17 +148,18 @@ public void trigger(TransferData transferData)
 ```java
 /**
  * Triggers the registerd action method with the <code>TransferData</code> 
- * which is associated with the <code>id</code>.
+ * which is associated with the {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
  * <ul>
- * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
+ * <li>Access to the <code>TransferData</code> can be happen in the action method during
+ * {@link javafx.event.ActionEvent#getSource() }.</li>
  * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
- * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+ * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
  * </ul>
  * 
- * @param id The id which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
+ * @param actionId The actionId which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
  * @param transferData The transferData which should be received in the registerd action method.
  */
-public void trigger(String id, TransferData transferData)
+public void trigger(String actionId, TransferData transferData)
 ```
 
 
@@ -165,15 +168,15 @@ public void trigger(String id, TransferData transferData)
 ```java
 /**
  * Marks a <code>class</code> as a class which contains action methods which must 
- * be marked with the annotation {@link com.github.naoghuman.lib.action.api.AnnotatedMethod }.
+ * be marked with the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.
  * <p>
- * Only classes which are marked with this annotations will be scaned for 
- * action methods. The registration should be happen during starttime through the method 
- * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
+ * Only classes which are marked with this annotation will be scaned for 
+ * action methods. The registration from all action methods should be happen 
+ * during starttime through the method {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
  *
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
- * @see com.github.naoghuman.lib.action.api.AnnotatedMethod
+ * @see com.github.naoghuman.lib.action.api.ActionMethod
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE) 
@@ -188,13 +191,13 @@ public @interface ActionClass
  * Marks a <code>method</code> as an <code>action</code> method.
  * <p>
  * The marked action method will be only registered if the <code>class</code> 
- * which contains the marked method is registered with the annotation 
- * {@link com.github.naoghuman.lib.action.api.AnnotatedClass }. The registration 
- * should be happen during starttime through the method 
+ * which contains the marked method is annotated with the annotation 
+ * {@link com.github.naoghuman.lib.action.api.ActionClass }. The registration 
+ * from all action methods should be happen during starttime through the method 
  * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.AnnotatedClass
+ * @see com.github.naoghuman.lib.action.api.ActionClass
  * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -204,11 +207,12 @@ public @interface ActionMethod
 
 ```java
 /**
- * Define the <code>id</code> for the marked action method.
+ * Define the <code>action-id</code> for the marked action method which allows
+ * to trigger the annotated method.
  * 
- * @return The unique id. 
+ * @return The unique action-id. 
  */
-public String id() default "unique-id"; // NOI18N
+public String actionId() default "unique actionId"; // NOI18N
 ```
 
 
@@ -354,38 +358,38 @@ public void setObject(Object objectParameter)
 
 ```java
 /**
- * Get the <code>id</code>.
+ * Get the <code>actionId</code>.
  * 
- * @return The <code>id</code>.
+ * @return The <code>actionId</code>.
  */
-public String getId()
+public String getActionId()
 ```
 
 ```java
 /**
- * Set the <code>id</code>.
+ * Set the <code>actionId</code>.
  * 
- * @param id The <code>id</code>.
+ * @param actionId The <code>actionId</code>.
  */
-public void setId(String id)
+public void setId(String actionId)
 ```
 
 ```java
 /**
- * Get the <code>responce id</code>.
+ * Get the <code>responseActionId</code>.
  * 
- * @return The <code>responce id</code>.
+ * @return The <code>responseActionId</code>.
  */
-public String getResponseId()
+public String getResponseActionId()
 ```
 
 ```java
 /**
- * Set the <code>responce id</code>.
+ * Set the <code>responseActionId</code>.
  * 
- * @param responseId The <code>responce id</code>.
+ * @param responseActionId The <code>responseActionId</code>.
  */
-public void setResponseActionKey(String responseId)
+public void setResponseActionKey(String responseActionId)
 ```
 
 

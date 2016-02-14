@@ -23,15 +23,15 @@ import java.lang.annotation.Target;
 
 /**
  * Marks a <code>class</code> as a class which contains action methods which must 
- * be marked with the annotation {@link com.github.naoghuman.lib.action.api.AnnotatedMethod }.
+ * be marked with the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.
  * <p>
- * Only classes which are marked with this annotations will be scaned for 
- * action methods. The registration should be happen during starttime through the method 
- * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
+ * Only classes which are marked with this annotation will be scaned for 
+ * action methods. The registration from all action methods should be happen 
+ * during starttime through the method {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
  *
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
- * @see com.github.naoghuman.lib.action.api.AnnotatedMethod
+ * @see com.github.naoghuman.lib.action.api.ActionMethod
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE) 

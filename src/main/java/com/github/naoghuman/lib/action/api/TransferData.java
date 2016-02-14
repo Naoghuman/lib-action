@@ -36,8 +36,8 @@ public class TransferData {
     private Object objectParameter = null;
     private String stringParameter = "";
     
-    private String id = null;
-    private String responseId = null;
+    private String actionId = null;
+    private String responseActionId = null;
 
     /**
      * Get the stored {@link java.lang.Boolean} parameter.
@@ -166,39 +166,39 @@ public class TransferData {
     }
     
     /**
-     * Get the <code>id</code>.
+     * Get the <code>actionId</code>.
      * 
-     * @return The <code>id</code>.
+     * @return The <code>actionId</code>.
      */
-    public String getId() {
-        return id;
+    public String getActionId() {
+        return actionId;
     }
 
     /**
-     * Set the <code>id</code>.
+     * Set the <code>actionId</code>.
      * 
-     * @param id The <code>id</code>.
+     * @param actionId The <code>actionId</code>.
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String actionId) {
+        this.actionId = actionId;
     }
     
     /**
-     * Get the <code>responce id</code>.
+     * Get the <code>responseActionId</code>.
      * 
-     * @return The <code>responce id</code>.
+     * @return The <code>responseActionId</code>.
      */
-    public String getResponseId() {
-        return responseId;
+    public String getResponseActionId() {
+        return responseActionId;
     }
 
     /**
-     * Set the <code>responce id</code>.
+     * Set the <code>responseActionId</code>.
      * 
-     * @param responseId The <code>responce id</code>.
+     * @param responseActionId The <code>responseActionId</code>.
      */
-    public void setResponseActionKey(String responseId) {
-        this.responseId = responseId;
+    public void setResponseActionKey(String responseActionId) {
+        this.responseActionId = responseActionId;
     }
     
 }

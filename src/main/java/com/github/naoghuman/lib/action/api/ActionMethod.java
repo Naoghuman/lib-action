@@ -25,13 +25,13 @@ import java.lang.annotation.Target;
  * Marks a <code>method</code> as an <code>action</code> method.
  * <p>
  * The marked action method will be only registered if the <code>class</code> 
- * which contains the marked method is registered with the annotation 
- * {@link com.github.naoghuman.lib.action.api.AnnotatedClass }. The registration 
- * should be happen during starttime through the method 
+ * which contains the marked method is annotated with the annotation 
+ * {@link com.github.naoghuman.lib.action.api.ActionClass }. The registration 
+ * from all action methods should be happen during starttime through the method 
  * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.AnnotatedClass
+ * @see com.github.naoghuman.lib.action.api.ActionClass
  * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
  */
 @Retention(RetentionPolicy.RUNTIME)
@@ -39,10 +39,11 @@ import java.lang.annotation.Target;
 public @interface ActionMethod {
     
     /**
-     * Define the <code>id</code> for the marked action method.
+     * Define the <code>action-id</code> for the marked action method which allows
+     * to trigger the annotated method.
      * 
-     * @return The unique id. 
+     * @return The unique action-id. 
      */
-    public String id() default "unique-id"; // NOI18N
+    public String actionId() default "unique actionId"; // NOI18N
     
 }
