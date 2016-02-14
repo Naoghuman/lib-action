@@ -134,6 +134,22 @@ public void trigger(String id)
  * <ul>
  * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
  * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
+ * <li>If no id in this TransferData is registerd, then no action event will be triggerd.</li>
+ * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
+ * </ul>
+ * 
+ * @param transferData The transferData which should be received in the registerd action method.
+ */
+public void trigger(TransferData transferData)
+```
+
+```java
+/**
+ * Triggers the registerd action method with the <code>TransferData</code> 
+ * which is associated with the <code>id</code>.
+ * <ul>
+ * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
+ * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
  * <li>If no action method with this id is registerd, then no action event will be triggerd.</li>
  * </ul>
  * 

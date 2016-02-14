@@ -15,6 +15,7 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 #### Enhancement
+#15 [Api] Add new method trigger(TransferData) to ActionFacade.
 #13 [Api] Write new annotations ActionClass and ActionMethod.
 #11 [Api] Create new annotation OnAction which allows to mark methods as actions.
 #10 [Api] Create new DAO ActionData which will replaced ActionTransferModel.
@@ -42,5 +43,6 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 [//]: # (Issues which will be integrated in this release)
+#14 [ReadMe] Add hit from the integration from AnnotationDetector.
 #12 Create new examples in ReadMe to show the functionality from the new annotations.
 #9 [Project] Rewrite project description.
