@@ -15,6 +15,7 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 #### Enhancement
+#16 [Api] Add a new method to triggers a List with TransferDatas.
 #15 [Api] Add new method trigger(TransferData) to ActionFacade.
 #13 [Api] Write new annotations ActionClass and ActionMethod.
 #11 [Api] Create new annotation OnAction which allows to mark methods as actions.

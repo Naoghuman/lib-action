@@ -143,6 +143,24 @@ public enum ActionFacade {
     }
     
     /**
+     * Triggers all registerd action methods which are associated with the 
+     * <code>actionId</code> in every <code>TransferData</code> .
+     * <ul>
+     * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
+     * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
+     * <li>If no actionId in the TransferData is registerd, then no action event will be triggerd.</li>
+     * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
+     * </ul>
+     * 
+     * @param transferDatas The transferDatas which should be received in the registerd action methods.
+     */
+    public void trigger(List<TransferData> transferDatas) {
+        transferDatas.stream().forEach((transferData) -> {
+            this.trigger(transferData.getActionId(), transferData);
+        });
+    }
+    
+    /**
      * Triggers the registerd action method with the <code>TransferData</code> 
      * which is associated with the {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
      * <ul>
