@@ -186,12 +186,14 @@ public enum ActionFacade {
         }
         
         try {
+            final Method method = annotatedData.getMethod();
+            final Class clazz = annotatedData.getClazz();
             if (transferData != null) {
-                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method with actionId: " + actionId + " and TransferData"); // NOI18N
+                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method(" + method.getName() + ") from class: " + clazz.getName() + " with actionId: " + actionId + " and TransferData"); // NOI18N
                 annotatedData.getMethod().invoke(annotatedData.getClazz().newInstance(), transferData);
             }
             else {
-                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method with actionId: " + actionId); // NOI18N
+                LoggerFacade.INSTANCE.debug(this.getClass(), "Trigger action method(" + method.getName() + ") from class: " + clazz.getName() + "with actionId: " + actionId); // NOI18N
                 annotatedData.getMethod().invoke(annotatedData.getClazz().newInstance());
             }
         } catch (IllegalAccessException
