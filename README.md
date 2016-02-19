@@ -21,8 +21,8 @@ Content
     - TODO UPDATE [handle(ActionTransferModel model)](#HandleActionTransferModel)
 * [Api](#Api)
     - [com.github.naoghuman.lib.action.api.ActionFacade](#ActionFacade)
-    - [com.github.naoghuman.lib.action.api.ActionClass](#ActionClass)
-    - [com.github.naoghuman.lib.action.api.ActionMethod](#ActionMethod)
+    - [com.github.naoghuman.lib.action.api.ILibAction](#ILibAction)
+    - [com.github.naoghuman.lib.action.api.IRegisterActions](#IRegisterActions)
     - [com.github.naoghuman.lib.action.api.TransferData](#TransferData)
 * [Download](#Download)
 * [Requirements](#Requirements)
@@ -40,7 +40,7 @@ Examples<a name="Examples" />
 
 ### registerOnActionOpenDream()<a name="RegisterOnActionOpenDream" />
 
-Here you can see an example how to define an action
+TODO UPDATE Here you can see an example how to define an action
 ```java
 public void registerOnActionOpenDream() {
     ActionFacade.INSTANCE.register(
@@ -55,7 +55,7 @@ public void registerOnActionOpenDream() {
 
 ### handle(ActionTransferModel model)<a name="HandleActionTransferModel" />
 
-and how the above defined action is fired.
+TODO UPDATE and how the above defined action is fired.
 ```java
 final ActionTransferModel model = new ActionTransferModel();
 model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
@@ -74,20 +74,13 @@ Api<a name="Api" />
 ```java
 /**
  * The facade {@link com.github.naoghuman.lib.action.api.ActionFacade} provides 
- * access to registered action methods.
- * <ul>
- * <li>Only classes with the annotation {@link com.github.naoghuman.lib.action.api.ActionClass }
- * will be scanned in the method {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.</li>
- * <li>Only methods which are marked with the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }
- * will be registered as action method through the scanning.</li>
- * </ul>
- * 
+ * access to the action methods during the Interface 
+ * {@link com.github.naoghuman.lib.action.api.ILibAction}.
+ *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.ActionClass
- * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
- * @see com.github.naoghuman.lib.action.api.ActionMethod
+ * @see com.github.naoghuman.lib.action.api.ILibAction
  */
-public enum ActionFacade
+public enum ActionFacade implements ILibAction
 ```
 
 ```java
@@ -95,140 +88,118 @@ public enum ActionFacade
  * Over the value <code>INSTANCE</code> the developer have access to the
  * functionality in the enum <code>ActionFacade</code>.
  */
- INSTANCE;
-```
-
-```java
-/**
- * Scans all classes for the annotation {@link com.github.naoghuman.lib.action.api.ActionClass }.
- * <ul>
- * <li>If annotated classes will be found all methods in this classes will be 
- * scanned for the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.</li>
- * <li>All founded method will be stored internal.</li>
- * <li>Access to the stored action methods happens through the parameter 
- * {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.</li>
- * </ul>
- * 
- * @throws IOException 
- * @see com.github.naoghuman.lib.action.api.ActionFacade#trigger(java.lang.String) 
- * @see com.github.naoghuman.lib.action.api.ActionFacade#trigger(java.lang.String, com.github.naoghuman.lib.action.api.TransferData) 
- */
-public void scan() throws IOException
-```
-
-```java
-/**
- * Triggers the registerd action method which is associated with 
- * {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
- * <ul>
- * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
- * </ul>
- * 
- * @param actionId The actionId which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
- */
-public void trigger(String actionId)
-```
-
-```java
-/**
- * Triggers all registerd action methods which are associated with the 
- * <code>actionId</code> in every <code>TransferData</code> .
- * <ul>
- * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
- * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
- * <li>If no actionId in the TransferData is registerd, then no action event will be triggerd.</li>
- * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
- * </ul>
- * 
- * @param transferDatas The transferDatas which should be received in the registerd action methods.
- */
-public void trigger(List<TransferData> transferDatas)
-```
-
-```java
-/**
- * Triggers the registerd action method with the <code>TransferData</code> 
- * which is associated with the <code>id</code>.
- * <ul>
- * <li>Access to the <code>TransferData</code> can be happen during  {@link javafx.event.ActionEvent#getSource() }.</li>
- * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
- * <li>If no actionId in this TransferData is registerd, then no action event will be triggerd.</li>
- * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
- * </ul>
- * 
- * @param transferData The transferData which should be received in the registerd action method.
- */
-public void trigger(TransferData transferData)
-```
-
-```java
-/**
- * Triggers the registerd action method with the <code>TransferData</code> 
- * which is associated with the {@link com.github.naoghuman.lib.action.api.ActionMethod#actionId() }.
- * <ul>
- * <li>Access to the <code>TransferData</code> can be happen in the action method during
- * {@link javafx.event.ActionEvent#getSource() }.</li>
- * <li>If <code>TransferData == null</code> then also <code>ActionEvent#getSource() == null</code>.</li>
- * <li>If no action method with this actionId is registerd, then no action event will be triggerd.</li>
- * </ul>
- * 
- * @param actionId The actionId which is defined in the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod}.
- * @param transferData The transferData which should be received in the registerd action method.
- */
-public void trigger(String actionId, TransferData transferData)
+INSTANCE;
 ```
 
 
-### com.github.naoghuman.lib.action.api.ActionClass<a name="ActionClass" />
+
+### com.github.naoghuman.lib.action.api.ILibAction<a name="ILibAction" />
 
 ```java
 /**
- * Marks a <code>class</code> as a class which contains action methods which must 
- * be marked with the annotation {@link com.github.naoghuman.lib.action.api.ActionMethod }.
- * <p>
- * Only classes which are marked with this annotation will be scaned for 
- * action methods. The registration from all action methods should be happen 
- * during starttime through the method {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
+ * The <code>Interface</code> for the class {@link de.pro.lib.action.LibAction}.<br />
+ * Over the facade {@link com.github.naoghuman.lib.action.api.ActionFacade} you 
+ * can access the methods in this <code>Interface</code>.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
- * @see com.github.naoghuman.lib.action.api.ActionMethod
+ * @see com.github.naoghuman.lib.action.LibAction
+ * @see com.github.naoghuman.lib.action.api.ActionFacade
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE) 
-public @interface ActionClass
-```
-
-
-### com.github.naoghuman.lib.action.api.ActionMethod<a name="ActionMethod" />
-
-```java
-/**
- * Marks a <code>method</code> as an <code>action</code> method.
- * <p>
- * The marked action method will be only registered if the <code>class</code> 
- * which contains the marked method is annotated with the annotation 
- * {@link com.github.naoghuman.lib.action.api.ActionClass }. The registration 
- * from all action methods should be happen during starttime through the method 
- * {@link com.github.naoghuman.lib.action.api.ActionFacade#scan() }.
- *
- * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.ActionClass
- * @see com.github.naoghuman.lib.action.api.ActionFacade#scan()
- */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD) 
-public @interface ActionMethod
+public interface ILibAction
 ```
 
 ```java
 /**
- * Define the <code>action-id</code> for the marked action method which allows
- * to trigger the annotated method.
+ * Fire an event with the associated actionKey.
  * 
- * @return The unique action-id. 
+ * @param actionId The actionId which allowed access to the assoziated action.
  */
-public String actionId() default "unique actionId"; // NOI18N
+public void handle(String actionId);
+```
+
+```java
+/**
+ * Fire an event with the associated actionKey defined in the 
+ * {@link com.github.naoghuman.lib.action.api.TransferData}.<br />
+ * 
+ * The {@link com.github.naoghuman.lib.action.api.TransferData} will be 
+ * stored in the action event and can reached over <code>event.getSource(): Object</code> 
+ * in the overriden {@link javafx.event.ActionEvent}.
+ * 
+ * @param transferData A <code>TransferData</code> which contains the actionId and additional parameters.
+ */
+public void handle(TransferData transferData);
+```
+
+```java
+/**
+ * Fire an event for every {@link com.github.naoghuman.lib.action.api.TransferData} 
+ * with the associated actionKey in the model.<br />
+ * 
+ * The {@link com.github.naoghuman.lib.action.api.TransferData} will be stored in 
+ * the action event and can reached over <code>event.getSource(): Object</code> 
+ * in the overriden {@link javafx.event.ActionEvent}.
+ * 
+ * @param transferDatas A List with <code>TransferData</code> which contains the actionIds and additional parameters.
+ */
+public void handle(List<TransferData> transferDatas);
+```
+
+```java
+/**
+ * Checks if the specific action key is registered.
+ * 
+ * @param actionId The action which should be check if it exists.
+ * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
+ */
+public Boolean isRegistered(String actionId);
+```
+
+```java
+/**
+ * Register an action with the specific id.
+ * 
+ * @param actionId The actionId which allowed access to the associated action.
+ * @param event The assoziated action which should be registered.
+ */
+public void register(String actionId, EventHandler<ActionEvent> event);
+```
+
+```java
+/**
+ * Remove the action with the specific id.
+ * 
+ * @param actionId The assoziated action which should be removed.
+ */
+public void remove(String actionId);
+```
+
+
+### com.github.naoghuman.lib.action.api.IRegisterActions<a name="IRegisterActions" />
+
+```java
+/**
+ * Over this interface the developer can <code>register</code> 
+ * {@link javafx.event.ActionEvent}s during the method
+ * {@link com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler) }.
+ * 
+ * @author Naoghuman
+ * @see com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler)
+ * @see javafx.event.ActionEvent
+ */
+public interface IRegisterActions
+```
+
+```java
+/**
+ * Implementing this method alloweds <code>register</code>
+ * {@link javafx.event.ActionEvent}s during the method
+ * {@link com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler) }.
+ * 
+ * @see com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler)
+ * @see javafx.event.ActionEvent
+ */
+public void registerActions();
 ```
 
 
@@ -387,7 +358,7 @@ public String getActionId()
  * 
  * @param actionId The <code>actionId</code>.
  */
-public void setId(String actionId)
+public void setActionId(String actionId)
 ```
 
 ```java

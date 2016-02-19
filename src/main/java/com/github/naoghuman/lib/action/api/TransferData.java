@@ -26,8 +26,6 @@ package com.github.naoghuman.lib.action.api;
  */
 public class TransferData {
     
-    public static final TransferData EMPTY = null;
-    
     private Boolean booleanParameter = Boolean.FALSE;
     private Character characterParameter;
     private Double doubleParameter = 0.0d;
@@ -179,7 +177,7 @@ public class TransferData {
      * 
      * @param actionId The <code>actionId</code>.
      */
-    public void setId(String actionId) {
+    public void setActionId(String actionId) {
         this.actionId = actionId;
     }
     

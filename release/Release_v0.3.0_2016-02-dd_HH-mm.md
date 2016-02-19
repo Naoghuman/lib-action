@@ -33,6 +33,7 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 #### Refactoring
+#17 [Project] Remove functionality for own annotations.
 #8 [Projekt] Change group-id to com.github.naoghuman.
 #7 [Project] Deprecated all files expect the class ActionFacade.
 #6 [Project] Rename jar file to lowercase.
@@ -44,6 +45,5 @@ Welcome to `Lib-Action` with the new release `v0.3.0`.
 
 
 [//]: # (Issues which will be integrated in this release)
-#14 [ReadMe] Add hit from the integration from AnnotationDetector.
 #12 Create new examples in ReadMe to show the functionality from the new annotations.
 #9 [Project] Rewrite project description.
