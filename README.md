@@ -390,6 +390,17 @@ Download<a name="Download" />
 Current `version` is `0.2.2`. Main points in this release are:
 * Fix missing update from the library Lib-Logger to v0.2.1 in sourcecode.
 
+**Maven coordinates**  
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.github.naoghuman</groupId>
+        <artifactId>lib-action</artifactId>
+        <version>0.4.0</version>
+    </dependency>
+</dependencies>
+```
+
 Download:
 * [Release v0.2.2 (09.2015)]
 
