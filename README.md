@@ -9,7 +9,7 @@ Intention
 Lib-Action is a library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) 
 in a [JavaFX] &amp; [Maven] desktop application.
 
-Current `version` is `0.2.2` (09.2015).
+Current `version` is `0.4.0` (08.31.2016).
 
 
 
@@ -427,8 +427,9 @@ public void setResponseActionKey(String responseActionId)
 Download<a name="Download" />
 ---
 
-Current `version` is `0.2.2`. Main points in this release are:
-* Fix missing update from the library Lib-Logger to v0.2.1 in sourcecode.
+Current `version` is `0.4.0`. Main points in this release are:
+* Deploy the jar files to Maven Central :smiley: .
+* Change ActionFacade.INSTANCE to ActionFacade.getDefault() with Optional.
 
 **Maven coordinates**  
 ```xml
@@ -442,7 +443,7 @@ Current `version` is `0.2.2`. Main points in this release are:
 ```
 
 Download:
-* [Release v0.2.2 (09.2015)]
+* [Release v0.4.0 (08.31.2016)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Action]
@@ -453,7 +454,7 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Action-0.2.2.jar](#Installation).
+* The library [Lib-Action-0.4.0.jar](#Installation).
 
 In the library are following libraries registered as dependencies:
 * The library [Lib-Logger-0.4.0.jar](#Installation).
@@ -536,6 +537,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.2.2 (09.2015)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.2.2
+[Release v0.4.0 (08.31.2016)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.4.0
 
 
