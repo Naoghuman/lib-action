@@ -21,7 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The <code>Interface</code> for the class {@link de.pro.lib.action.LibAction}.<br />
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.action.LibAction}.<br />
  * Over the facade {@link com.github.naoghuman.lib.action.api.ActionFacade} you 
  * can access the methods in this <code>Interface</code>.
  *
