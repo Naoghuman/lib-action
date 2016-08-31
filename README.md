@@ -400,9 +400,11 @@ Requirements<a name="Requirements" />
 
 * On your system you need [JRE 8] or [JDK 8] installed.
 * The library [Lib-Action-0.2.2.jar](#Installation).
-* The library [Lib-Logger-0.3.0.jar](#Installation).
-  * Included is the [log4j-api-2.4.1.jar].
-  * Included is the [log4j-core-2.4.1.jar].
+
+In the library are following libraries registered as dependencies:
+* The library [Lib-Logger-0.4.0.jar](#Installation).
+  * Included in `Lib-Logger` is the [log4j-api-2.6.2.jar].
+  * Included in `Lib-Logger` is the [log4j-core-2.6.2.jar].
 
 
 
@@ -474,8 +476,8 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Action]:https://github.com/Naoghuman/lib-action
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.4.1.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.4.1.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.6.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.6.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
