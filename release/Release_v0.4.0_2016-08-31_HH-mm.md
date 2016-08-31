@@ -29,6 +29,7 @@ See https://github.com/Naoghuman/lib-action for more details.
 
 
 #### Refactoring
+#22 [Documentation] Add a template for the release-notes.
 #21 [Version] Change version to 0.4.0-SNAPSHOT.
 
 
