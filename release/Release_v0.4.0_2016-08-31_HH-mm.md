@@ -35,6 +35,7 @@ See https://github.com/Naoghuman/lib-action for more details.
 
 
 #### Additional
+#23 [Internal] Add /todo/ to .gitignore.
 
 
 
