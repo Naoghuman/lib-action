@@ -22,6 +22,7 @@ See https://github.com/Naoghuman/lib-action for more details.
 
 #### Enhancement
 #25 [pom] New format from jar(s) for Maven Central.
+#19 [Api] Change ActionFacade.INSTANCE to ActionFacade.getDefault() with Optional.
 
 
 

@@ -17,8 +17,8 @@ Content
 ---
 
 * [Examples](#Examples)
-    - TODO UPDATE [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
-    - TODO UPDATE [handle(ActionTransferModel model)](#HandleActionTransferModel)
+    - [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
+    - [handle(ActionTransferModel model)](#HandleTransferData)
 * [Api](#Api)
     - [com.github.naoghuman.lib.action.api.ActionFacade](#ActionFacade)
     - [com.github.naoghuman.lib.action.api.ILibAction](#ILibAction)
@@ -40,28 +40,28 @@ Examples<a name="Examples" />
 
 ### registerOnActionOpenDream()<a name="RegisterOnActionOpenDream" />
 
-TODO UPDATE Here you can see an example how to define an action
+Here you can see an example how to define an action
 ```java
 public void registerOnActionOpenDream() {
-    ActionFacade.INSTANCE.register(
+    ActionFacade.getDefault().register(
             ACTION__OPEN_DREAM__FROM_NAVIGATION,
             (ActionEvent ae) -> {
-                final ActionTransferModel model = (ActionTransferModel) ae.getSource();
-                this.show(model.getLong());
+                final TransferData data = (TransferData) ae.getSource();
+                this.show(data.getLong());
             });
 }
 ```
 
 
-### handle(ActionTransferModel model)<a name="HandleActionTransferModel" />
+### handle(TransferData data)<a name="HandleTransferData" />
 
 TODO UPDATE and how the above defined action is fired.
 ```java
-final ActionTransferModel model = new ActionTransferModel();
-model.setActionKey(ACTION__OPEN_DREAM__FROM_NAVIGATION);
-model.setLong(idToOpen);
+final TransferData data = new TransferData();
+data.setActionId(ACTION__OPEN_DREAM__FROM_NAVIGATION);
+data.setLong(idToOpen);
 
-ActionFacade.INSTANCE.handle(model);
+ActionFacade.getDefault().handle(data);
 ```
 
 
@@ -80,15 +80,18 @@ Api<a name="Api" />
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ILibAction
  */
-public enum ActionFacade implements ILibAction
+public final class ActionFacade implements ILibAction {
 ```
 
 ```java
 /**
- * Over the value <code>INSTANCE</code> the developer have access to the
- * functionality in the enum <code>ActionFacade</code>.
+ * Returns a singleton instance from the class <code>ActionFacade</code>.
+ * 
+ * @return a singleton instance from the class <code>ActionFacade</code>.
  */
-INSTANCE;
+public static final ActionFacade getDefault() {
+    return instance.get();
+}
 ```
 
 

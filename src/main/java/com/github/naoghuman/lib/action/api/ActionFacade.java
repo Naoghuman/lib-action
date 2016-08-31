@@ -18,6 +18,7 @@ package com.github.naoghuman.lib.action.api;
 
 import com.github.naoghuman.lib.action.LibAction;
 import java.util.List;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -29,13 +30,18 @@ import javafx.event.EventHandler;
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ILibAction
  */
-public enum ActionFacade implements ILibAction {
+public final class ActionFacade implements ILibAction {
     
+    private static final Optional<ActionFacade> instance = Optional.of(new ActionFacade());
+
     /**
-     * Over the value <code>INSTANCE</code> the developer have access to the
-     * functionality in the enum <code>ActionFacade</code>.
+     * Returns a singleton instance from the class <code>ActionFacade</code>.
+     * 
+     * @return a singleton instance from the class <code>ActionFacade</code>.
      */
-    INSTANCE;
+    public static final ActionFacade getDefault() {
+        return instance.get();
+    }
 
     private ILibAction action = null;
     
