@@ -44,6 +44,24 @@ public class LibAction implements ILibAction {
         
         this.handle(transferData);
     }
+
+    @Override
+    public void handle(String actionId, long data) {
+        final TransferData transferData = new TransferData();
+        transferData.setActionId(actionId);
+        transferData.setLong(data);
+        
+        this.handle(transferData);
+    }
+
+    @Override
+    public void handle(String actionId, Object data) {
+        final TransferData transferData = new TransferData();
+        transferData.setActionId(actionId);
+        transferData.setObject(data);
+        
+        this.handle(transferData);
+    }
     
     @Override
     public void handle(TransferData transferData) {

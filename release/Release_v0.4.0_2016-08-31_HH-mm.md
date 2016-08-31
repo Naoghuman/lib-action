@@ -24,6 +24,7 @@ See https://github.com/Naoghuman/lib-action for more details.
 #25 [pom] New format from jar(s) for Maven Central.
 #24 [pom] Sign jar(s) for Maven Central.
 #19 [Api] Change ActionFacade.INSTANCE to ActionFacade.getDefault() with Optional.
+#18 [Api] Add new 'handle' methods to the api.
 
 
 

@@ -32,14 +32,50 @@ import javafx.event.EventHandler;
 public interface ILibAction {
     
     /**
-     * Fire an event with the associated actionKey.
+     * Fire an event with the associated actionId.
      * 
      * @param actionId The actionId which allowed access to the assoziated action.
      */
     public void handle(String actionId);
     
     /**
-     * Fire an event with the associated actionKey defined in the 
+     * Fire an event with the associated actionId.
+     * <p />
+     * Internal the <code>long</code> parameter will be stored in a 
+     * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
+     * be access via:
+     * <p />
+     * public void handleOnAction(ActionEvent event) {<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;final TransferData transferData = (TransferData) event.getSource();<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;final long data = transferData.getLong();<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;&frasl;&frasl; do anything with the long data<br />
+     * }
+     * 
+     * @param actionId The actionId which allowed access to the assoziated action.
+     * @param data The long parameter which should be stored and transfered by this event.
+     */
+    public void handle(String actionId, long data);
+    
+    /**
+     * Fire an event with the associated actionId.
+     * <p />
+     * Internal the <code>Object</code> parameter will be stored in a 
+     * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
+     * be access via:
+     * <p />
+     * public void handleOnAction(ActionEvent event) {<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;final TransferData transferData = (TransferData) event.getSource();<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;final Object data = transferData.getObject();<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;&frasl;&frasl; do anything with the long data<br />
+     * }
+     * 
+     * @param actionId The actionId which allowed access to the assoziated action.
+     * @param data The long parameter which should be stored and transfered by this event.
+     */
+    public void handle(String actionId, Object data);
+    
+    /**
+     * Fire an event with the associated actionId defined in the 
      * {@link com.github.naoghuman.lib.action.api.TransferData}.<br />
      * 
      * The {@link com.github.naoghuman.lib.action.api.TransferData} will be 
@@ -52,7 +88,7 @@ public interface ILibAction {
     
     /**
      * Fire an event for every {@link com.github.naoghuman.lib.action.api.TransferData} 
-     * with the associated actionKey in the model.<br />
+     * with the associated actionId in the <code>TransferData</code>.<br />
      * 
      * The {@link com.github.naoghuman.lib.action.api.TransferData} will be stored in 
      * the action event and can reached over <code>event.getSource(): Object</code> 
@@ -63,7 +99,7 @@ public interface ILibAction {
     public void handle(List<TransferData> transferDatas);
     
     /**
-     * Checks if the specific action key is registered.
+     * Checks if the specific actionId is registered.
      * 
      * @param actionId The action which should be check if it exists.
      * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
@@ -71,7 +107,7 @@ public interface ILibAction {
     public Boolean isRegistered(String actionId);
     
     /**
-     * Register an action with the specific id.
+     * Register an action with the specific actionId.
      * 
      * @param actionId The actionId which allowed access to the associated action.
      * @param event The assoziated action which should be registered.
@@ -79,7 +115,7 @@ public interface ILibAction {
     public void register(String actionId, EventHandler<ActionEvent> event);
     
     /**
-     * Remove the action with the specific id.
+     * Remove the action with the specific actionId.
      * 
      * @param actionId The assoziated action which should be removed.
      */

@@ -59,6 +59,16 @@ public final class ActionFacade implements ILibAction {
     }
 
     @Override
+    public void handle(String actionId, long data) {
+        action.handle(actionId, data);
+    }
+
+    @Override
+    public void handle(String actionId, Object data) {
+        action.handle(actionId, data);
+    }
+
+    @Override
     public void handle(TransferData transferData) {
         action.handle(transferData);
     }
