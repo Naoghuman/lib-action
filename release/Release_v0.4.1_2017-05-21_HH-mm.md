@@ -29,6 +29,7 @@ for more details.
 
 
 #### Refactoring
+#25 [pom] New format from jar(s) for Maven Central.
 
 
 
