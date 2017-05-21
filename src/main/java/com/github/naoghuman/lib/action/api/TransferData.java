@@ -18,13 +18,14 @@ package com.github.naoghuman.lib.action.api;
 
 /**
  * The class {@link com.github.naoghuman.lib.action.api.TransferData} is a 
- * simple POJO to store optional parameters in an action.
+ * simple POJO to store optional values in an action.
  * <p>
- * For more information see the ReadMe.md (at the end of the section examples).
+ * For more information about how to use this class see the second example 
+ * (https://github.com/Naoghuman/lib-action#HandleTransferData) in the ReadMe.md.
  *
  * @author Naoghuman
  */
-public class TransferData {
+public final class TransferData {
     
     private Boolean booleanParameter = Boolean.FALSE;
     private Character characterParameter;
@@ -38,129 +39,129 @@ public class TransferData {
     private String responseActionId = null;
 
     /**
-     * Get the stored {@link java.lang.Boolean} parameter.
+     * Get a stored {@link java.lang.Boolean} value.
      * 
-     * @return The stored <code>Boolean</code> parameter.
+     * @return The stored <code>Boolean</code> value.
      */
     public Boolean getBoolean() {
         return booleanParameter;
     }
 
     /**
-     * Set the {@link java.lang.Boolean} parameter.
+     * Set the {@link java.lang.Boolean} value.
      * 
-     * @param booleanParameter The <code>Boolean</code> parameter.
+     * @param value The <code>Boolean</code> value.
      */
-    public void setBoolean(Boolean booleanParameter) {
-        this.booleanParameter = booleanParameter;
+    public void setBoolean(Boolean value) {
+        this.booleanParameter = value;
     }
 
     /**
-     * Get the stored {@link java.lang.Character} parameter.
+     * Get a stored {@link java.lang.Character} value.
      * 
-     * @return The stored <code>Character</code> parameter.
+     * @return The stored <code>Character</code> value.
      */
     public Character getCharacter() {
         return characterParameter;
     }
 
     /**
-     * Set the {@link java.lang.Character} parameter.
+     * Set a {@link java.lang.Character} value.
      * 
-     * @param characterParameter The <code>Character</code> parameter.
+     * @param value The <code>Character</code> value.
      */
-    public void setCharacter(Character characterParameter) {
-        this.characterParameter = characterParameter;
+    public void setCharacter(Character value) {
+        this.characterParameter = value;
     }
     
     /**
-     * Get the stored {@link java.lang.Double} parameter.
+     * Get the stored {@link java.lang.Double} value.
      * 
-     * @return The stored <code>Double</code> parameter.
+     * @return The stored <code>Double</code> value.
      */
     public Double getDouble() {
         return doubleParameter;
     }
 
     /**
-     * Set the {@link java.lang.Double} parameter.
+     * Set a {@link java.lang.Double} value.
      * 
-     * @param doubleParameter The <code>Double</code> parameter.
+     * @param value The <code>Double</code> value.
      */
-    public void setDouble(Double doubleParameter) {
-        this.doubleParameter = doubleParameter;
+    public void setDouble(Double value) {
+        this.doubleParameter = value;
     }
 
     /**
-     * Get the stored {@link java.lang.Integer} parameter.
+     * Get the stored {@link java.lang.Integer} value.
      * 
-     * @return The stored <code>Integer</code> parameter.
+     * @return The stored <code>Integer</code> value.
      */
     public Integer getInteger() {
         return integerParameter;
     }
 
     /**
-     * Set the {@link java.lang.Integer} parameter.
+     * Set a {@link java.lang.Integer} value.
      * 
-     * @param integerParameter The <code>Integer</code> parameter.
+     * @param value The <code>Integer</code> value.
      */
-    public void setInteger(Integer integerParameter) {
-        this.integerParameter = integerParameter;
+    public void setInteger(Integer value) {
+        this.integerParameter = value;
     }
 
     /**
-     * Get the stored {@link java.lang.Long} parameter.
+     * Get the stored {@link java.lang.Long} value.
      * 
-     * @return The stored <code>Long</code> parameter.
+     * @return The stored <code>Long</code> value.
      */
     public Long getLong() {
         return longParameter;
     }
 
     /**
-     * Set the {@link java.lang.Long} parameter.
+     * Set a {@link java.lang.Long} value.
      * 
-     * @param longParameter The <code>Long</code> parameter.
+     * @param value The <code>Long</code> value.
      */
-    public void setLong(Long longParameter) {
-        this.longParameter = longParameter;
+    public void setLong(Long value) {
+        this.longParameter = value;
     }
 
     /**
-     * Get the stored {@link java.lang.String} parameter.
+     * Get the stored {@link java.lang.String} value.
      * 
-     * @return The stored <code>String</code> parameter.
+     * @return The stored <code>String</code> value.
      */
     public String getString() {
         return stringParameter;
     }
 
     /**
-     * Set the {@link java.lang.String} parameter.
+     * Set a {@link java.lang.String} value.
      * 
-     * @param stringParameter The <code>String</code> parameter.
+     * @param value The <code>String</code> value.
      */
-    public void setString(String stringParameter) {
-        this.stringParameter = stringParameter;
+    public void setString(String value) {
+        this.stringParameter = value;
     }
     
     /**
-     * Get the stored {@link java.lang.Object} parameter.
+     * Get the stored {@link java.lang.Object} value.
      * 
-     * @return The stored <code>Object</code> parameter.
+     * @return The stored <code>Object</code> value.
      */
     public Object getObject() {
         return objectParameter;
     }
     
     /**
-     * Set the {@link java.lang.Object} parameter.
+     * Set a {@link java.lang.Object} value.
      * 
-     * @param objectParameter The <code>Object</code> parameter.
+     * @param value The <code>Object</code> value.
      */
-    public void setObject(Object objectParameter) {
-        this.objectParameter = objectParameter;
+    public void setObject(Object value) {
+        this.objectParameter = value;
     }
     
     /**
@@ -173,7 +174,7 @@ public class TransferData {
     }
 
     /**
-     * Set the <code>actionId</code>.
+     * Set an <code>actionId</code>.
      * 
      * @param actionId The <code>actionId</code>.
      */
@@ -191,7 +192,7 @@ public class TransferData {
     }
 
     /**
-     * Set the <code>responseActionId</code>.
+     * Set a <code>responseActionId</code>.
      * 
      * @param responseActionId The <code>responseActionId</code>.
      */

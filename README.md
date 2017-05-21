@@ -17,8 +17,8 @@ Content
 ---
 
 * [Examples](#Examples)
-    - [registerOnActionOpenDream()](#RegisterOnActionOpenDream)
-    - [handle(ActionTransferModel model)](#HandleTransferData)
+    - [ApplicationPresenter#registerOnActionOpenExercise()](#registerOnActionOpenExercise)
+    - [IRegisterActions#registerActions()](#registerActions())
 * [Api](#Api)
     - [com.github.naoghuman.lib.action.api.ActionFacade](#ActionFacade)
     - [com.github.naoghuman.lib.action.api.ILibAction](#ILibAction)
@@ -38,30 +38,89 @@ Content
 Examples<a name="Examples" />
 ---
 
-### registerOnActionOpenDream()<a name="RegisterOnActionOpenDream" />
+### ApplicationPresenter#registerOnActionOpenExercise()<a name="registerOnActionOpenExercise" />
 
-Here you can see an example how to define an action
+This example will show how an `action` will be registered with an `actionId` and 
+how to `trigger` the action.  
 ```java
-public void registerOnActionOpenDream() {
-    ActionFacade.getDefault().register(
-            ACTION__OPEN_DREAM__FROM_NAVIGATION,
-            (ActionEvent ae) -> {
-                final TransferData data = (TransferData) ae.getSource();
-                this.show(data.getLong());
-            });
+public class ApplicationPresenter ... {
+    // Register an action with the actionId ACTION__APPLICATION__OPEN_EXERCISE
+    private void registerOnActionOpenExercise() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Exercise]"); // NOI18N
+        
+        ActionFacade.getDefault().register(
+                ACTION__APPLICATION__OPEN_EXERCISE,
+                (ActionEvent event) -> {
+                    final TransferData transferData = (TransferData) event.getSource();
+                    final long exercseId = transferData.getLong();
+                    this.onActionOpenExerciseWithId(exercseId);
+                });
+    }
+    ...
+    // The above defined action will be executed when a user click the exericse
+    // in the navigation.
+    private void initializeNavigationTabTopics() {
+        lvFoundedNavigationEntities.setOnMouseClicked(event -> {
+            if (
+                    event.getClickCount() == 2
+                    && !lvFoundedNavigationEntities.getSelectionModel().isEmpty()
+            ) {
+                final TransferData transferData = new TransferData();
+                transferData.setActionId(ACTION__APPLICATION__OPEN_EXERCISE);
+                
+                final NavigationEntity navigationEntity = lvFoundedNavigationEntities.getSelectionModel().getSelectedItem();
+                final long exercseId = navigationEntity.getNavigation().getEntityId();
+                transferData.setLong(exercseId);
+                
+                ActionFacade.getDefault().handle(transferData);
+            }
+        });
+        ...
+    }
+}
+
+public interface IActionConfiguration {
+    public static final String ACTION__APPLICATION__OPEN_EXERCISE = "ACTION__APPLICATION__OPEN_EXERCISE"; // NOI18N
+    ...
 }
 ```
 
 
-### handle(TransferData data)<a name="HandleTransferData" />
+### IRegisterActions#registerActions()<a name="registerActions()" />
 
-TODO UPDATE and how the above defined action is fired.
+In this example we will see how to use the methode `registerActions()` from the 
+Interface `IRegisterActions`.  
 ```java
-final TransferData data = new TransferData();
-data.setActionId(ACTION__OPEN_DREAM__FROM_NAVIGATION);
-data.setLong(idToOpen);
-
-ActionFacade.getDefault().handle(data);
+public class ApplicationPresenter implements IRegisterActions ... {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // This method will be executed during the initialization from the class 
+        // ApplicationPresenter. So all methods in this method will be registered 
+        // during the initialization.
+        this.registerActions();
+        ...
+    }
+    ...
+    @Override
+    public void registerActions() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register actions in [ApplicationPresenter]"); // NOI18N
+        
+        this.registerOnActionOpenTerm();
+        ...
+    }
+    ...
+    private void registerOnActionOpenTerm() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Term]"); // NOI18N
+        
+        ActionFacade.getDefault().register(
+                ACTION__APPLICATION__OPEN_TERM,
+                (ActionEvent event) -> {
+                    final TransferData transferData = (TransferData) event.getSource();
+                    final long entityId = transferData.getLong();
+                    this.onActionOpenTermWithId(entityId);
+                });
+    }
+}
 ```
 
 
@@ -251,139 +310,140 @@ public void registerActions();
 ```java
 /**
  * The class {@link com.github.naoghuman.lib.action.api.TransferData} is a 
- * simple POJO to store optional parameters in an action.
+ * simple POJO to store optional values in an action.
  * <p>
- * For more information see the ReadMe.md (at the end of the section examples).
+ * For more information about how to use this class see the second example 
+ * (https://github.com/Naoghuman/lib-action#HandleTransferData) in the ReadMe.md.
  *
  * @author Naoghuman
  */
-public class TransferData
+public final class TransferData
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.Boolean} parameter.
+ * Get a stored {@link java.lang.Boolean} value.
  * 
- * @return The stored <code>Boolean</code> parameter.
+ * @return The stored <code>Boolean</code> value.
  */
 public Boolean getBoolean()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.Boolean} parameter.
+ * Set the {@link java.lang.Boolean} value.
  * 
- * @param booleanParameter The <code>Boolean</code> parameter.
+ * @param value The <code>Boolean</code> value.
  */
-public void setBoolean(Boolean booleanParameter)
+public void setBoolean(Boolean value)
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.Character} parameter.
+ * Get a stored {@link java.lang.Character} value.
  * 
- * @return The stored <code>Character</code> parameter.
+ * @return The stored <code>Character</code> value.
  */
 public Character getCharacter()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.Character} parameter.
+ * Set a {@link java.lang.Character} value.
  * 
- * @param characterParameter The <code>Character</code> parameter.
+ * @param value The <code>Character</code> value.
  */
-public void setCharacter(Character characterParameter)
+public void setCharacter(Character value)
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.Double} parameter.
+ * Get the stored {@link java.lang.Double} value.
  * 
- * @return The stored <code>Double</code> parameter.
+ * @return The stored <code>Double</code> value.
  */
 public Double getDouble()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.Double} parameter.
+ * Set a {@link java.lang.Double} value.
  * 
- * @param doubleParameter The <code>Double</code> parameter.
+ * @param value The <code>Double</code> value.
  */
-public void setDouble(Double doubleParameter)
+public void setDouble(Double value)
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.Integer} parameter.
+ * Get the stored {@link java.lang.Integer} value.
  * 
- * @return The stored <code>Integer</code> parameter.
+ * @return The stored <code>Integer</code> value.
  */
 public Integer getInteger()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.Integer} parameter.
+ * Set a {@link java.lang.Integer} value.
  * 
- * @param integerParameter The <code>Integer</code> parameter.
+ * @param value The <code>Integer</code> value.
  */
-public void setInteger(Integer integerParameter)
+public void setInteger(Integer value)
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.Long} parameter.
+ * Get the stored {@link java.lang.Long} value.
  * 
- * @return The stored <code>Long</code> parameter.
+ * @return The stored <code>Long</code> value.
  */
 public Long getLong()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.Long} parameter.
+ * Set a {@link java.lang.Long} value.
  * 
- * @param longParameter The <code>Long</code> parameter.
+ * @param value The <code>Long</code> value.
  */
-public void setLong(Long longParameter)
+public void setLong(Long value)
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.String} parameter.
+ * Get the stored {@link java.lang.String} value.
  * 
- * @return The stored <code>String</code> parameter.
+ * @return The stored <code>String</code> value.
  */
 public String getString()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.String} parameter.
+ * Set a {@link java.lang.String} value.
  * 
- * @param stringParameter The <code>String</code> parameter.
+ * @param value The <code>String</code> value.
  */
-public void setString(String stringParameter)
+public void setString(String value)
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.Object} parameter.
+ * Get the stored {@link java.lang.Object} value.
  * 
- * @return The stored <code>Object</code> parameter.
+ * @return The stored <code>Object</code> value.
  */
 public Object getObject()
 ```
 
 ```java
 /**
- * Set the {@link java.lang.Object} parameter.
+ * Set a {@link java.lang.Object} value.
  * 
- * @param objectParameter The <code>Object</code> parameter.
+ * @param value The <code>Object</code> value.
  */
-public void setObject(Object objectParameter)
+public void setObject(Object value)
 ```
 
 ```java
@@ -397,7 +457,7 @@ public String getActionId()
 
 ```java
 /**
- * Set the <code>actionId</code>.
+ * Set an <code>actionId</code>.
  * 
  * @param actionId The <code>actionId</code>.
  */
@@ -415,7 +475,7 @@ public String getResponseActionId()
 
 ```java
 /**
- * Set the <code>responseActionId</code>.
+ * Set a <code>responseActionId</code>.
  * 
  * @param responseActionId The <code>responseActionId</code>.
  */

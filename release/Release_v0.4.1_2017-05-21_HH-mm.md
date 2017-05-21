@@ -30,6 +30,7 @@ for more details.
 
 
 #### Refactoring
+#28 [Documentation] Update the JavaDoc from the class TransferData.
 #25 [pom] New format from jar(s) for Maven Central.
 
 
