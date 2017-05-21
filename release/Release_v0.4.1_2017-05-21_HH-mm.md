@@ -21,6 +21,7 @@ for more details.
 
 
 #### Enhancement
+#26 [Documentation] Insert maven-central coordinates into README.
 
 
 

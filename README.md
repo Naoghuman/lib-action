@@ -432,6 +432,7 @@ Current `version` is `0.4.0`. Main points in this release are:
 * Change ActionFacade.INSTANCE to ActionFacade.getDefault() with Optional.
 
 **Maven coordinates**  
+In context from a [Maven] project you can use following maven coordinates: 
 ```xml
 <dependencies>
     <dependency>
