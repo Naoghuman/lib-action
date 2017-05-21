@@ -7,8 +7,9 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a minor update.
+* Update the JavaDoc from the class TransferData.
+* Update the dependencies to the library `Lib-Logger`.
 
 
 
@@ -31,6 +32,7 @@ for more details.
 
 #### Refactoring
 #28 [Documentation] Update the JavaDoc from the class TransferData.
+#27 [Dependencies] Update the dependencies to the library `Lib-Logger`.
 #25 [pom] New format from jar(s) for Maven Central.
 
 
