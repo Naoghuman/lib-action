@@ -1,4 +1,4 @@
-Welcome to `Lib-Action` with the new release `x.y.z`.
+Welcome to `Lib-Action` with the new release `0.4.1`.
 
 Lib-Action is a library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) 
 in a [JavaFX] &amp; [Maven] desktop application. See https://github.com/Naoghuman/lib-action 
