@@ -9,7 +9,7 @@ Intention
 Lib-Action is a library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) 
 in a [JavaFX] &amp; [Maven] desktop application.
 
-Current `version` is `0.4.0` (08.31.2016).
+Current `version` is `0.4.1` (05.21.2017).
 
 
 
@@ -487,9 +487,10 @@ public void setResponseActionKey(String responseActionId)
 Download<a name="Download" />
 ---
 
-Current `version` is `0.4.0`. Main points in this release are:
-* Deploy the jar files to Maven Central :smiley: .
-* Change ActionFacade.INSTANCE to ActionFacade.getDefault() with Optional.
+Current `version` is `0.4.1`. Main points in this release are:
+* This is a minor update.
+* Update the `examples` in the ReadMe.
+* Update the JavaDoc from the class `TransferData`.
 
 **Maven coordinates**  
 In context from a [Maven] project you can use following maven coordinates: 
@@ -498,13 +499,13 @@ In context from a [Maven] project you can use following maven coordinates:
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-action</artifactId>
-        <version>0.4.0</version>
+        <version>0.4.1</version>
     </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.4.0 (08.31.2016)]
+* [Release v0.4.1 (05.21.2017)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Action]
@@ -515,7 +516,7 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [Lib-Action-0.4.0.jar](#Installation).
+* The library [lib-action-0.4.1.jar](#Installation).
 
 In the library are following libraries registered as dependencies:
 * The library [lib-logger-0.4.1.jar](#Installation).
@@ -591,6 +592,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JDK 8]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Action]:https://github.com/Naoghuman/lib-action
+[lib-action-0.4.1.jar]:https://github.com/Naoghuman/lib-action/releases/tag/v0.4.1
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
 [lib-logger-0.4.1.jar]:https://github.com/Naoghuman/lib-logger/releases/tag/v0.4.1
 [log4j-api-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
@@ -599,6 +601,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.4.0 (08.31.2016)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.4.0
+[Release v0.4.1 (05.21.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.4.1
 
 

@@ -8,8 +8,8 @@ for more details.
 
 #### Summary
 * This is a minor update.
-* Update the JavaDoc from the class TransferData.
-* Update the dependencies to the library `Lib-Logger`.
+* Update the `examples` in the ReadMe.
+* Update the JavaDoc from the class `TransferData`.
 
 
 
