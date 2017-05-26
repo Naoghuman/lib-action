@@ -29,6 +29,7 @@ for more details.
 
 
 #### Refactoring
+#29 [pom] Remove dependency to `maven-release-plugin`.
 
 
 
