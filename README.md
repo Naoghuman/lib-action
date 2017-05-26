@@ -521,7 +521,7 @@ Requirements<a name="Requirements" />
 In the library are following libraries registered as dependencies:
 * The library [lib-logger-0.4.1.jar](#Installation).
   * Included in `Lib-Logger` is the library [log4j-api-2.8.2.jar].
-  * Included is `Lib-Logger` the library [log4j-core-2.8.2.jar].
+  * Included is `Lib-Logger` is the library [log4j-core-2.8.2.jar].
 
 
 
