@@ -21,6 +21,7 @@ for more details.
 
 
 #### Enhancement
+#31 [api] Create new packages to reflect my library conventions.
 
 
 
@@ -29,6 +30,7 @@ for more details.
 
 
 #### Refactoring
+#32 [Dependency] Update the dependency to `Lib-Logger`.
 #29 [pom] Remove dependency to `maven-release-plugin`.
 
 
