@@ -28,7 +28,9 @@ import javafx.event.EventHandler;
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.LibAction
  * @see com.github.naoghuman.lib.action.api.ActionFacade
+ * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.core.ActionHandler}
  */
+@Deprecated
 public interface ILibAction {
     
     /**
@@ -36,6 +38,7 @@ public interface ILibAction {
      * 
      * @param actionId The actionId which allowed access to the assoziated action.
      */
+    @Deprecated
     public void handle(String actionId);
     
     /**
@@ -54,6 +57,7 @@ public interface ILibAction {
      * @param actionId The actionId which allowed access to the assoziated action.
      * @param data The long parameter which should be stored and transfered by this event.
      */
+    @Deprecated
     public void handle(String actionId, long data);
     
     /**
@@ -72,6 +76,7 @@ public interface ILibAction {
      * @param actionId The actionId which allowed access to the assoziated action.
      * @param data The long parameter which should be stored and transfered by this event.
      */
+    @Deprecated
     public void handle(String actionId, Object data);
     
     /**
@@ -84,6 +89,7 @@ public interface ILibAction {
      * 
      * @param transferData A <code>TransferData</code> which contains the actionId and additional parameters.
      */
+    @Deprecated
     public void handle(TransferData transferData);
     
     /**
@@ -96,6 +102,7 @@ public interface ILibAction {
      * 
      * @param transferDatas A List with <code>TransferData</code> which contains the actionIds and additional parameters.
      */
+    @Deprecated
     public void handle(List<TransferData> transferDatas);
     
     /**
@@ -104,6 +111,7 @@ public interface ILibAction {
      * @param actionId The action which should be check if it exists.
      * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
      */
+    @Deprecated
     public Boolean isRegistered(String actionId);
     
     /**
@@ -112,6 +120,7 @@ public interface ILibAction {
      * @param actionId The actionId which allowed access to the associated action.
      * @param event The assoziated action which should be registered.
      */
+    @Deprecated
     public void register(String actionId, EventHandler<ActionEvent> event);
     
     /**
@@ -119,6 +128,7 @@ public interface ILibAction {
      * 
      * @param actionId The assoziated action which should be removed.
      */
+    @Deprecated
     public void remove(String actionId);
     
 }

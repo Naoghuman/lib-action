@@ -24,7 +24,9 @@ package com.github.naoghuman.lib.action.api;
  * (https://github.com/Naoghuman/lib-action#HandleTransferData) in the ReadMe.md.
  *
  * @author Naoghuman
+ * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.core.TransferData}
  */
+@Deprecated
 public final class TransferData {
     
     private Boolean booleanParameter = Boolean.FALSE;
@@ -43,6 +45,7 @@ public final class TransferData {
      * 
      * @return The stored <code>Boolean</code> value.
      */
+    @Deprecated
     public Boolean getBoolean() {
         return booleanParameter;
     }
@@ -52,6 +55,7 @@ public final class TransferData {
      * 
      * @param value The <code>Boolean</code> value.
      */
+    @Deprecated
     public void setBoolean(Boolean value) {
         this.booleanParameter = value;
     }
@@ -61,6 +65,7 @@ public final class TransferData {
      * 
      * @return The stored <code>Character</code> value.
      */
+    @Deprecated
     public Character getCharacter() {
         return characterParameter;
     }
@@ -70,6 +75,7 @@ public final class TransferData {
      * 
      * @param value The <code>Character</code> value.
      */
+    @Deprecated
     public void setCharacter(Character value) {
         this.characterParameter = value;
     }
@@ -79,6 +85,7 @@ public final class TransferData {
      * 
      * @return The stored <code>Double</code> value.
      */
+    @Deprecated
     public Double getDouble() {
         return doubleParameter;
     }
@@ -88,6 +95,7 @@ public final class TransferData {
      * 
      * @param value The <code>Double</code> value.
      */
+    @Deprecated
     public void setDouble(Double value) {
         this.doubleParameter = value;
     }
@@ -97,6 +105,7 @@ public final class TransferData {
      * 
      * @return The stored <code>Integer</code> value.
      */
+    @Deprecated
     public Integer getInteger() {
         return integerParameter;
     }
@@ -106,6 +115,7 @@ public final class TransferData {
      * 
      * @param value The <code>Integer</code> value.
      */
+    @Deprecated
     public void setInteger(Integer value) {
         this.integerParameter = value;
     }
@@ -115,6 +125,7 @@ public final class TransferData {
      * 
      * @return The stored <code>Long</code> value.
      */
+    @Deprecated
     public Long getLong() {
         return longParameter;
     }
@@ -124,6 +135,7 @@ public final class TransferData {
      * 
      * @param value The <code>Long</code> value.
      */
+    @Deprecated
     public void setLong(Long value) {
         this.longParameter = value;
     }
@@ -133,6 +145,7 @@ public final class TransferData {
      * 
      * @return The stored <code>String</code> value.
      */
+    @Deprecated
     public String getString() {
         return stringParameter;
     }
@@ -142,6 +155,7 @@ public final class TransferData {
      * 
      * @param value The <code>String</code> value.
      */
+    @Deprecated
     public void setString(String value) {
         this.stringParameter = value;
     }
@@ -151,6 +165,7 @@ public final class TransferData {
      * 
      * @return The stored <code>Object</code> value.
      */
+    @Deprecated
     public Object getObject() {
         return objectParameter;
     }
@@ -160,6 +175,7 @@ public final class TransferData {
      * 
      * @param value The <code>Object</code> value.
      */
+    @Deprecated
     public void setObject(Object value) {
         this.objectParameter = value;
     }
@@ -169,6 +185,7 @@ public final class TransferData {
      * 
      * @return The <code>actionId</code>.
      */
+    @Deprecated
     public String getActionId() {
         return actionId;
     }
@@ -178,6 +195,7 @@ public final class TransferData {
      * 
      * @param actionId The <code>actionId</code>.
      */
+    @Deprecated
     public void setActionId(String actionId) {
         this.actionId = actionId;
     }
@@ -187,6 +205,7 @@ public final class TransferData {
      * 
      * @return The <code>responseActionId</code>.
      */
+    @Deprecated
     public String getResponseActionId() {
         return responseActionId;
     }
@@ -196,6 +215,7 @@ public final class TransferData {
      * 
      * @param responseActionId The <code>responseActionId</code>.
      */
+    @Deprecated
     public void setResponseActionKey(String responseActionId) {
         this.responseActionId = responseActionId;
     }

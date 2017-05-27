@@ -32,12 +32,15 @@ import javafx.event.EventHandler;
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ILibAction
  * @see com.github.naoghuman.lib.action.api.ActionFacade
+ * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}
  */
+@Deprecated
 public class LibAction implements ILibAction {
     
     private final static HashMap<String, EventHandler<ActionEvent>> ACTIONS = new HashMap<>();
 
     @Override
+    @Deprecated
     public void handle(String actionId) {
         final TransferData transferData = new TransferData();
         transferData.setActionId(actionId);
@@ -46,6 +49,7 @@ public class LibAction implements ILibAction {
     }
 
     @Override
+    @Deprecated
     public void handle(String actionId, long data) {
         final TransferData transferData = new TransferData();
         transferData.setActionId(actionId);
@@ -55,6 +59,7 @@ public class LibAction implements ILibAction {
     }
 
     @Override
+    @Deprecated
     public void handle(String actionId, Object data) {
         final TransferData transferData = new TransferData();
         transferData.setActionId(actionId);
@@ -64,6 +69,7 @@ public class LibAction implements ILibAction {
     }
     
     @Override
+    @Deprecated
     public void handle(TransferData transferData) {
         if (!ACTIONS.containsKey(transferData.getActionId())) {
             return;
@@ -76,6 +82,7 @@ public class LibAction implements ILibAction {
     }
     
     @Override
+    @Deprecated
     public void handle(List<TransferData> transferDatas) {
         transferDatas.stream().forEach((transferData) -> {
             this.handle(transferData);
@@ -83,6 +90,7 @@ public class LibAction implements ILibAction {
     }
 
     @Override
+    @Deprecated
     public Boolean isRegistered(String actionId) {
         boolean isRegistered = Boolean.FALSE;
         if (ACTIONS.containsKey(actionId)) {
@@ -94,6 +102,7 @@ public class LibAction implements ILibAction {
     }
 
     @Override
+    @Deprecated
     public void register(String actionId, EventHandler<ActionEvent> event) {
         if (ACTIONS.containsKey(actionId)) {
             return;
@@ -105,6 +114,7 @@ public class LibAction implements ILibAction {
     }
 
     @Override
+    @Deprecated
     public void remove(String actionId) {
         if (!ACTIONS.containsKey(actionId)) {
             return;

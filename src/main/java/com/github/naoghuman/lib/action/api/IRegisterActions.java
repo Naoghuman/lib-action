@@ -24,7 +24,9 @@ package com.github.naoghuman.lib.action.api;
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler)
  * @see javafx.event.ActionEvent
+ * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.core.RegisterActions}
  */
+@Deprecated
 public interface IRegisterActions {
     
     /**
@@ -35,6 +37,7 @@ public interface IRegisterActions {
      * @see com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler)
      * @see javafx.event.ActionEvent
      */
+    @Deprecated
     public void registerActions();
     
 }

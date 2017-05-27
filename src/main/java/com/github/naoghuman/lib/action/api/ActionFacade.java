@@ -29,7 +29,9 @@ import javafx.event.EventHandler;
  *
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ILibAction
+ * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.core.ActionFacade}
  */
+@Deprecated
 public final class ActionFacade implements ILibAction {
     
     private static final Optional<ActionFacade> instance = Optional.of(new ActionFacade());
@@ -39,6 +41,7 @@ public final class ActionFacade implements ILibAction {
      * 
      * @return a singleton instance from the class <code>ActionFacade</code>.
      */
+    @Deprecated
     public static final ActionFacade getDefault() {
         return instance.get();
     }
@@ -54,41 +57,49 @@ public final class ActionFacade implements ILibAction {
     }
 
     @Override
+    @Deprecated
     public void handle(String actionId) {
         action.handle(actionId);
     }
 
     @Override
+    @Deprecated
     public void handle(String actionId, long data) {
         action.handle(actionId, data);
     }
 
     @Override
+    @Deprecated
     public void handle(String actionId, Object data) {
         action.handle(actionId, data);
     }
 
     @Override
+    @Deprecated
     public void handle(TransferData transferData) {
         action.handle(transferData);
     }
 
     @Override
+    @Deprecated
     public void handle(List<TransferData> transferDatas) {
         action.handle(transferDatas);
     }
 
     @Override
+    @Deprecated
     public Boolean isRegistered(String actionId) {
         return action.isRegistered(actionId);
     }
 
     @Override
+    @Deprecated
     public void register(String actionId, EventHandler<ActionEvent> event) {
         action.register(actionId, event);
     }
 
     @Override
+    @Deprecated
     public void remove(String actionId) {
         action.remove(actionId);
     }
