@@ -20,10 +20,10 @@ Content
     - [ApplicationPresenter#registerOnActionOpenExercise()](#registerOnActionOpenExercise)
     - [IRegisterActions#registerActions()](#registerActions())
 * [Api](#Api)
-    - [com.github.naoghuman.lib.action.api.ActionFacade](#ActionFacade)
-    - [com.github.naoghuman.lib.action.api.ILibAction](#ILibAction)
-    - [com.github.naoghuman.lib.action.api.IRegisterActions](#IRegisterActions)
-    - [com.github.naoghuman.lib.action.api.TransferData](#TransferData)
+    - [com.github.naoghuman.lib.action.core.ActionFacade](#AcFa)
+    - [com.github.naoghuman.lib.action.core.ActionHandler](#AcHa)
+    - [com.github.naoghuman.lib.action.core.RegisterActions](#ReAc)
+    - [com.github.naoghuman.lib.action.core.TransferData](#TrDa)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -45,7 +45,7 @@ how to `trigger` the action.
 ```java
 public class ApplicationPresenter ... {
     // Register an action with the actionId ACTION__APPLICATION__OPEN_EXERCISE
-    private void registerOnActionOpenExercise() {
+private void registerOnActionOpenExercise() {
         LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Exercise]"); // NOI18N
         
         ActionFacade.getDefault().register(
@@ -59,7 +59,7 @@ public class ApplicationPresenter ... {
     ...
     // The above defined action will be executed when a user click the exericse
     // in the navigation.
-    private void initializeNavigationTabTopics() {
+private void initializeNavigationTabTopics() {
         lvFoundedNavigationEntities.setOnMouseClicked(event -> {
             if (
                     event.getClickCount() == 2
@@ -80,7 +80,7 @@ public class ApplicationPresenter ... {
 }
 
 public interface IActionConfiguration {
-    public static final String ACTION__APPLICATION__OPEN_EXERCISE = "ACTION__APPLICATION__OPEN_EXERCISE"; // NOI18N
+public static final String ACTION__APPLICATION__OPEN_EXERCISE = "ACTION__APPLICATION__OPEN_EXERCISE"; // NOI18N
     ...
 }
 ```
@@ -93,7 +93,7 @@ Interface `IRegisterActions`.
 ```java
 public class ApplicationPresenter implements IRegisterActions ... {
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+public void initialize(URL location, ResourceBundle resources) {
         // This method will be executed during the initialization from the class 
         // ApplicationPresenter. So all methods in this method will be registered 
         // during the initialization.
@@ -102,14 +102,14 @@ public class ApplicationPresenter implements IRegisterActions ... {
     }
     ...
     @Override
-    public void registerActions() {
+public void registerActions() {
         LoggerFacade.getDefault().debug(this.getClass(), "Register actions in [ApplicationPresenter]"); // NOI18N
         
         this.registerOnActionOpenTerm();
         ...
     }
     ...
-    private void registerOnActionOpenTerm() {
+private void registerOnActionOpenTerm() {
         LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Term]"); // NOI18N
         
         ActionFacade.getDefault().register(
@@ -128,18 +128,18 @@ public class ApplicationPresenter implements IRegisterActions ... {
 Api<a name="Api" />
 ---
 
-### com.github.naoghuman.lib.action.api.ActionFacade<a name="ActionFacade" />
+### com.github.naoghuman.lib.action.core.ActionFacade<a name="AcFa" />
 
 ```java
 /**
- * The facade {@link com.github.naoghuman.lib.action.api.ActionFacade} provides 
- * access to the action methods during the Interface 
- * {@link com.github.naoghuman.lib.action.api.ILibAction}.
+ * The facade {@link com.github.naoghuman.lib.action.core.ActionFacade} provides 
+ * access to the action methods in the <code>Interface</code> 
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler}.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.api.ILibAction
+ * @see com.github.naoghuman.lib.action.core.ActionHandler
  */
-public final class ActionFacade implements ILibAction {
+public final class ActionFacade implements ActionHandler {
 ```
 
 ```java
@@ -148,176 +148,196 @@ public final class ActionFacade implements ILibAction {
  * 
  * @return a singleton instance from the class <code>ActionFacade</code>.
  */
-public static final ActionFacade getDefault() {
-    return instance.get();
-}
+public static final ActionFacade getDefault()
 ```
 
 
-
-### com.github.naoghuman.lib.action.api.ILibAction<a name="ILibAction" />
+### com.github.naoghuman.lib.action.core.ActionHandler<a name="AcHa" />
 
 ```java
 /**
- * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.action.LibAction}.<br />
- * Over the facade {@link com.github.naoghuman.lib.action.api.ActionFacade} you 
+ * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}.<br>
+ * Over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade} you 
  * can access the methods in this <code>Interface</code>.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.LibAction
- * @see com.github.naoghuman.lib.action.api.ActionFacade
+ * @see com.github.naoghuman.lib.action.core.ActionFacade
+ * @see com.github.naoghuman.lib.action.internal.DefaultActionHandler
  */
-public interface ILibAction
+public interface ActionHandler {
 ```
 
 ```java
 /**
- * Fire an event with the associated actionId.
+ * Fires an {@link javafx.event.ActionEvent} with the associated actionId.
+ * <p>
+ * <b>Hint:</b><br>
+ * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+ * must before registered during the method 
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
  * @param actionId The actionId which allowed access to the assoziated action.
+ * @see            com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) 
+ * @see            javafx.event.ActionEvent
+ * @see            javafx.event.EventHandler
  */
-public void handle(String actionId);
+public void handle(final String actionId);
 ```
 
 ```java
 /**
- * Fire an event with the associated actionId.
- * <p />
- * Internal the <code>long</code> parameter will be stored in a 
+ * Fires an {@link javafx.event.ActionEvent} with the associated actionId and 
+ * the given parameter <code>value</code>.
+ * <p>
+ * Internal the parameter <code>data</code> will be stored in a 
  * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
- * be access via:
- * <p />
- * public void handleOnAction(ActionEvent event) {<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;final TransferData transferData = (TransferData) event.getSource();<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;final long data = transferData.getLong();<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&frasl;&frasl; do anything with the long data<br />
+ * be access via:<br>
+ * public void handleOnAction(ActionEvent event) {<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;final TransferData transferData = (TransferData) event.getSource();<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;final long data = transferData.getLong();<br>
+ * &nbsp;&nbsp;&nbsp;&nbsp;&frasl; &frasl; do anything with the data<br>
  * }
+ * <p>
+ * <b>Hint:</b><br>
+ * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+ * must before registered during the method 
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
  * @param actionId The actionId which allowed access to the assoziated action.
- * @param data The long parameter which should be stored and transfered by this event.
+ * @param value    The long parameter which should be stored and transfered by this event.
+ * @see            com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
+ * @see            com.github.naoghuman.lib.action.core.TransferData
+ * @see            javafx.event.ActionEvent
+ * @see            javafx.event.EventHandler
  */
-public void handle(String actionId, long data);
+public void handle(String actionId, long value);
 ```
 
 ```java
 /**
- * Fire an event with the associated actionId.
- * <p />
- * Internal the <code>Object</code> parameter will be stored in a 
- * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
- * be access via:
- * <p />
- * public void handleOnAction(ActionEvent event) {<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;final TransferData transferData = (TransferData) event.getSource();<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;final Object data = transferData.getObject();<br />
- * &nbsp;&nbsp;&nbsp;&nbsp;&frasl;&frasl; do anything with the long data<br />
- * }
- * 
- * @param actionId The actionId which allowed access to the assoziated action.
- * @param data The long parameter which should be stored and transfered by this event.
- */
-public void handle(String actionId, Object data);
-```
-
-```java
-/**
- * Fire an event with the associated actionId defined in the 
- * {@link com.github.naoghuman.lib.action.api.TransferData}.<br />
- * 
- * The {@link com.github.naoghuman.lib.action.api.TransferData} will be 
- * stored in the action event and can reached over <code>event.getSource(): Object</code> 
- * in the overriden {@link javafx.event.ActionEvent}.
+ * Fires an {@link javafx.event.ActionEvent} with the associated actionId defined in 
+ * the {@link com.github.naoghuman.lib.action.core.TransferData}.
+ * <p>
+ * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
+ * stored in the executed <code>ActionEvent</code> and can reached with the
+ * method <code>event.getSource(): Object</code> in the overriden <code>ActionEvent</code>.
+ * <p>
+ * <b>Hint:</b><br>
+ * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+ * must before registered during the method 
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
  * @param transferData A <code>TransferData</code> which contains the actionId and additional parameters.
+ * @see                com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
+ * @see                com.github.naoghuman.lib.action.core.TransferData
+ * @see                javafx.event.ActionEvent
+ * @see                javafx.event.EventHandler
  */
-public void handle(TransferData transferData);
+public void handle(final TransferData transferData);
 ```
 
 ```java
 /**
- * Fire an event for every {@link com.github.naoghuman.lib.action.api.TransferData} 
- * with the associated actionId in the <code>TransferData</code>.<br />
- * 
- * The {@link com.github.naoghuman.lib.action.api.TransferData} will be stored in 
- * the action event and can reached over <code>event.getSource(): Object</code> 
- * in the overriden {@link javafx.event.ActionEvent}.
+ * Fires an {@link javafx.event.ActionEvent} for every {@link com.github.naoghuman.lib.action.core.TransferData} 
+ * with the associated <code>actionId</code> in the specific <code>TransferData</code>.
+ * <p>
+ * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
+ * stored in the executed <code>ActionEvent</code> and can reached with the
+ * method <code>event.getSource(): Object</code> in the overriden <code>ActionEvent</code>.
+ * <p>
+ * <b>Hint:</b><br>
+ * All <code>actionIds</code> and its associated {@link javafx.event.EventHandler} 
+ * must before registered during the method 
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
  * @param transferDatas A List with <code>TransferData</code> which contains the actionIds and additional parameters.
+ * @see                 com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
+ * @see                 com.github.naoghuman.lib.action.core.TransferData
+ * @see                 javafx.event.ActionEvent
+ * @see                 javafx.event.EventHandler
  */
-public void handle(List<TransferData> transferDatas);
+public void handle(final ObservableList<TransferData> transferDatas);
 ```
 
 ```java
 /**
- * Checks if the specific actionId is registered.
+ * Checks if the specific <code>actionId</code> is registered.
  * 
- * @param actionId The action which should be check if it exists.
- * @return <code>true</code> if the action is registered, otherwise <code>false</code>.
+ * @param actionId The actionId which should be check if it is exists.
+ * @return         <code>true</code> if the actionId (with associated EventHandler) 
+ *                 is registered, otherwise <code>false</code>.
  */
-public Boolean isRegistered(String actionId);
+public boolean isRegistered(final String actionId);
 ```
 
 ```java
 /**
- * Register an action with the specific actionId.
+ * Register an {@link javafx.event.EventHandler} with the specific <code>actionId</code>.
  * 
- * @param actionId The actionId which allowed access to the associated action.
- * @param event The assoziated action which should be registered.
+ * @param actionId     The actionId which allowed access to the associated EventHandler.
+ * @param eventHandler The assoziated EventHandler which should be registered.
+ * @return             <code>true</code> if the EventHandler is registered, otherwise <code>false</code>.
+ * @see                javafx.event.EventHandler
  */
-public void register(String actionId, EventHandler<ActionEvent> event);
+public boolean register(final String actionId, final EventHandler<ActionEvent> eventHandler);
 ```
 
 ```java
 /**
- * Remove the action with the specific actionId.
+ * Removes the {@link javafx.event.EventHandler} with the specific specific 
+ * <code>actionId</code>.
  * 
- * @param actionId The assoziated action which should be removed.
+ * @param actionId The actionId which should be removed with the associated EventHandler.
+ * @return         <code>true</code> if the EventHandler is removed, otherwise <code>false</code>.
+ * @see            javafx.event.EventHandler
  */
-public void remove(String actionId);
+public boolean remove(final String actionId);
 ```
 
 
-### com.github.naoghuman.lib.action.api.IRegisterActions<a name="IRegisterActions" />
+### com.github.naoghuman.lib.action.core.RegisterActions<a name="ReAc" />
 
 ```java
 /**
- * Over this interface the developer can <code>register</code> 
- * {@link javafx.event.ActionEvent}s during the method
- * {@link com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler) }.
+ * With this interface the developer have an <code>official</code> method to register all this methods in 
+ * the implementing classes which will <code>register</code> {@link javafx.event.ActionEvent}s during the method
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }
+ * with an specific <code>actionId</code>.
  * 
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler)
+ * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see javafx.event.ActionEvent
  */
-public interface IRegisterActions
+public interface RegisterActions {
 ```
 
 ```java
 /**
- * Implementing this method alloweds <code>register</code>
- * {@link javafx.event.ActionEvent}s during the method
- * {@link com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler) }.
+ * Implementing this method alloweds the developer to <code>register</code> all methods in the 
+ * implementing class which will <code>register</code> {@link javafx.event.ActionEvent}s during the method
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }.
  * 
- * @see com.github.naoghuman.lib.action.LibAction#register(java.lang.String, javafx.event.EventHandler)
+ * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see javafx.event.ActionEvent
  */
-public void registerActions();
+public void register();
 ```
 
 
-### com.github.naoghuman.lib.action.api.TransferData<a name="TransferData" />
+### com.github.naoghuman.lib.action.core.TransferData<a name="TrDa" />
 
 ```java
 /**
- * The class {@link com.github.naoghuman.lib.action.api.TransferData} is a 
- * simple POJO to store optional values in an action.
+ * The class {@link com.github.naoghuman.lib.action.core.TransferData} is a 
+ * simple POJO to store optional values in an {@link javafx.event.ActionEvent}.
  * <p>
  * For more information about how to use this class see the second example 
  * (https://github.com/Naoghuman/lib-action#HandleTransferData) in the ReadMe.md.
  *
  * @author Naoghuman
+ * @see    javafx.event.ActionEvent
  */
-public final class TransferData
+public final class TransferData {
 ```
 
 ```java
@@ -461,7 +481,7 @@ public String getActionId()
  * 
  * @param actionId The <code>actionId</code>.
  */
-public void setActionId(String actionId)
+public void setActionId(String actionId) 
 ```
 
 ```java
@@ -479,7 +499,7 @@ public String getResponseActionId()
  * 
  * @param responseActionId The <code>responseActionId</code>.
  */
-public void setResponseActionKey(String responseActionId)
+public void setResponseActionId(String responseActionId)
 ```
 
 
