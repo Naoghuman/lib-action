@@ -18,6 +18,7 @@ package com.github.naoghuman.lib.action.internal;
 
 import com.github.naoghuman.lib.action.core.ActionHandler;
 import com.github.naoghuman.lib.action.core.TransferData;
+import com.github.naoghuman.lib.action.core.TransferDataBuilder;
 import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.util.HashMap;
 import javafx.collections.ObservableList;
@@ -25,8 +26,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
+ * The implementation from the interface {@link com.github.naoghuman.lib.action.core.ActionHandler}
+ * which can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade}.
  *
  * @author Naoghuman
+ * @see    com.github.naoghuman.lib.action.core.ActionHandler
+ * @see    com.github.naoghuman.lib.action.core.ActionFacade
  */
 public final class DefaultActionHandler implements ActionHandler {
     
@@ -34,17 +39,19 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public void handle(final String actionId) {
-        final TransferData transferData = new TransferData();
-        transferData.setActionId(actionId);
+        final TransferData transferData = TransferDataBuilder.create()
+                .actionId(actionId)
+                .build();
         
         this.handle(transferData);
     }
 
     @Override
     public void handle(final String actionId, final long value) {
-        final TransferData transferData = new TransferData();
-        transferData.setActionId(actionId);
-        transferData.setLong(value);
+        final TransferData transferData = TransferDataBuilder.create()
+                .actionId(actionId)
+                .longValue(value)
+                .build();
         
         this.handle(transferData);
     }

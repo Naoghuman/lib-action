@@ -21,18 +21,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The <code>Interface</code> for the class {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}.<br>
- * Over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade} you 
- * can access the methods in this <code>Interface</code>.
+ * With this interface the developer have access to all methods in context from 
+ * store, access and manage {@link javafx.event.EventHandler}s mapped to a specific 
+ * <code>actionId</code>.
+ * 
+ * The implementation from this interface {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}
+ * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade}.
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.core.ActionFacade
- * @see com.github.naoghuman.lib.action.internal.DefaultActionHandler
+ * @see    com.github.naoghuman.lib.action.core.ActionFacade
+ * @see    com.github.naoghuman.lib.action.internal.DefaultActionHandler
+ * @see    javafx.event.EventHandler
  */
 public interface ActionHandler {
     
     /**
-     * Fires an {@link javafx.event.ActionEvent} with the associated actionId.
+     * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code>.
      * <p>
      * <b>Hint:</b><br>
      * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
@@ -47,8 +51,8 @@ public interface ActionHandler {
     public void handle(final String actionId);
     
     /**
-     * Fires an {@link javafx.event.ActionEvent} with the associated actionId and 
-     * the given parameter <code>value</code>.
+     * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code> 
+     * and the given parameter <code>value</code>.
      * <p>
      * Internal the parameter <code>data</code> will be stored in a 
      * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
@@ -74,8 +78,8 @@ public interface ActionHandler {
     public void handle(String actionId, long value);
     
     /**
-     * Fires an {@link javafx.event.ActionEvent} with the associated actionId defined in 
-     * the {@link com.github.naoghuman.lib.action.core.TransferData}.
+     * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code> 
+     * defined in the {@link com.github.naoghuman.lib.action.core.TransferData}.
      * <p>
      * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
      * stored in the executed <code>ActionEvent</code> and can reached with the

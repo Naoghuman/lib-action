@@ -23,6 +23,7 @@ for more details.
 #### Enhancement
 #33 [Impl] Create new interface `Validator`.
 #31 [api] Create new packages to reflect my library conventions.
+#30 [api] Create new class TransferDataBuilder.
 
 
 

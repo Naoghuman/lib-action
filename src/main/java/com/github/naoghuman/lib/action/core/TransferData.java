@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2016 Naoghuman
+/**
+ * Copyright (C) 2017 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,189 +16,103 @@
  */
 package com.github.naoghuman.lib.action.core;
 
+import java.util.Optional;
+
 /**
- * The class {@link com.github.naoghuman.lib.action.core.TransferData} is a 
- * simple POJO to store optional values in an {@link javafx.event.ActionEvent}.
+ * The interface {@link com.github.naoghuman.lib.action.core.TransferData} is a 
+ * simple readonly POJO to store optional values in an {@link javafx.event.ActionEvent}.
+ * An implementation from this interface can be generated with the builder class 
+ * {@link com.github.naoghuman.lib.action.core.TransferDataBuilder}.<br>
+ * All optional attributes if not set will returned {@link java.util.Optional#empty()}.
  * <p>
- * For more information about how to use this class see the second example 
- * (https://github.com/Naoghuman/lib-action#HandleTransferData) in the ReadMe.md.
+ * For additional information how to use the <code>TransferDataBuilder</code> 
+ * plz see 'TODO add link to example in readme'.
  *
  * @author Naoghuman
+ * @see    com.github.naoghuman.lib.action.core.TransferDataBuilder
+ * @see    java.util.Optional
  * @see    javafx.event.ActionEvent
  */
-public final class TransferData {
-    
-    private Boolean booleanParameter = Boolean.FALSE;
-    private Character characterParameter;
-    private Double doubleParameter = 0.0d;
-    private Integer integerParameter = 0;
-    private Long longParameter = 0l;
-    private Object objectParameter = null;
-    private String stringParameter = "";
-    
-    private String actionId = null;
-    private String responseActionId = null;
+public interface TransferData {
 
     /**
-     * Get a stored {@link java.lang.Boolean} value.
-     * 
-     * @return The stored <code>Boolean</code> value.
-     */
-    public Boolean getBoolean() {
-        return booleanParameter;
-    }
-
-    /**
-     * Set the {@link java.lang.Boolean} value.
-     * 
-     * @param value The <code>Boolean</code> value.
-     */
-    public void setBoolean(Boolean value) {
-        this.booleanParameter = value;
-    }
-
-    /**
-     * Get a stored {@link java.lang.Character} value.
-     * 
-     * @return The stored <code>Character</code> value.
-     */
-    public Character getCharacter() {
-        return characterParameter;
-    }
-
-    /**
-     * Set a {@link java.lang.Character} value.
-     * 
-     * @param value The <code>Character</code> value.
-     */
-    public void setCharacter(Character value) {
-        this.characterParameter = value;
-    }
-    
-    /**
-     * Get the stored {@link java.lang.Double} value.
-     * 
-     * @return The stored <code>Double</code> value.
-     */
-    public Double getDouble() {
-        return doubleParameter;
-    }
-
-    /**
-     * Set a {@link java.lang.Double} value.
-     * 
-     * @param value The <code>Double</code> value.
-     */
-    public void setDouble(Double value) {
-        this.doubleParameter = value;
-    }
-
-    /**
-     * Get the stored {@link java.lang.Integer} value.
-     * 
-     * @return The stored <code>Integer</code> value.
-     */
-    public Integer getInteger() {
-        return integerParameter;
-    }
-
-    /**
-     * Set a {@link java.lang.Integer} value.
-     * 
-     * @param value The <code>Integer</code> value.
-     */
-    public void setInteger(Integer value) {
-        this.integerParameter = value;
-    }
-
-    /**
-     * Get the stored {@link java.lang.Long} value.
-     * 
-     * @return The stored <code>Long</code> value.
-     */
-    public Long getLong() {
-        return longParameter;
-    }
-
-    /**
-     * Set a {@link java.lang.Long} value.
-     * 
-     * @param value The <code>Long</code> value.
-     */
-    public void setLong(Long value) {
-        this.longParameter = value;
-    }
-
-    /**
-     * Get the stored {@link java.lang.String} value.
-     * 
-     * @return The stored <code>String</code> value.
-     */
-    public String getString() {
-        return stringParameter;
-    }
-
-    /**
-     * Set a {@link java.lang.String} value.
-     * 
-     * @param value The <code>String</code> value.
-     */
-    public void setString(String value) {
-        this.stringParameter = value;
-    }
-    
-    /**
-     * Get the stored {@link java.lang.Object} value.
-     * 
-     * @return The stored <code>Object</code> value.
-     */
-    public Object getObject() {
-        return objectParameter;
-    }
-    
-    /**
-     * Set a {@link java.lang.Object} value.
-     * 
-     * @param value The <code>Object</code> value.
-     */
-    public void setObject(Object value) {
-        this.objectParameter = value;
-    }
-    
-    /**
-     * Get the <code>actionId</code>.
+     * Get the stored {@link java.lang.String} <code>actionId</code>.
      * 
      * @return The <code>actionId</code>.
+     * @see    java.lang.String
      */
-    public String getActionId() {
-        return actionId;
-    }
+    public String getActionId();
 
     /**
-     * Set an <code>actionId</code>.
+     * Get a stored {@link java.lang.Boolean} <code>value</code> as an {@link java.util.Optional}.
      * 
-     * @param actionId The <code>actionId</code>.
+     * @return The stored value as an Optional&lt;Boolean&gt; or Optional.empty().
+     * @see    java.lang.Boolean
+     * @see    java.util.Optional
      */
-    public void setActionId(String actionId) {
-        this.actionId = actionId;
-    }
-    
-    /**
-     * Get the <code>responseActionId</code>.
-     * 
-     * @return The <code>responseActionId</code>.
-     */
-    public String getResponseActionId() {
-        return responseActionId;
-    }
+    public Optional<Boolean> getBoolean();
 
     /**
-     * Set a <code>responseActionId</code>.
-     * 
-     * @param responseActionId The <code>responseActionId</code>.
+     * Get a stored {@link java.lang.Character} <code>value</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;Character&gt; or Optional.empty().
+     * @see    java.lang.Character
+     * @see    java.util.Optional
      */
-    public void setResponseActionId(String responseActionId) {
-        this.responseActionId = responseActionId;
-    }
-    
+    public Optional<Character> getCharacter();
+
+    /**
+     * Get the stored {@link java.lang.Double} <code>value</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;Double&gt; or Optional.empty().
+     * @see    java.lang.Double
+     * @see    java.util.Optional
+     */
+    public Optional<Double> getDouble();
+
+    /**
+     * Get the stored {@link java.lang.Integer} <code>value</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;Integer&gt; or Optional.empty().
+     * @see    java.lang.Integer
+     * @see    java.util.Optional
+     */
+    public Optional<Integer> getInteger();
+
+    /**
+     * Get the stored {@link java.lang.Long} <code>value</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;Long&gt; or Optional.empty().
+     * @see    java.lang.Long
+     * @see    java.util.Optional
+     */
+    public Optional<Long> getLong();
+
+    /**
+     * Get the stored {@link java.lang.Object} <code>value</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;Object&gt; or Optional.empty().
+     * @see    java.lang.Object
+     * @see    java.util.Optional
+     */
+    public Optional<Object> getObject();
+
+    /**
+     * Get the stored {@link java.lang.String} <code>value</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;String&gt; or Optional.empty().
+     * @see    java.lang.String
+     * @see    java.util.Optional
+     */
+    public Optional<String> getString();
+
+    /**
+     * Get the stored {@link java.lang.String} <code>responseActionId</code> as an {@link java.util.Optional}.
+     *
+     * @return The stored value as an Optional&lt;String&gt; or Optional.empty().
+     * @see    java.lang.String
+     * @see    java.util.Optional
+     */
+    public Optional<String> getResponseActionId();
+
 }
