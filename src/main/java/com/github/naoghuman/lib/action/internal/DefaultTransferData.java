@@ -99,14 +99,14 @@ public final class DefaultTransferData implements TransferData {
         DefaultTransferDataValidator.getDefault().requireNonNullAndNotEmpty(actionId);
         this.actionId = actionId;
         
-        this.booleanValue     = (booleanValue     != null) ? Optional.ofNullable(booleanValue)     : Optional.empty();
-        this.characterValue   = (characterValue   != null) ? Optional.ofNullable(characterValue)   : Optional.empty();
-        this.doubleValue      = (doubleValue      != null) ? Optional.ofNullable(doubleValue)      : Optional.empty();
-        this.integerValue     = (integerValue     != null) ? Optional.ofNullable(integerValue)     : Optional.empty();
-        this.longValue        = (longValue        != null) ? Optional.ofNullable(longValue)        : Optional.empty();
-        this.objectValue      = (objectValue      != null) ? Optional.ofNullable(objectValue)      : Optional.empty();
-        this.stringValue      = (stringValue      != null) ? Optional.ofNullable(stringValue)      : Optional.empty();
-        this.responseActionId = (responseActionId != null) ? Optional.ofNullable(responseActionId) : Optional.empty();
+        this.booleanValue     = Optional.ofNullable(booleanValue);
+        this.characterValue   = Optional.ofNullable(characterValue);
+        this.doubleValue      = Optional.ofNullable(doubleValue);
+        this.integerValue     = Optional.ofNullable(integerValue);
+        this.longValue        = Optional.ofNullable(longValue);
+        this.objectValue      = Optional.ofNullable(objectValue);
+        this.stringValue      = Optional.ofNullable(stringValue);
+        this.responseActionId = Optional.ofNullable(responseActionId);
     }
 
     @Override

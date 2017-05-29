@@ -18,8 +18,8 @@
  * Contains the <code>API</code> from the library <code>Lib-Action</code>.
  * <p>
  * Main access to the functionalities in the library will happen with the facade
- * {@link com.github.naoghuman.lib.action.core.ActionFacade}.
+ * {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
  * 
- * @see com.github.naoghuman.lib.action.core.ActionFacade
+ * @see com.github.naoghuman.lib.action.core.ActionHandlerFacade
  */
 package com.github.naoghuman.lib.action.core;

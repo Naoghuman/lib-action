@@ -26,10 +26,10 @@ import javafx.event.EventHandler;
  * <code>actionId</code>.
  * 
  * The implementation from this interface {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}
- * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade}.
+ * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
  *
  * @author Naoghuman
- * @see    com.github.naoghuman.lib.action.core.ActionFacade
+ * @see    com.github.naoghuman.lib.action.core.ActionHandlerFacade
  * @see    com.github.naoghuman.lib.action.internal.DefaultActionHandler
  * @see    javafx.event.EventHandler
  */

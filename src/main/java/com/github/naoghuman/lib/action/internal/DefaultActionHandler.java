@@ -27,11 +27,11 @@ import javafx.event.EventHandler;
 
 /**
  * The implementation from the interface {@link com.github.naoghuman.lib.action.core.ActionHandler}
- * which can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade}.
+ * which can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
  *
  * @author Naoghuman
  * @see    com.github.naoghuman.lib.action.core.ActionHandler
- * @see    com.github.naoghuman.lib.action.core.ActionFacade
+ * @see    com.github.naoghuman.lib.action.core.ActionHandlerFacade
  */
 public final class DefaultActionHandler implements ActionHandler {
     

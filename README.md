@@ -20,10 +20,9 @@ Content
     - [How to register an action and use, access it](#HoToReAnAcAnUsAcIt)
     - [Usage from the builder TransferDataBuilder](#UsFrTheBuTr)
     - [Usage from the interface RegisterActions](#UsFrThInReAc)
-    - [ApplicationPresenter#registerOnActionOpenExercise()](#registerOnActionOpenExercise)
 * [Api](#Api)
-    - [com.github.naoghuman.lib.action.core.ActionFacade](#AcFa)
     - [com.github.naoghuman.lib.action.core.ActionHandler](#AcHa)
+    - [com.github.naoghuman.lib.action.core.ActionHandlerFacade](#AcHaFa)
     - [com.github.naoghuman.lib.action.core.RegisterActions](#ReAc)
     - [com.github.naoghuman.lib.action.core.TransferData](#TrDa)
     - [com.github.naoghuman.lib.action.core.TransferDataBuilder](#TrDaBu)
@@ -43,7 +42,53 @@ Examples<a name="Examples" />
 
 ### How to register an action and use, access it<a name="HoToReAnAcAnUsAcIt" />
 
-TODO
+This example shows how an `action` can be registered with an `actionId` and 
+how to `trigger` the action and `receive` the event.  
+```java
+public class ApplicationPresenter ... {
+    // Register an action with the actionId ACTION__APPLICATION__OPEN_EXERCISE
+    private void registerOnActionOpenExercise() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Exercise]"); // NOI18N
+        
+        ActionHandlerFacade.getDefault().register(
+                ACTION__APPLICATION__OPEN_EXERCISE,
+                (ActionEvent event) -> {
+                    final TransferData transferData = (TransferData) event.getSource();
+                    final Optional<Long> exerciseId = transferData.getLong();
+                    if (exerciseId.isPresent() {
+                        this.onActionOpenExerciseWithId(exerciseId.get());
+                    }
+                });
+    }
+    ...
+    // The above defined action will be executed when a user click on the exericse
+    // in the navigation.
+    private void initializeNavigationTabTopics() {
+        lvFoundedNavigationEntities.setOnMouseClicked(event -> {
+            if (
+                    event.getClickCount() == 2
+                    && !lvFoundedNavigationEntities.getSelectionModel().isEmpty()
+            ) {
+                final NavigationEntity navigationEntity = lvFoundedNavigationEntities.getSelectionModel().getSelectedItem();
+                final long exerciseId = navigationEntity.getNavigation().getEntityId();
+
+                final TransferData transferData = TransferDataBuilder.create()
+                        .actionId(ACTION__APPLICATION__OPEN_EXERCISE)
+                        .setLong(exerciseId)
+                        .build();
+                
+                ActionHandlerFacade.getDefault().handle(transferData);
+            }
+        });
+        ...
+    }
+}
+
+public interface IActionConfiguration {
+    public static final String ACTION__APPLICATION__OPEN_EXERCISE = "ACTION__APPLICATION__OPEN_EXERCISE"; // NOI18N
+    ...
+}
+```
 
 
 ### Usage from the builder TransferDataBuilder<a name="UsFrTheBuTr" />
@@ -103,7 +148,7 @@ public class ApplicationPresenter implements RegisterActions ... {
     private void registerOnActionOpenTerm() {
         LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Term]"); // NOI18N
         
-        ActionFacade.getDefault().register(
+        ActionHandlerFacade.getDefault().register(
                 ACTION__APPLICATION__OPEN_TERM,
                 (ActionEvent event) -> {
                     final TransferData transferData = (TransferData) event.getSource();
@@ -115,81 +160,9 @@ public class ApplicationPresenter implements RegisterActions ... {
 ```
 
 
-### ApplicationPresenter#registerOnActionOpenExercise()<a name="registerOnActionOpenExercise" />
-
-This example will show how an `action` will be registered with an `actionId` and 
-how to `trigger` the action.  
-```java
-public class ApplicationPresenter ... {
-    // Register an action with the actionId ACTION__APPLICATION__OPEN_EXERCISE
-private void registerOnActionOpenExercise() {
-        LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Exercise]"); // NOI18N
-        
-        ActionFacade.getDefault().register(
-                ACTION__APPLICATION__OPEN_EXERCISE,
-                (ActionEvent event) -> {
-                    final TransferData transferData = (TransferData) event.getSource();
-                    final long exercseId = transferData.getLong();
-                    this.onActionOpenExerciseWithId(exercseId);
-                });
-    }
-    ...
-    // The above defined action will be executed when a user click the exericse
-    // in the navigation.
-private void initializeNavigationTabTopics() {
-        lvFoundedNavigationEntities.setOnMouseClicked(event -> {
-            if (
-                    event.getClickCount() == 2
-                    && !lvFoundedNavigationEntities.getSelectionModel().isEmpty()
-            ) {
-                final TransferData transferData = new TransferData();
-                transferData.setActionId(ACTION__APPLICATION__OPEN_EXERCISE);
-                
-                final NavigationEntity navigationEntity = lvFoundedNavigationEntities.getSelectionModel().getSelectedItem();
-                final long exercseId = navigationEntity.getNavigation().getEntityId();
-                transferData.setLong(exercseId);
-                
-                ActionFacade.getDefault().handle(transferData);
-            }
-        });
-        ...
-    }
-}
-
-public interface IActionConfiguration {
-public static final String ACTION__APPLICATION__OPEN_EXERCISE = "ACTION__APPLICATION__OPEN_EXERCISE"; // NOI18N
-    ...
-}
-```
-
-
 
 Api<a name="Api" />
 ---
-
-### com.github.naoghuman.lib.action.core.ActionFacade<a name="AcFa" />
-
-```java
-/**
- * The facade {@link com.github.naoghuman.lib.action.core.ActionFacade} provides 
- * access to the action methods in the <code>Interface</code> 
- * {@link com.github.naoghuman.lib.action.core.ActionHandler}.
- *
- * @author Naoghuman
- * @see com.github.naoghuman.lib.action.core.ActionHandler
- */
-public final class ActionFacade implements ActionHandler {
-```
-
-```java
-/**
- * Returns a singleton instance from the class <code>ActionFacade</code>.
- * 
- * @return a singleton instance from the class <code>ActionFacade</code>.
- */
-public static final ActionFacade getDefault()
-```
-
 
 ### com.github.naoghuman.lib.action.core.ActionHandler<a name="AcHa" />
 
@@ -200,10 +173,10 @@ public static final ActionFacade getDefault()
  * <code>actionId</code>.
  * 
  * The implementation from this interface {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}
- * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionFacade}.
+ * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
  *
  * @author Naoghuman
- * @see    com.github.naoghuman.lib.action.core.ActionFacade
+ * @see    com.github.naoghuman.lib.action.core.ActionHandlerFacade
  * @see    com.github.naoghuman.lib.action.internal.DefaultActionHandler
  * @see    javafx.event.EventHandler
  */
@@ -335,6 +308,30 @@ public boolean register(final String actionId, final EventHandler<ActionEvent> e
  * @see            javafx.event.EventHandler
  */
 public boolean remove(final String actionId);
+```
+
+
+### com.github.naoghuman.lib.action.core.ActionHandlerFacade<a name="AcHaFa" />
+
+```java
+/**
+ * The facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}  
+ * provides access to the action methods in the <code>Interface</code> 
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler}.
+ *
+ * @author Naoghuman
+ * @see com.github.naoghuman.lib.action.core.ActionHandler
+ */
+public final class ActionHandlerFacade implements ActionHandler {
+```
+
+```java
+/**
+ * Returns a singleton instance from the class <code>ActionHandlerFacade</code>.
+ * 
+ * @return a singleton instance from the class <code>ActionHandlerFacade</code>.
+ */
+public static final ActionHandlerFacade getDefault()
 ```
 
 

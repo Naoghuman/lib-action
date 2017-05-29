@@ -23,29 +23,29 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The facade {@link com.github.naoghuman.lib.action.core.ActionFacade} provides 
- * access to the action methods in the <code>Interface</code> 
+ * The facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade} 
+ * provides access to the action methods in the <code>Interface</code> 
  * {@link com.github.naoghuman.lib.action.core.ActionHandler}.
  *
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.core.ActionHandler
  */
-public final class ActionFacade implements ActionHandler {
+public final class ActionHandlerFacade implements ActionHandler {
     
-    private static final Optional<ActionFacade> instance = Optional.of(new ActionFacade());
+    private static final Optional<ActionHandlerFacade> instance = Optional.of(new ActionHandlerFacade());
 
     /**
-     * Returns a singleton instance from the class <code>ActionFacade</code>.
+     * Returns a singleton instance from the class <code>ActionHandlerFacade</code>.
      * 
-     * @return a singleton instance from the class <code>ActionFacade</code>.
+     * @return a singleton instance from the class <code>ActionHandlerFacade</code>.
      */
-    public static final ActionFacade getDefault() {
+    public static final ActionHandlerFacade getDefault() {
         return instance.get();
     }
 
     private ActionHandler action = null;
     
-    private ActionFacade() {
+    private ActionHandlerFacade() {
         this.initialize();
     }
     

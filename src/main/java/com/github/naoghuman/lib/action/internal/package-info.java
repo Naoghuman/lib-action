@@ -15,6 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Contains the <code>Implementation</code> from the library <code>Lib-Action</code>.
+ * Contains the <code>implementation</code> from the library <code>Lib-Action</code>.
  */
 package com.github.naoghuman.lib.action.internal;
