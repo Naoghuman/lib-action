@@ -17,6 +17,9 @@ Content
 ---
 
 * [Examples](#Examples)
+    - [How to register an action and use, access it](#HoToReAnAcAnUsAcIt)
+    - [Usage from the builder TransferDataBuilder](#UsFrTheBuTr)
+    - [Usage from the interface RegisterActions](#UsFrThInReAc)
     - [ApplicationPresenter#registerOnActionOpenExercise()](#registerOnActionOpenExercise)
     - [IRegisterActions#registerActions()](#registerActions())
 * [Api](#Api)
@@ -38,6 +41,47 @@ Content
 
 Examples<a name="Examples" />
 ---
+
+### How to register an action and use, access it<a name="HoToReAnAcAnUsAcIt" />
+
+TODO
+
+
+### Usage from the builder TransferDataBuilder<a name="UsFrTheBuTr" />
+
+The interface [TransferData](#TrDa) is a simple readonly POJO to store optional 
+values in an [ActionEvent]. An implementation from this interface can be generated 
+with the builder class [TransferDataBuilder](#TrDaBu). All optional attributes 
+if not set will returned an [Optional#empty()].  
+The following picture shows __how__ to use the `TransferDataBuilder` to generate 
+an instance from the interface `TransferData`:
+
+_Image:_ How to generate a `TransferData` with the class `TransferDataBuilder`  
+![transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33.png][transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33]
+
+The same like above __as__ a [Business process modeling (BPM)] diagram (create with the tool [Bizagi Modeler BPMN]):
+
+_Image:_ Business process modeling diagram from `TransferDataBuilder`  
+![transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43.png][transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43]
+
+> __Hint__  
+> . The generation from a `TransferData` starts with the method `create()`.  
+> . `Green` rectangles are `mandory` attributes.  
+> . `Blue` rectangles are `optional` attributes.  
+> . The `TransferData` will then created with the last method `build()`.
+
+__Additional informations__  
+* Api: [TransferData](#TrDa)
+* Api: [TransferDataBuilder](#TrDaBu)
+* Design Pattern: [Fluent Interface]
+* Design Pattern: [Builder pattern]
+* Design Pattern: [Step builder pattern]
+
+
+### Usage from the interface RegisterActions<a name="UsFrThInReAc" />
+
+TODO
+
 
 ### ApplicationPresenter#registerOnActionOpenExercise()<a name="registerOnActionOpenExercise" />
 
@@ -797,10 +841,20 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 
+[//]: # (Images)
+[transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43]:https://cloud.githubusercontent.com/assets/8161815/26557149/7d67dc6c-449f-11e7-9567-525e63ca79a8.png
+[transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33]:https://cloud.githubusercontent.com/assets/8161815/26557100/39e271c8-449f-11e7-8925-6ba103800ca1.png
+
+
+
 [//]: # (Links)
 [ActionEvent]:http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html
+[Builder pattern]:https://en.wikipedia.org/wiki/Builder_pattern
+[Business process modeling (BPM)]:https://en.wikipedia.org/wiki/Business_process_modeling
+[Bizagi Modeler BPMN]:http://www.bizagi.com/de/produkte/plattform/modeler
 [Eclipse]:https://www.eclipse.org/
 [EventHandler]:http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html
+[Fluent Interface]:https://www.martinfowler.com/bliki/FluentInterface.html
 [FXML]:http://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
 [IntelliJ IDEA]:http://www.jetbrains.com/idea/
@@ -818,8 +872,10 @@ You can reach me under <peter.rogge@yahoo.de>.
 [log4j-core-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
+[Optional#empty()]:https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#empty--
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 [Release v0.4.1 (05.21.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.4.1
+[Step builder pattern]:http://www.svlada.com/step-builder-pattern/
 
 

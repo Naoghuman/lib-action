@@ -24,6 +24,7 @@ for more details.
 #33 [Impl] Create new interface `Validator`.
 #31 [api] Create new packages to reflect my library conventions.
 #30 [api] Create new class TransferDataBuilder.
+#12 [Api] Create new examples in ReadMe.
 
 
 
