@@ -21,7 +21,6 @@ Content
     - [Usage from the builder TransferDataBuilder](#UsFrTheBuTr)
     - [Usage from the interface RegisterActions](#UsFrThInReAc)
     - [ApplicationPresenter#registerOnActionOpenExercise()](#registerOnActionOpenExercise)
-    - [IRegisterActions#registerActions()](#registerActions())
 * [Api](#Api)
     - [com.github.naoghuman.lib.action.core.ActionFacade](#AcFa)
     - [com.github.naoghuman.lib.action.core.ActionHandler](#AcHa)
@@ -80,7 +79,40 @@ __Additional informations__
 
 ### Usage from the interface RegisterActions<a name="UsFrThInReAc" />
 
-TODO
+In this example we will see how to use the method `register()` from the 
+interface [RegisterActions](#ReAc).  
+```java
+public class ApplicationPresenter implements RegisterActions ... {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // This method will be executed during the initialization from the class 
+        // ApplicationPresenter. So all methods in this method will be registered 
+        // during the initialization.
+        this.register();
+        ...
+    }
+    ...
+    @Override
+    public void register() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register actions in [ApplicationPresenter]"); // NOI18N
+        
+        this.registerOnActionOpenTerm();
+        ...
+    }
+    ...
+    private void registerOnActionOpenTerm() {
+        LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Term]"); // NOI18N
+        
+        ActionFacade.getDefault().register(
+                ACTION__APPLICATION__OPEN_TERM,
+                (ActionEvent event) -> {
+                    final TransferData transferData = (TransferData) event.getSource();
+                    final long entityId = transferData.getLong();
+                    this.onActionOpenTermWithId(entityId);
+                });
+    }
+}
+```
 
 
 ### ApplicationPresenter#registerOnActionOpenExercise()<a name="registerOnActionOpenExercise" />
@@ -127,44 +159,6 @@ private void initializeNavigationTabTopics() {
 public interface IActionConfiguration {
 public static final String ACTION__APPLICATION__OPEN_EXERCISE = "ACTION__APPLICATION__OPEN_EXERCISE"; // NOI18N
     ...
-}
-```
-
-
-### IRegisterActions#registerActions()<a name="registerActions()" />
-
-In this example we will see how to use the methode `registerActions()` from the 
-Interface `IRegisterActions`.  
-```java
-public class ApplicationPresenter implements IRegisterActions ... {
-    @Override
-public void initialize(URL location, ResourceBundle resources) {
-        // This method will be executed during the initialization from the class 
-        // ApplicationPresenter. So all methods in this method will be registered 
-        // during the initialization.
-        this.registerActions();
-        ...
-    }
-    ...
-    @Override
-public void registerActions() {
-        LoggerFacade.getDefault().debug(this.getClass(), "Register actions in [ApplicationPresenter]"); // NOI18N
-        
-        this.registerOnActionOpenTerm();
-        ...
-    }
-    ...
-private void registerOnActionOpenTerm() {
-        LoggerFacade.getDefault().debug(this.getClass(), "Register on action open [Term]"); // NOI18N
-        
-        ActionFacade.getDefault().register(
-                ACTION__APPLICATION__OPEN_TERM,
-                (ActionEvent event) -> {
-                    final TransferData transferData = (TransferData) event.getSource();
-                    final long entityId = transferData.getLong();
-                    this.onActionOpenTermWithId(entityId);
-                });
-    }
 }
 ```
 
