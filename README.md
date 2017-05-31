@@ -17,7 +17,7 @@ Content
 ---
 
 * [Examples](#Examples)
-    - [How to register an action and use, access it](#HoToReAnAcAnUsAcIt)
+    - [How to register, use and access an action](#HoToReUsAnAcAnAc)
     - [Usage from the builder TransferDataBuilder](#UsFrTheBuTr)
     - [Usage from the interface RegisterActions](#UsFrThInReAc)
 * [Api](#Api)
@@ -40,7 +40,7 @@ Content
 Examples<a name="Examples" />
 ---
 
-### How to register an action and use, access it<a name="HoToReAnAcAnUsAcIt" />
+### How to register, use and access an action<a name="HoToReUsAnAcAnAc" />
 
 This example shows how an `action` can be registered with an `actionId` and 
 how to `trigger` the action and `receive` the event.  
