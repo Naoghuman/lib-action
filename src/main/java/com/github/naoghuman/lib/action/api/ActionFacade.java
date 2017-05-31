@@ -29,7 +29,7 @@ import javafx.event.EventHandler;
  *
  * @author Naoghuman
  * @see com.github.naoghuman.lib.action.api.ILibAction
- * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.core.ActionFacade}
+ * @deprecated Deprecated since 0.4.0. Will be replaced with {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}
  */
 @Deprecated
 public final class ActionFacade implements ILibAction {
