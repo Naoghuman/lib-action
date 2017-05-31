@@ -742,9 +742,11 @@ Download<a name="Download" />
 ---
 
 Current `version` is `0.5.0`. Main points in this release are:
-* This is a minor update.
-* Update the `examples` in the ReadMe.
-* Update the JavaDoc from the class `TransferData`.
+* This is a major update.
+* Create new package structure to reflect my new library conventions.
+* Deprecated all old classes and interfaces.
+* Update the readme to reflect the changes.
+* Update the examples in the readme to clearify the usage from the library.
 
 **Maven coordinates**  
 In context from a [Maven] project you can use following maven coordinates: 
