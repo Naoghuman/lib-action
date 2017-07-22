@@ -21,6 +21,7 @@ for more details.
 
 
 #### Enhancement
+#38 [documentation] Add UML diagram to the ReadMe.
 
 
 

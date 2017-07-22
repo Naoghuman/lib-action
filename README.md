@@ -9,6 +9,12 @@ Intention
 Lib-Action is a library for `easy` storing and accessing actions ([EventHandler]&lt;[ActionEvent]&gt;) 
 in a [JavaFX] &amp; [Maven] desktop application.
 
+_Image:_ [UML] Lib-Action  
+![UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42.png][UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42]
+
+> __Hint__  
+> The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
+
 Current `version` is `0.5.0` (05.31.2017 / MM.dd.yyyy).
 
 
@@ -823,6 +829,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [//]: # (Images)
 [transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43]:https://cloud.githubusercontent.com/assets/8161815/26557149/7d67dc6c-449f-11e7-9567-525e63ca79a8.png
 [transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33]:https://cloud.githubusercontent.com/assets/8161815/26557100/39e271c8-449f-11e7-8925-6ba103800ca1.png
+[UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42]:https://user-images.githubusercontent.com/8161815/28494737-a28b46f6-6f37-11e7-8c66-01083545c092.png
 
 
 
@@ -836,6 +843,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [Fluent Interface]:https://www.martinfowler.com/bliki/FluentInterface.html
 [FXML]:http://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm
 [General Public License 3.0]:http://www.gnu.org/licenses/gpl-3.0.en.html
+[GenMyModel]:https://www.genmymodel.com/
 [IntelliJ IDEA]:http://www.jetbrains.com/idea/
 [Issue]:https://github.com/Naoghuman/lib-action/issues
 [JavaDoc]:http://www.oracle.com/technetwork/java/javase/documentation/index-jsp-135444.html
@@ -854,5 +862,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 [Release v0.5.0 (05.31.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.5.0
 [Step builder pattern]:http://www.svlada.com/step-builder-pattern/
+[UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 
 
