@@ -15,9 +15,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Contains the <code>API</code> from the library <code>Lib-Action</code>.
+ * Contains the {@code API} from the library {@code Lib-Action}.
  * <p>
- * Main access to the functionalities in the library will happen with the facade
+ * Main access to the functionalities in this library will be during the facade
  * {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
  * 
  * @see com.github.naoghuman.lib.action.core.ActionHandlerFacade

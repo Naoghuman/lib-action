@@ -19,9 +19,9 @@ package com.github.naoghuman.lib.action.internal;
 import java.util.Objects;
 
 /**
- * This interface contains different default methods to validate if an {@link java.lang.Object} 
- * conforms specific behaviours or not. For example if an <code>Object</code> is 
- * NULL or not.
+ * This {@code Interface} contains different default methods to validate if an 
+ * {@link java.lang.Object} conforms specific behaviours or not. For example if 
+ * an {@code Object} is {@code NULL} or not.
  *
  * @author Naoghuman
  * @see    java.lang.Object
@@ -29,22 +29,22 @@ import java.util.Objects;
 public interface Validator {
     
     /**
-     * Validates if the attribute <code>value</code> isn't NULL.
+     * Validates if the attribute {@code value} isn't {@code NULL}.
      *
      * @param value the attribute which should be validated.
      * @param <T>   the type of the reference.
-     * @throws      NullPointerException if (value == NULL).
+     * @throws      NullPointerException if {@code (value == NULL)}.
      */
     public default <T> void requireNonNull(T value) throws NullPointerException {
         Objects.requireNonNull(value, "The attribute [value] can't be NULL"); // NOI18N
     }
     
     /**
-     * Validates if the attribute <code>value</code> isn't NULL and not EMPTY.
+     * Validates if the attribute {@code value} isn't {@code NULL} and not {@code EMPTY}.
      *
      * @param value the attribute which should be validated.
-     * @throws      NullPointerException if (value == NULL).
-     * @throws      IllegalArgumentException if (value.trim() == EMPTY).
+     * @throws      NullPointerException if {@code (value == NULL)}.
+     * @throws      IllegalArgumentException if {@code (value.trim() == EMPTY)}.
      */
     public default void requireNonNullAndNotEmpty(String value) throws NullPointerException, IllegalArgumentException {
         Objects.requireNonNull(value, "The attribute [value] can't be NULL"); // NOI18N

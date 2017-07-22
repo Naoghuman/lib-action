@@ -36,10 +36,10 @@ import javafx.collections.ObservableMap;
 
 /**
  * With the builder class {@link com.github.naoghuman.lib.action.core.TransferDataBuilder} 
- * the developer can create an implementation from the interface 
+ * the developer can create an implementation from the {@code Interface} 
  * {@link com.github.naoghuman.lib.action.core.TransferData}.
  * <ul>
- * <li>The first attribute <code>actionId</code> is mandory to identify the associated 
+ * <li>The first attribute {@code actionId} is mandory to identify the associated 
  * {@link javafx.event.EventHandler}.</li>
  * <li>All other attributes are optional, that means skipping them returned 
  * {@link java.util.Optional#empty()}</li>
@@ -54,7 +54,7 @@ import javafx.collections.ObservableMap;
 public final class TransferDataBuilder {
     
     /**
-     * Starts the generation from an implementation from the interface 
+     * Starts the generation from an implementation from the {@code Interface} 
      * {@link com.github.naoghuman.lib.action.core.TransferData}.
      * 
      * @return the first step ActionIdStep.
@@ -65,45 +65,45 @@ public final class TransferDataBuilder {
     }
     
     /**
-     * First step interface <code>ActionIdStep</code>.
+     * First step {@code Interface} {@code ActionIdStep}.
      */
     public interface ActionIdStep {
         
         /**
-         * Let the developer set the attribute <code>actionId</code> which is 
+         * Let the developer set the attribute {@code actionId} which is 
          * associated with an {@link javafx.event.EventHandler}.
          * <p>
-         * This attribute is mandory and must not <code>NULL</code> && not <code>EMPTY</code>.
+         * This attribute is mandory and must not {@code NULL} && not {@code EMPTY}.
          * 
          * @param  actionId identifier for the associated EventHandler.
-         * @return The next <code>Step</code> interface.
+         * @return The next {@code Step} {@code Interface}.
          * @see    javafx.event.EventHandler
          */
         public Step actionId(final String actionId);
     }
     
     /**
-     * The interface Step contains all optional attributes in the interface 
-     * {@link com.github.naoghuman.lib.action.core.TransferData} expected the 
-     * last method <code>build()</code> in the chain which builds an implementation 
-     * from the interface <code>TransferData</code>.
+     * The {@code Interface} Step contains all optional attributes in the 
+     * {@code Interface}  {@link com.github.naoghuman.lib.action.core.TransferData} 
+     * expected the last method {@code build()} in the chain which builds an 
+     * {@code Implementation} from the interface {@code TransferData}.
      * 
      * @see com.github.naoghuman.lib.action.core.TransferData
      */
     public interface Step {
         
         /**
-         * Let the developer define an optional {@link java.lang.Boolean} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.Boolean} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>Boolean</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code Boolean} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.Boolean
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -111,17 +111,17 @@ public final class TransferDataBuilder {
         public Step booleanValue(final Boolean value);
         
         /**
-         * Let the developer define an optional {@link java.lang.Character} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.Character} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>Character</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code Character} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.Character
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -129,17 +129,17 @@ public final class TransferDataBuilder {
         public Step characterValue(final Character value);
         
         /**
-         * Let the developer define an optional {@link java.lang.Double} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.Double} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>Double</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code Double} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.Double
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -147,17 +147,17 @@ public final class TransferDataBuilder {
         public Step doubleValue(final Double value);
         
         /**
-         * Let the developer define an optional {@link java.lang.Integer} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.Integer} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>Integer</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code Integer} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.Integer
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -165,17 +165,17 @@ public final class TransferDataBuilder {
         public Step integerValue(final Integer value);
         
         /**
-         * Let the developer define an optional {@link java.lang.Long} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.Long} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>Long</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code Long} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.Long
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -183,17 +183,17 @@ public final class TransferDataBuilder {
         public Step longValue(final Long value);
         
         /**
-         * Let the developer define an optional {@link java.lang.Object} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.Object} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>Object</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code Object} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.Object
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -201,17 +201,17 @@ public final class TransferDataBuilder {
         public Step objectValue(final Object value);
         
         /**
-         * Let the developer define an optional {@link java.lang.String} attribute <code>value</code>. 
+         * Let the developer define an optional {@link java.lang.String} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code> or <code>EMPTY</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL} or {@code EMPTY}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  value The <code>String</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  value The {@code String} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.String
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -219,17 +219,17 @@ public final class TransferDataBuilder {
         public Step stringValue(final String value);
         
         /**
-         * Let the developer define an optional {@link java.lang.String} attribute <code>responseActionId</code>. 
+         * Let the developer define an optional {@link java.lang.String} attribute {@code responseActionId}. 
          * <ul>
-         * <li>If set then the attribute can't be <code>NULL</code> or <code>EMPTY</code>.</li>
-         * <li>If this method is used more then ones, then the last usage will be stored for the generation 
-         * from the implementation.</li>
-         * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
+         * <li>If set then the attribute can't be {@code NULL} or {@code EMPTY}.</li>
+         * <li>If this method is used more then ones, then the last usage will be stored for the 
+         * generation from the {@code Implementation}.</li>
+         * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
          * will returned {@link java.util.Optional#empty()}.
          * </ul>
          * 
-         * @param  responseActionId The <code>String</code> value which should be stored.
-         * @return The next <code>Step</code> interface.
+         * @param  responseActionId The {@code String} value which should be stored.
+         * @return The next {@code Step} {@code Interface}.
          * @see    java.lang.String
          * @see    java.util.Optional
          * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -237,9 +237,9 @@ public final class TransferDataBuilder {
         public Step responseActionId(final String responseActionId);
         
         /**
-         * Returns an implementation from the interface {@link com.github.naoghuman.lib.action.core.TransferData}.
+         * Returns an implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.core.TransferData}.
          * 
-         * @return an implementation from the interface <code>TransferData</code>.
+         * @return an implementation from the {@code Interface} {@code TransferData}.
          * 
          * @see com.github.naoghuman.lib.action.core.TransferData
          */

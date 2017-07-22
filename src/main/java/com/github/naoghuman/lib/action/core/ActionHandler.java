@@ -23,7 +23,7 @@ import javafx.event.EventHandler;
 /**
  * With this interface the developer have access to all methods in context from 
  * store, access and manage {@link javafx.event.EventHandler}s mapped to a specific 
- * <code>actionId</code>.
+ * {@code actionId}.
  * 
  * The implementation from this interface {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}
  * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
@@ -36,11 +36,11 @@ import javafx.event.EventHandler;
 public interface ActionHandler {
     
     /**
-     * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code>.
+     * Fires an {@link javafx.event.ActionEvent} with the associated {@code actionId}.
      * <p>
      * <b>Hint:</b><br>
-     * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
-     * must before registered during the method 
+     * The {@code actionId} and its associated {@link javafx.event.EventHandler} 
+     * must registered before during the method 
      * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
      * 
      * @param actionId The actionId which allowed access to the assoziated action.
@@ -51,10 +51,10 @@ public interface ActionHandler {
     public void handle(final String actionId);
     
     /**
-     * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code> 
-     * and the given parameter <code>value</code>.
+     * Fires an {@link javafx.event.ActionEvent} with the associated {@code actionId} 
+     * and the given parameter {@code value}.
      * <p>
-     * Internal the parameter <code>data</code> will be stored in a 
+     * Internal the parameter {@code data} will be stored in a 
      * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
      * be access via:<br>
      * public void handleOnAction(ActionEvent event) {<br>
@@ -64,7 +64,7 @@ public interface ActionHandler {
      * }
      * <p>
      * <b>Hint:</b><br>
-     * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+     * The {@code actionId} and its associated {@link javafx.event.EventHandler} 
      * must before registered during the method 
      * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
      * 
@@ -78,19 +78,19 @@ public interface ActionHandler {
     public void handle(String actionId, long value);
     
     /**
-     * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code> 
+     * Fires an {@link javafx.event.ActionEvent} with the associated {@code actionId} 
      * defined in the {@link com.github.naoghuman.lib.action.core.TransferData}.
      * <p>
      * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
-     * stored in the executed <code>ActionEvent</code> and can reached with the
-     * method <code>event.getSource(): Object</code> in the overriden <code>ActionEvent</code>.
+     * stored in the executed {@code ActionEvent} and can reached with the method 
+     * {@code event.getSource(): Object} in the overriden {@code ActionEvent}.
      * <p>
      * <b>Hint:</b><br>
-     * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+     * The {@code actionId} and its associated {@link javafx.event.EventHandler} 
      * must before registered during the method 
      * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
      * 
-     * @param transferData A <code>TransferData</code> which contains the actionId and additional parameters.
+     * @param transferData A {@code TransferData} which contains the actionId and additional parameters.
      * @see                com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
      * @see                com.github.naoghuman.lib.action.core.TransferData
      * @see                javafx.event.ActionEvent
@@ -100,18 +100,18 @@ public interface ActionHandler {
     
     /**
      * Fires an {@link javafx.event.ActionEvent} for every {@link com.github.naoghuman.lib.action.core.TransferData} 
-     * with the associated <code>actionId</code> in the specific <code>TransferData</code>.
+     * with the associated {@code actionId} in the specific {@code TransferData}.
      * <p>
      * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
-     * stored in the executed <code>ActionEvent</code> and can reached with the
-     * method <code>event.getSource(): Object</code> in the overriden <code>ActionEvent</code>.
+     * stored in the executed {@code ActionEvent} and can reached with the method 
+     * {@code event.getSource(): Object} in the overriden {@code ActionEvent}.
      * <p>
      * <b>Hint:</b><br>
-     * All <code>actionIds</code> and its associated {@link javafx.event.EventHandler} 
+     * All {@code actionId}s and its associated {@link javafx.event.EventHandler} 
      * must before registered during the method 
      * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
      * 
-     * @param transferDatas A List with <code>TransferData</code> which contains the actionIds and additional parameters.
+     * @param transferDatas A List with {@code TransferData} which contains the actionIds and additional parameters.
      * @see                 com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
      * @see                 com.github.naoghuman.lib.action.core.TransferData
      * @see                 javafx.event.ActionEvent
@@ -120,30 +120,30 @@ public interface ActionHandler {
     public void handle(final ObservableList<TransferData> transferDatas);
     
     /**
-     * Checks if the specific <code>actionId</code> is registered.
+     * Checks if the specific {@code actionId} is registered.
      * 
      * @param actionId The actionId which should be check if it is exists.
-     * @return         <code>true</code> if the actionId (with associated EventHandler) 
-     *                 is registered, otherwise <code>false</code>.
+     * @return         {@code true} if the actionId (with associated EventHandler) 
+     *                 is registered, otherwise {@code false}.
      */
     public boolean isRegistered(final String actionId);
     
     /**
-     * Register an {@link javafx.event.EventHandler} with the specific <code>actionId</code>.
+     * Register an {@link javafx.event.EventHandler} with the specific {@code actionId}.
      * 
      * @param actionId     The actionId which allowed access to the associated EventHandler.
      * @param eventHandler The assoziated EventHandler which should be registered.
-     * @return             <code>true</code> if the EventHandler is registered, otherwise <code>false</code>.
+     * @return             {@code true} if the EventHandler is registered, otherwise {@code false}.
      * @see                javafx.event.EventHandler
      */
     public boolean register(final String actionId, final EventHandler<ActionEvent> eventHandler);
     
     /**
      * Removes the {@link javafx.event.EventHandler} with the specific specific 
-     * <code>actionId</code>.
+     * {@code actionId}.
      * 
      * @param actionId The actionId which should be removed with the associated EventHandler.
-     * @return         <code>true</code> if the EventHandler is removed, otherwise <code>false</code>.
+     * @return         {@code true} if the EventHandler is removed, otherwise {@code false}.
      * @see            javafx.event.EventHandler
      */
     public boolean remove(final String actionId);

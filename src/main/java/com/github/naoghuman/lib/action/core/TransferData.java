@@ -25,7 +25,7 @@ import java.util.Optional;
  * {@link com.github.naoghuman.lib.action.core.TransferDataBuilder}.<br>
  * All optional attributes if not set will returned {@link java.util.Optional#empty()}.
  * <p>
- * For additional information how to use the <code>TransferDataBuilder</code> 
+ * For additional information how to use the {@code TransferDataBuilder}
  * plz see 'TODO add link to example in readme'.
  *
  * @author Naoghuman
@@ -36,15 +36,15 @@ import java.util.Optional;
 public interface TransferData {
 
     /**
-     * Get the stored {@link java.lang.String} <code>actionId</code>.
+     * Get the stored {@link java.lang.String} {@code actionId}.
      * 
-     * @return The <code>actionId</code>.
+     * @return The {@code actionId}.
      * @see    java.lang.String
      */
     public String getActionId();
 
     /**
-     * Get a stored {@link java.lang.Boolean} <code>value</code> as an {@link java.util.Optional}.
+     * Get a stored {@link java.lang.Boolean} {@code value} as an {@link java.util.Optional}.
      * 
      * @return The stored value as an Optional&lt;Boolean&gt; or Optional.empty().
      * @see    java.lang.Boolean
@@ -53,7 +53,7 @@ public interface TransferData {
     public Optional<Boolean> getBoolean();
 
     /**
-     * Get a stored {@link java.lang.Character} <code>value</code> as an {@link java.util.Optional}.
+     * Get a stored {@link java.lang.Character} {@code value} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;Character&gt; or Optional.empty().
      * @see    java.lang.Character
@@ -62,7 +62,7 @@ public interface TransferData {
     public Optional<Character> getCharacter();
 
     /**
-     * Get the stored {@link java.lang.Double} <code>value</code> as an {@link java.util.Optional}.
+     * Get the stored {@link java.lang.Double} {@code value} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;Double&gt; or Optional.empty().
      * @see    java.lang.Double
@@ -71,7 +71,7 @@ public interface TransferData {
     public Optional<Double> getDouble();
 
     /**
-     * Get the stored {@link java.lang.Integer} <code>value</code> as an {@link java.util.Optional}.
+     * Get the stored {@link java.lang.Integer} {@code value} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;Integer&gt; or Optional.empty().
      * @see    java.lang.Integer
@@ -80,7 +80,7 @@ public interface TransferData {
     public Optional<Integer> getInteger();
 
     /**
-     * Get the stored {@link java.lang.Long} <code>value</code> as an {@link java.util.Optional}.
+     * Get the stored {@link java.lang.Long} {@code value} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;Long&gt; or Optional.empty().
      * @see    java.lang.Long
@@ -89,7 +89,7 @@ public interface TransferData {
     public Optional<Long> getLong();
 
     /**
-     * Get the stored {@link java.lang.Object} <code>value</code> as an {@link java.util.Optional}.
+     * Get the stored {@link java.lang.Object} {@code value} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;Object&gt; or Optional.empty().
      * @see    java.lang.Object
@@ -98,7 +98,7 @@ public interface TransferData {
     public Optional<Object> getObject();
 
     /**
-     * Get the stored {@link java.lang.String} <code>value</code> as an {@link java.util.Optional}.
+     * Get the stored {@link java.lang.String} {@code value} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;String&gt; or Optional.empty().
      * @see    java.lang.String
@@ -107,7 +107,7 @@ public interface TransferData {
     public Optional<String> getString();
 
     /**
-     * Get the stored {@link java.lang.String} <code>responseActionId</code> as an {@link java.util.Optional}.
+     * Get the stored {@link java.lang.String} {@code responseActionId} as an {@link java.util.Optional}.
      *
      * @return The stored value as an Optional&lt;String&gt; or Optional.empty().
      * @see    java.lang.String

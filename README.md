@@ -21,11 +21,11 @@ Content
     - [Usage from the builder TransferDataBuilder](#UsFrTheBuTr)
     - [Usage from the interface RegisterActions](#UsFrThInReAc)
 * [Api](#Api)
-    - [com.github.naoghuman.lib.action.core.ActionHandler](#AcHa)
     - [com.github.naoghuman.lib.action.core.ActionHandlerFacade](#AcHaFa)
-    - [com.github.naoghuman.lib.action.core.RegisterActions](#ReAc)
-    - [com.github.naoghuman.lib.action.core.TransferData](#TrDa)
+    - [com.github.naoghuman.lib.action.core.ActionHandler](#AcHa)
     - [com.github.naoghuman.lib.action.core.TransferDataBuilder](#TrDaBu)
+    - [com.github.naoghuman.lib.action.core.TransferData](#TrDa)
+    - [com.github.naoghuman.lib.action.core.RegisterActions](#ReAc)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -164,13 +164,37 @@ public class ApplicationPresenter implements RegisterActions ... {
 Api<a name="Api" />
 ---
 
+### com.github.naoghuman.lib.action.core.ActionHandlerFacade<a name="AcHaFa" />
+
+```java
+/**
+ * The facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade} 
+ * provides access to the default {@code Implementation} from the methods in the 
+ * {@code Interface} {@link com.github.naoghuman.lib.action.core.ActionHandler}.
+ *
+ * @author Naoghuman
+ * @see    com.github.naoghuman.lib.action.core.ActionHandler
+ */
+public final class ActionHandlerFacade implements ActionHandler
+```
+
+```java
+/**
+ * Returns a singleton instance from the class {@code ActionHandlerFacade}.
+ * 
+ * @return a singleton instance from the class {@code ActionHandlerFacade}.
+ */
+public static final ActionHandlerFacade getDefault()
+```
+
+
 ### com.github.naoghuman.lib.action.core.ActionHandler<a name="AcHa" />
 
 ```java
 /**
  * With this interface the developer have access to all methods in context from 
  * store, access and manage {@link javafx.event.EventHandler}s mapped to a specific 
- * <code>actionId</code>.
+ * {@code actionId}.
  * 
  * The implementation from this interface {@link com.github.naoghuman.lib.action.internal.DefaultActionHandler}
  * can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
@@ -180,16 +204,16 @@ Api<a name="Api" />
  * @see    com.github.naoghuman.lib.action.internal.DefaultActionHandler
  * @see    javafx.event.EventHandler
  */
-public interface ActionHandler {
+public interface ActionHandler
 ```
 
 ```java
 /**
- * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code>.
+ * Fires an {@link javafx.event.ActionEvent} with the associated {@code actionId}.
  * <p>
  * <b>Hint:</b><br>
- * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
- * must before registered during the method 
+ * The {@code actionId} and its associated {@link javafx.event.EventHandler} 
+ * must registered before during the method 
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
  * @param actionId The actionId which allowed access to the assoziated action.
@@ -202,10 +226,10 @@ public void handle(final String actionId);
 
 ```java
 /**
- * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code> 
- * and the given parameter <code>value</code>.
+ * Fires an {@link javafx.event.ActionEvent} with the associated {@code actionId} 
+ * and the given parameter {@code value}.
  * <p>
- * Internal the parameter <code>data</code> will be stored in a 
+ * Internal the parameter {@code data} will be stored in a 
  * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
  * be access via:<br>
  * public void handleOnAction(ActionEvent event) {<br>
@@ -215,7 +239,7 @@ public void handle(final String actionId);
  * }
  * <p>
  * <b>Hint:</b><br>
- * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+ * The {@code actionId} and its associated {@link javafx.event.EventHandler} 
  * must before registered during the method 
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
@@ -231,19 +255,19 @@ public void handle(String actionId, long value);
 
 ```java
 /**
- * Fires an {@link javafx.event.ActionEvent} with the associated <code>actionId</code> 
+ * Fires an {@link javafx.event.ActionEvent} with the associated {@code actionId} 
  * defined in the {@link com.github.naoghuman.lib.action.core.TransferData}.
  * <p>
  * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
- * stored in the executed <code>ActionEvent</code> and can reached with the
- * method <code>event.getSource(): Object</code> in the overriden <code>ActionEvent</code>.
+ * stored in the executed {@code ActionEvent} and can reached with the method 
+ * {@code event.getSource(): Object} in the overriden {@code ActionEvent}.
  * <p>
  * <b>Hint:</b><br>
- * The <code>actionId</code> and its associated {@link javafx.event.EventHandler} 
+ * The {@code actionId} and its associated {@link javafx.event.EventHandler} 
  * must before registered during the method 
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
- * @param transferData A <code>TransferData</code> which contains the actionId and additional parameters.
+ * @param transferData A {@code TransferData} which contains the actionId and additional parameters.
  * @see                com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see                com.github.naoghuman.lib.action.core.TransferData
  * @see                javafx.event.ActionEvent
@@ -255,18 +279,18 @@ public void handle(final TransferData transferData);
 ```java
 /**
  * Fires an {@link javafx.event.ActionEvent} for every {@link com.github.naoghuman.lib.action.core.TransferData} 
- * with the associated <code>actionId</code> in the specific <code>TransferData</code>.
+ * with the associated {@code actionId} in the specific {@code TransferData}.
  * <p>
  * The {@link com.github.naoghuman.lib.action.core.TransferData} will be 
- * stored in the executed <code>ActionEvent</code> and can reached with the
- * method <code>event.getSource(): Object</code> in the overriden <code>ActionEvent</code>.
+ * stored in the executed {@code ActionEvent} and can reached with the method 
+ * {@code event.getSource(): Object} in the overriden {@code ActionEvent}.
  * <p>
  * <b>Hint:</b><br>
- * All <code>actionIds</code> and its associated {@link javafx.event.EventHandler} 
+ * All {@code actionId}s and its associated {@link javafx.event.EventHandler} 
  * must before registered during the method 
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)}.
  * 
- * @param transferDatas A List with <code>TransferData</code> which contains the actionIds and additional parameters.
+ * @param transferDatas A List with {@code TransferData} which contains the actionIds and additional parameters.
  * @see                 com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see                 com.github.naoghuman.lib.action.core.TransferData
  * @see                 javafx.event.ActionEvent
@@ -277,22 +301,22 @@ public void handle(final ObservableList<TransferData> transferDatas);
 
 ```java
 /**
- * Checks if the specific <code>actionId</code> is registered.
+ * Checks if the specific {@code actionId} is registered.
  * 
  * @param actionId The actionId which should be check if it is exists.
- * @return         <code>true</code> if the actionId (with associated EventHandler) 
- *                 is registered, otherwise <code>false</code>.
+ * @return         {@code true} if the actionId (with associated EventHandler) 
+ *                 is registered, otherwise {@code false}.
  */
 public boolean isRegistered(final String actionId);
 ```
 
 ```java
 /**
- * Register an {@link javafx.event.EventHandler} with the specific <code>actionId</code>.
+ * Register an {@link javafx.event.EventHandler} with the specific {@code actionId}.
  * 
  * @param actionId     The actionId which allowed access to the associated EventHandler.
  * @param eventHandler The assoziated EventHandler which should be registered.
- * @return             <code>true</code> if the EventHandler is registered, otherwise <code>false</code>.
+ * @return             {@code true} if the EventHandler is registered, otherwise {@code false}.
  * @see                javafx.event.EventHandler
  */
 public boolean register(final String actionId, final EventHandler<ActionEvent> eventHandler);
@@ -301,66 +325,252 @@ public boolean register(final String actionId, final EventHandler<ActionEvent> e
 ```java
 /**
  * Removes the {@link javafx.event.EventHandler} with the specific specific 
- * <code>actionId</code>.
+ * {@code actionId}.
  * 
  * @param actionId The actionId which should be removed with the associated EventHandler.
- * @return         <code>true</code> if the EventHandler is removed, otherwise <code>false</code>.
+ * @return         {@code true} if the EventHandler is removed, otherwise {@code false}.
  * @see            javafx.event.EventHandler
  */
 public boolean remove(final String actionId);
 ```
 
 
-### com.github.naoghuman.lib.action.core.ActionHandlerFacade<a name="AcHaFa" />
+### com.github.naoghuman.lib.action.core.TransferDataBuilder<a name="TrDaBu" />
 
 ```java
 /**
- * The facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}  
- * provides access to the action methods in the <code>Interface</code> 
- * {@link com.github.naoghuman.lib.action.core.ActionHandler}.
+ * With the builder class {@link com.github.naoghuman.lib.action.core.TransferDataBuilder} 
+ * the developer can create an implementation from the {@code Interface} 
+ * {@link com.github.naoghuman.lib.action.core.TransferData}.
+ * <ul>
+ * <li>The first attribute {@code actionId} is mandory to identify the associated 
+ * {@link javafx.event.EventHandler}.</li>
+ * <li>All other attributes are optional, that means skipping them returned 
+ * {@link java.util.Optional#empty()}</li>
+ * </ul>
  *
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.core.ActionHandler
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ * @see    com.github.naoghuman.lib.action.core.TransferDataBuilder
+ * @see    java.util.Optional
+ * @see    javafx.event.EventHandler
  */
-public final class ActionHandlerFacade implements ActionHandler {
+public final class TransferDataBuilder
 ```
 
 ```java
 /**
- * Returns a singleton instance from the class <code>ActionHandlerFacade</code>.
+ * Starts the generation from an implementation from the {@code Interface} 
+ * {@link com.github.naoghuman.lib.action.core.TransferData}.
  * 
- * @return a singleton instance from the class <code>ActionHandlerFacade</code>.
+ * @return the first step ActionIdStep.
+ * @see    com.github.naoghuman.lib.action.core.TransferData
  */
-public static final ActionHandlerFacade getDefault()
-```
-
-
-### com.github.naoghuman.lib.action.core.RegisterActions<a name="ReAc" />
-
-```java
-/**
- * With this interface the developer have an <code>official</code> method to register all this methods in 
- * the implementing classes which will <code>register</code> {@link javafx.event.ActionEvent}s during the method
- * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }
- * with an specific <code>actionId</code>.
- * 
- * @author Naoghuman
- * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
- * @see javafx.event.ActionEvent
- */
-public interface RegisterActions {
+public static final ActionIdStep create()
 ```
 
 ```java
 /**
- * Implementing this method alloweds the developer to <code>register</code> all methods in the 
- * implementing class which will <code>register</code> {@link javafx.event.ActionEvent}s during the method
- * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }.
- * 
- * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
- * @see javafx.event.ActionEvent
+ * First step {@code Interface} {@code ActionIdStep}.
  */
-public void register();
+public interface ActionIdStep
+```
+
+```java
+/**
+ * Let the developer set the attribute {@code actionId} which is 
+ * associated with an {@link javafx.event.EventHandler}.
+ * <p>
+ * This attribute is mandory and must not {@code NULL} && not {@code EMPTY}.
+ * 
+ * @param  actionId identifier for the associated EventHandler.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    javafx.event.EventHandler
+ */
+public Step actionId(final String actionId);
+```
+
+```java
+/**
+ * The {@code Interface} Step contains all optional attributes in the 
+ * {@code Interface}  {@link com.github.naoghuman.lib.action.core.TransferData} 
+ * expected the last method {@code build()} in the chain which builds an 
+ * {@code Implementation} from the interface {@code TransferData}.
+ * 
+ * @see com.github.naoghuman.lib.action.core.TransferData
+ */
+public interface Step
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.Boolean} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code Boolean} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.Boolean
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step booleanValue(final Boolean value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.Character} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code Character} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.Character
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step characterValue(final Character value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.Double} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code Double} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.Double
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step doubleValue(final Double value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.Integer} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code Integer} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.Integer
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step integerValue(final Integer value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.Long} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code Long} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.Long
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step longValue(final Long value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.Object} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code Object} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.Object
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step objectValue(final Object value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.String} attribute {@code value}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL} or {@code EMPTY}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  value The {@code String} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.String
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step stringValue(final String value);
+```
+
+```java
+/**
+ * Let the developer define an optional {@link java.lang.String} attribute {@code responseActionId}. 
+ * <ul>
+ * <li>If set then the attribute can't be {@code NULL} or {@code EMPTY}.</li>
+ * <li>If this method is used more then ones, then the last usage will be stored for the 
+ * generation from the {@code Implementation}.</li>
+ * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
+ * will returned {@link java.util.Optional#empty()}.
+ * </ul>
+ * 
+ * @param  responseActionId The {@code String} value which should be stored.
+ * @return The next {@code Step} {@code Interface}.
+ * @see    java.lang.String
+ * @see    java.util.Optional
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ */
+public Step responseActionId(final String responseActionId);
+```
+
+```java
+/**
+ * Returns an implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.core.TransferData}.
+ * 
+ * @return an implementation from the {@code Interface} {@code TransferData}.
+ * 
+ * @see com.github.naoghuman.lib.action.core.TransferData
+ */
+public TransferData build();
 ```
 
 
@@ -374,7 +584,7 @@ public void register();
  * {@link com.github.naoghuman.lib.action.core.TransferDataBuilder}.<br>
  * All optional attributes if not set will returned {@link java.util.Optional#empty()}.
  * <p>
- * For additional information how to use the <code>TransferDataBuilder</code> 
+ * For additional information how to use the {@code TransferDataBuilder}
  * plz see 'TODO add link to example in readme'.
  *
  * @author Naoghuman
@@ -382,14 +592,14 @@ public void register();
  * @see    java.util.Optional
  * @see    javafx.event.ActionEvent
  */
-public final class TransferData {
+public interface TransferData
 ```
 
 ```java
 /**
- * Get the stored {@link java.lang.String} <code>actionId</code>.
+ * Get the stored {@link java.lang.String} {@code actionId}.
  * 
- * @return The <code>actionId</code>.
+ * @return The {@code actionId}.
  * @see    java.lang.String
  */
 public String getActionId();
@@ -397,7 +607,7 @@ public String getActionId();
 
 ```java
 /**
- * Get a stored {@link java.lang.Boolean} <code>value</code> as an {@link java.util.Optional}.
+ * Get a stored {@link java.lang.Boolean} {@code value} as an {@link java.util.Optional}.
  * 
  * @return The stored value as an Optional&lt;Boolean&gt; or Optional.empty().
  * @see    java.lang.Boolean
@@ -408,7 +618,7 @@ public Optional<Boolean> getBoolean();
 
 ```java
 /**
- * Get a stored {@link java.lang.Character} <code>value</code> as an {@link java.util.Optional}.
+ * Get a stored {@link java.lang.Character} {@code value} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;Character&gt; or Optional.empty().
  * @see    java.lang.Character
@@ -419,7 +629,7 @@ public Optional<Character> getCharacter();
 
 ```java
 /**
- * Get the stored {@link java.lang.Double} <code>value</code> as an {@link java.util.Optional}.
+ * Get the stored {@link java.lang.Double} {@code value} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;Double&gt; or Optional.empty().
  * @see    java.lang.Double
@@ -430,18 +640,7 @@ public Optional<Double> getDouble();
 
 ```java
 /**
- * Get the stored {@link java.lang.Integer} <code>value</code> as an {@link java.util.Optional}.
- *
- * @return The stored value as an Optional&lt;Integer&gt; or Optional.empty().
- * @see    java.lang.Integer
- * @see    java.util.Optional
- */
-public Integer getInteger()
-```
-
-```java
-/**
- * Get the stored {@link java.lang.Integer} <code>value</code> as an {@link java.util.Optional}.
+ * Get the stored {@link java.lang.Integer} {@code value} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;Integer&gt; or Optional.empty().
  * @see    java.lang.Integer
@@ -449,11 +648,10 @@ public Integer getInteger()
  */
 public Optional<Integer> getInteger();
 ```
-```
 
 ```java
 /**
- * Get the stored {@link java.lang.Long} <code>value</code> as an {@link java.util.Optional}.
+ * Get the stored {@link java.lang.Long} {@code value} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;Long&gt; or Optional.empty().
  * @see    java.lang.Long
@@ -464,7 +662,7 @@ public Optional<Long> getLong();
 
 ```java
 /**
- * Get the stored {@link java.lang.Object} <code>value</code> as an {@link java.util.Optional}.
+ * Get the stored {@link java.lang.Object} {@code value} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;Object&gt; or Optional.empty().
  * @see    java.lang.Object
@@ -475,7 +673,7 @@ public Optional<Object> getObject();
 
 ```java
 /**
- * Get the stored {@link java.lang.String} <code>value</code> as an {@link java.util.Optional}.
+ * Get the stored {@link java.lang.String} {@code value} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;String&gt; or Optional.empty().
  * @see    java.lang.String
@@ -486,7 +684,7 @@ public Optional<String> getString();
 
 ```java
 /**
- * Get the stored {@link java.lang.String} <code>responseActionId</code> as an {@link java.util.Optional}.
+ * Get the stored {@link java.lang.String} {@code responseActionId} as an {@link java.util.Optional}.
  *
  * @return The stored value as an Optional&lt;String&gt; or Optional.empty().
  * @see    java.lang.String
@@ -496,245 +694,33 @@ public Optional<String> getResponseActionId();
 ```
 
 
-### com.github.naoghuman.lib.action.core.TransferDataBuilder<a name="TrDaBu" />
-
+### com.github.naoghuman.lib.action.core.RegisterActions<a name="ReAc" />
 
 ```java
 /**
- * With the builder class {@link com.github.naoghuman.lib.action.core.TransferDataBuilder} 
- * the developer can create an implementation from the interface 
- * {@link com.github.naoghuman.lib.action.core.TransferData}.
- * <ul>
- * <li>The first attribute <code>actionId</code> is mandory to identify the associated 
- * {@link javafx.event.EventHandler}.</li>
- * <li>All other attributes are optional, that means skipping them returned 
- * {@link java.util.Optional#empty()}</li>
- * </ul>
- *
+ * With this interface the developer have an {@code official} method to register all this methods in 
+ * the implementing classes which will {@code register} {@link javafx.event.ActionEvent}s during the method
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }
+ * with an specific {@code actionId}.
+ * 
  * @author Naoghuman
- * @see    com.github.naoghuman.lib.action.core.TransferData
- * @see    com.github.naoghuman.lib.action.core.TransferDataBuilder
- * @see    java.util.Optional
- * @see    javafx.event.EventHandler
+ * @see    com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
+ * @see    javafx.event.ActionEvent
  */
-public final class TransferDataBuilder 
+public interface RegisterActions
 ```
 
 ```java
 /**
- * Starts the generation from an implementation from the interface 
- * {@link com.github.naoghuman.lib.action.core.TransferData}.
+ * Implementing this method alloweds the developer to {@code register} all methods in the 
+ * implementing class which will {@code register} {@link javafx.event.ActionEvent}s during the method
+ * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }.
  * 
- * @return the first step ActionIdStep.
- * @see    com.github.naoghuman.lib.action.core.TransferData
+ * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
+ * @see javafx.event.ActionEvent
  */
-public static final ActionIdStep create()
+public void register();
 ```
-
-```java
-/**
- * First step interface <code>ActionIdStep</code>.
- */
-public interface ActionIdStep 
-```
-
-```java
-/**
- * Let the developer set the attribute <code>actionId</code> which is 
- * associated with an {@link javafx.event.EventHandler}.
- * <p>
- * This attribute is mandory and must not <code>NULL</code> && not <code>EMPTY</code>.
- * 
- * @param  actionId identifier for the associated EventHandler.
- * @return The next <code>Step</code> interface.
- * @see    javafx.event.EventHandler
- */
-public Step actionId(final String actionId);
-```
-
-```java
-/**
- * The interface Step contains all optional attributes in the interface 
- * {@link com.github.naoghuman.lib.action.core.TransferData} expected the 
- * last method <code>build()</code> in the chain which builds an implementation 
- * from the interface <code>TransferData</code>.
- * 
- * @see com.github.naoghuman.lib.action.core.TransferData
- */
-public interface Step {
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.Boolean} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>Boolean</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.Boolean
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step booleanValue(final Boolean value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.Character} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>Character</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.Character
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step characterValue(final Character value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.Double} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>Double</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.Double
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step doubleValue(final Double value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.Integer} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>Integer</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.Integer
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step integerValue(final Integer value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.Long} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>Long</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.Long
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step longValue(final Long value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.Object} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>Object</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.Object
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step objectValue(final Object value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.String} attribute <code>value</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code> or <code>EMPTY</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  value The <code>String</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.String
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step stringValue(final String value);
-```
-
-```java
-/**
- * Let the developer define an optional {@link java.lang.String} attribute <code>responseActionId</code>. 
- * <ul>
- * <li>If set then the attribute can't be <code>NULL</code> or <code>EMPTY</code>.</li>
- * <li>If this method is used more then ones, then the last usage will be stored for the generation 
- * from the implementation.</li>
- * <li>If not set then the implementation from {@link com.github.naoghuman.lib.action.core.TransferData}
- * will returned {@link java.util.Optional#empty()}.
- * </ul>
- * 
- * @param  responseActionId The <code>String</code> value which should be stored.
- * @return The next <code>Step</code> interface.
- * @see    java.lang.String
- * @see    java.util.Optional
- * @see    com.github.naoghuman.lib.action.core.TransferData
- */
-public Step responseActionId(final String responseActionId);
-```
-
-```java
-/**
- * Returns an implementation from the interface {@link com.github.naoghuman.lib.action.core.TransferData}.
- * 
- * @return an implementation from the interface <code>TransferData</code>.
- * 
- * @see com.github.naoghuman.lib.action.core.TransferData
- */
-public TransferData build();
-```
-
 
 
 

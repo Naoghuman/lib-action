@@ -20,12 +20,12 @@ import com.github.naoghuman.lib.action.core.TransferData;
 import java.util.Optional;
 
 /**
- * The implementation from the interface {@link com.github.naoghuman.lib.action.core.TransferData}.<br>
- * This implementation is a simple readonly POJO. All attributes (expected <code>actionId</code>) 
+ * The {@code Implementation} from the {@code Interface} {@link com.github.naoghuman.lib.action.core.TransferData}.<br>
+ * This {@code Implementation} is a simple readonly POJO. All attributes (expected {@code actionId}) 
  * are optional, which means if the xy attribute is not set then an {@link java.util.Optional#empty()} 
  * will instead returned.
  * <p>
- * An instance from this calss can be generated with the builder 
+ * An instance from this class can be generated with the fluent builder 
  * {@link com.github.naoghuman.lib.action.core.TransferDataBuilder}.
  *
  * @author Naoghuman
@@ -36,7 +36,8 @@ import java.util.Optional;
 public final class DefaultTransferData implements TransferData {
     
     /**
-     * Factory method to create an instance from the interface {@link com.github.naoghuman.lib.action.core.TransferData}.
+     * Factory method to create an instance from the interface 
+     * {@link com.github.naoghuman.lib.action.core.TransferData}.
      * 
      * @param actionId         mandory attribute which can't be NULL or EMPTY.
      * @param booleanValue     optional attribute, if set then can't be NULL.
@@ -47,7 +48,7 @@ public final class DefaultTransferData implements TransferData {
      * @param objectValue      optional attribute, if set then can't be NULL.
      * @param stringValue      optional attribute, if set then can't be NULL or EMPTY.
      * @param responseActionId optional attribute, if set then can't be NULL or EMPTY.
-     * @return                 an instance from the interface <code>TransferData</code>.
+     * @return                 an instance from the {@code Interface} {@code TransferData}.
      * @see                    com.github.naoghuman.lib.action.core.TransferData
      * @see                    java.util.Optional
      */

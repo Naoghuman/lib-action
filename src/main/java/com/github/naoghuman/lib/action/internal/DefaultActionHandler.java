@@ -26,7 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * The implementation from the interface {@link com.github.naoghuman.lib.action.core.ActionHandler}
+ * The implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.core.ActionHandler}
  * which can be access over the facade {@link com.github.naoghuman.lib.action.core.ActionHandlerFacade}.
  *
  * @author Naoghuman

@@ -19,8 +19,8 @@ package com.github.naoghuman.lib.action.internal;
 import java.util.Optional;
 
 /**
- * An implementation from the interface {@link com.github.naoghuman.lib.action.internal.Validator} 
- * for the validation in context from the interface {@link com.github.naoghuman.lib.action.core.TransferData}.
+ * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.internal.Validator} 
+ * for the validation in context from the {@code Interface} {@link com.github.naoghuman.lib.action.core.TransferData}.
  *
  * @author Naoghuman
  * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -31,9 +31,9 @@ public class DefaultTransferDataValidator implements Validator {
     private static final Optional<DefaultTransferDataValidator> INSTANCE = Optional.of(new DefaultTransferDataValidator());
 
     /**
-     * Returns a singleton instance from the class <code>DefaultTransferDataValidator</code>.
+     * Returns a singleton instance from the class {@code DefaultTransferDataValidator}.
      *
-     * @return a singleton instance from this class.
+     * @return a singleton instance from this class {@code DefaultTransferDataValidator}.
      */
     public static final DefaultTransferDataValidator getDefault() {
         return INSTANCE.get();

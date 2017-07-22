@@ -17,20 +17,20 @@
 package com.github.naoghuman.lib.action.core;
 
 /**
- * With this interface the developer have an <code>official</code> method to register all this methods in 
- * the implementing classes which will <code>register</code> {@link javafx.event.ActionEvent}s during the method
+ * With this interface the developer have an {@code official} method to register all this methods in 
+ * the implementing classes which will {@code register} {@link javafx.event.ActionEvent}s during the method
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }
- * with an specific <code>actionId</code>.
+ * with an specific {@code actionId}.
  * 
  * @author Naoghuman
- * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
- * @see javafx.event.ActionEvent
+ * @see    com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
+ * @see    javafx.event.ActionEvent
  */
 public interface RegisterActions {
     
     /**
-     * Implementing this method alloweds the developer to <code>register</code> all methods in the 
-     * implementing class which will <code>register</code> {@link javafx.event.ActionEvent}s during the method
+     * Implementing this method alloweds the developer to {@code register} all methods in the 
+     * implementing class which will {@code register} {@link javafx.event.ActionEvent}s during the method
      * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }.
      * 
      * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
