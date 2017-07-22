@@ -29,6 +29,7 @@ for more details.
 
 
 #### Refactoring
+#40 [pom] Update the dependency to the library 'Lib-Logger'. 
 
 
 
