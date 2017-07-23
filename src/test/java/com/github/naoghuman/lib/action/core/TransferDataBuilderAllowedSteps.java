@@ -33,17 +33,20 @@ public class TransferDataBuilderAllowedSteps {
            the associated EventHandler which fires the ActionEvent.
          - All other attributes are optional. If not set then Optional<T>.empty()
            will returned.
+         - Exception is the method 'disableLogging()' which allowed the developer
+           to disable the logging from the 'TransferData' during the ActionEvent.
         */
         final TransferData transferData = TransferDataBuilder.create()
                 .actionId("actionId")                 // mandory (NOT NULL && NOT EMPTY)
-                .booleanValue(Boolean.FALSE)          // optinal
-                .characterValue(Character.MIN_VALUE)  // optinal
-                .doubleValue(Double.NaN)              // optinal
-                .integerValue(Integer.MIN_VALUE)      // optinal
-                .longValue(Long.MIN_VALUE)            // optinal
-                .objectValue(new Point())             // optinal
-                .stringValue("value")                 // optinal
-                .responseActionId("responseActionId") // optinal
+                .disableLogging()                     // optional (if used, then the logging is disabled)
+                .booleanValue(Boolean.FALSE)          // optional
+                .characterValue(Character.MIN_VALUE)  // optional
+                .doubleValue(Double.NaN)              // optional
+                .integerValue(Integer.MIN_VALUE)      // optional
+                .longValue(Long.MIN_VALUE)            // optional
+                .objectValue(new Point())             // optional
+                .stringValue("value")                 // optional
+                .responseActionId("responseActionId") // optional
                 .build();
         
         /*
@@ -56,8 +59,8 @@ public class TransferDataBuilderAllowedSteps {
         */
         TransferDataBuilder.create().actionId("actionId").build();
         TransferDataBuilder.create().actionId("actionId").longValue(0L).build();
-        TransferDataBuilder.create().actionId("actionId").integerValue(1).longValue(0L).build();
-        TransferDataBuilder.create().actionId("actionId").integerValue(1).booleanValue(Boolean.FALSE).build();
+        TransferDataBuilder.create().actionId("actionId").disableLogging().integerValue(1).longValue(0L).build();
+        TransferDataBuilder.create().actionId("actionId").disableLogging().integerValue(1).booleanValue(Boolean.FALSE).build();
         
     }
     

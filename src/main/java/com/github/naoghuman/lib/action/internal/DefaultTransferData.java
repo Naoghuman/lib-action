@@ -48,9 +48,12 @@ public final class DefaultTransferData implements TransferData {
      * @param objectValue      optional attribute, if set then can't be NULL.
      * @param stringValue      optional attribute, if set then can't be NULL or EMPTY.
      * @param responseActionId optional attribute, if set then can't be NULL or EMPTY.
+     * @param loggingDisabled  flag which dicides if the {@code TransferData} should be
+     *                         logged during the {@link javafx.event.ActionEvent} or not.
      * @return                 an instance from the {@code Interface} {@code TransferData}.
      * @see                    com.github.naoghuman.lib.action.core.TransferData
      * @see                    java.util.Optional
+     * @see                    javafx.event.ActionEvent
      */
     public static final TransferData create(
             final String actionId,
@@ -61,7 +64,8 @@ public final class DefaultTransferData implements TransferData {
             final Long      longValue,
             final Object    objectValue,
             final String    stringValue,
-            final String    responseActionId
+            final String    responseActionId,
+            final boolean   loggingDisabled
     ) {
         return new DefaultTransferData(
                 actionId,
@@ -72,8 +76,11 @@ public final class DefaultTransferData implements TransferData {
                 longValue,
                 objectValue,
                 stringValue,
-                responseActionId);
+                responseActionId,
+                loggingDisabled);
     }
+    
+    private final boolean loggingDisabled;
     
     private final Optional<Boolean>   booleanValue;
     private final Optional<Character> characterValue;
@@ -95,7 +102,8 @@ public final class DefaultTransferData implements TransferData {
             final Long      longValue,
             final Object    objectValue,
             final String    stringValue,
-            final String    responseActionId
+            final String    responseActionId,
+            final boolean   loggingDisabled
     ) {
         DefaultTransferDataValidator.getDefault().requireNonNullAndNotEmpty(actionId);
         this.actionId = actionId;
@@ -108,6 +116,8 @@ public final class DefaultTransferData implements TransferData {
         this.objectValue      = Optional.ofNullable(objectValue);
         this.stringValue      = Optional.ofNullable(stringValue);
         this.responseActionId = Optional.ofNullable(responseActionId);
+        
+        this.loggingDisabled   = loggingDisabled;
     }
 
     @Override
@@ -153,6 +163,44 @@ public final class DefaultTransferData implements TransferData {
     @Override
     public Optional<String> getString() {
         return stringValue;
+    }
+
+    @Override
+    public boolean isLoggingDisabled() {
+        return loggingDisabled;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("TransferData ["); // NOI18N
+        sb.append("[actionId=").append(booleanValue.get().toString()).append("]"); // NOI18N
+        sb.append(", [loggingDisabled=").append(String.valueOf(loggingDisabled)).append("]"); // NOI18N
+        
+        if (booleanValue.isPresent()) {
+            sb.append(", [Boolean=").append(String.valueOf(booleanValue.get())).append("]"); // NOI18N
+        }
+        if (characterValue.isPresent()) {
+            sb.append(", [Character=").append(String.valueOf(characterValue.get())).append("]"); // NOI18N
+        }
+        if (doubleValue.isPresent()) {
+            sb.append(", [Double=").append(String.valueOf(doubleValue.get())).append("]"); // NOI18N
+        }
+        if (integerValue.isPresent()) {
+            sb.append(", [Integer=").append(String.valueOf(integerValue.get())).append("]"); // NOI18N
+        }
+        if (objectValue.isPresent()) {
+            sb.append(", [Object=").append(String.valueOf(objectValue.get())).append("]"); // NOI18N
+        }
+        if (stringValue.isPresent()) {
+            sb.append(", [String=").append(stringValue.get()).append("]"); // NOI18N
+        }
+        if (responseActionId.isPresent()) {
+            sb.append(", [responseActionId=").append(responseActionId.get()).append("]"); // NOI18N
+        }
+        sb.append("]"); // NOI18N
+        
+        return sb.toString();
     }
     
 }

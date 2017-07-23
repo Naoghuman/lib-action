@@ -43,12 +43,15 @@ import javafx.collections.ObservableMap;
  * {@link javafx.event.EventHandler}.</li>
  * <li>All other attributes are optional, that means skipping them returned 
  * {@link java.util.Optional#empty()}</li>
+ * <li>Exception is the method {@code disableLogging()} which allowed the developer
+ * to disable the logging from the {@code TransferData} during the {@link javafx.event.ActionEvent}.</li>
  * </ul>
  *
  * @author Naoghuman
  * @see    com.github.naoghuman.lib.action.core.TransferData
  * @see    com.github.naoghuman.lib.action.core.TransferDataBuilder
  * @see    java.util.Optional
+ * @see    javafx.event.ActionEvent
  * @see    javafx.event.EventHandler
  */
 public final class TransferDataBuilder {
@@ -91,6 +94,18 @@ public final class TransferDataBuilder {
      * @see com.github.naoghuman.lib.action.core.TransferData
      */
     public interface Step {
+        
+        /**
+         * Let the developer disable the logging from the {@link com.github.naoghuman.lib.action.core.TransferData}
+         * during the {@link javafx.event.ActionEvent}.
+         * <p>
+         * {@code Default} the logging is activated.
+         * 
+         * @return The next {@code Step} {@code Interface}.
+         * @see    com.github.naoghuman.lib.action.core.TransferData
+         * @see    javafx.event.ActionEvent
+         */
+        public Step disableLogging();
         
         /**
          * Let the developer define an optional {@link java.lang.Boolean} attribute {@code value}. 
@@ -257,6 +272,7 @@ public final class TransferDataBuilder {
         private static final String ATTR__OBJECT_VALUE       = "objectValue";      // NOI18N
         private static final String ATTR__STRING_VALUE       = "stringValue";      // NOI18N
         private static final String ATTR__RESPONSE_ACTION_ID = "responseActionId"; // NOI18N
+        private static final String ATTR__LOG_TRANSFERDATA   = "logTransferData";  // NOI18N
     
         @SuppressWarnings("rawtypes")
         private final ObservableMap<String, Property> properties = FXCollections.observableHashMap();
@@ -275,6 +291,7 @@ public final class TransferDataBuilder {
             properties.put(ATTR__OBJECT_VALUE,       new SimpleObjectProperty());
             properties.put(ATTR__STRING_VALUE,       new SimpleStringProperty());
             properties.put(ATTR__RESPONSE_ACTION_ID, new SimpleStringProperty());
+            properties.put(ATTR__LOG_TRANSFERDATA,   new SimpleBooleanProperty(Boolean.FALSE));
         }
 
         @Override
@@ -285,7 +302,14 @@ public final class TransferDataBuilder {
             
             return this;
         }
-
+        
+        @Override
+        public Step disableLogging() {
+            properties.put(ATTR__LOG_TRANSFERDATA, new SimpleBooleanProperty(Boolean.TRUE));
+            
+            return this;
+        }
+        
         @Override
         public Step booleanValue(final Boolean value) {
             DefaultTransferDataValidator.getDefault().requireNonNull(value);
@@ -370,6 +394,7 @@ public final class TransferDataBuilder {
             final ObjectProperty objectValue      = (ObjectProperty) properties.get(ATTR__OBJECT_VALUE);
             final StringProperty stringValue      = (StringProperty) properties.get(ATTR__STRING_VALUE);
             final StringProperty responseActionId = (StringProperty) properties.get(ATTR__RESPONSE_ACTION_ID);
+            final BooleanProperty logTransferData = (BooleanProperty) properties.get(ATTR__LOG_TRANSFERDATA);
             
             // Create a new TransferData
             return DefaultTransferData.create(
@@ -381,7 +406,8 @@ public final class TransferDataBuilder {
                     longValue.getValue(),
                     objectValue.getValue(),
                     stringValue.getValue(),
-                    responseActionId.getValue());
+                    responseActionId.getValue(),
+                    logTransferData.get());
         }
         
     }

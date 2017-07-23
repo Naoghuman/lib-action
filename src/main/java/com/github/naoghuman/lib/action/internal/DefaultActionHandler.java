@@ -67,7 +67,10 @@ public final class DefaultActionHandler implements ActionHandler {
         }
         
         LoggerFacade.getDefault().debug(ActionHandler.class, "Handle action: " + transferData.getActionId()); // NOI18N
-
+        if (!transferData.isLoggingDisabled()) {
+           LoggerFacade.getDefault().debug(ActionHandler.class, transferData.toString());
+        }
+        
         final ActionEvent event = new ActionEvent(transferData, null);
         ACTIONS.get(transferData.getActionId()).handle(event);
     }
@@ -88,7 +91,7 @@ public final class DefaultActionHandler implements ActionHandler {
         }
         
         LoggerFacade.getDefault().info(ActionHandler.class, 
-                "The given [actionId==" + actionId // NOI18N
+                "The given [actionId=" + actionId // NOI18N
                 + "] exists: " + isRegistered);    // NOI18N
                 
         return isRegistered;
@@ -103,7 +106,7 @@ public final class DefaultActionHandler implements ActionHandler {
         }
         
         LoggerFacade.getDefault().info(ActionHandler.class, 
-                "The given [actionId==" + actionId // NOI18N
+                "The given [actionId=" + actionId // NOI18N
                 + "] is successfully registered: " + isRegistered);    // NOI18N
 
         return isRegistered;
@@ -118,7 +121,7 @@ public final class DefaultActionHandler implements ActionHandler {
         }
         
         LoggerFacade.getDefault().info(ActionHandler.class, 
-                "The given [actionId==" + actionId // NOI18N
+                "The given [actionId=" + actionId // NOI18N
                 + "] is successfully removed: " + isRemoved);    // NOI18N
 
         return isRemoved;

@@ -114,5 +114,18 @@ public interface TransferData {
      * @see    java.util.Optional
      */
     public Optional<String> getResponseActionId();
+    
+    /**
+     * This flag allowed the developer to verify if the logging from the 
+     * {@link com.github.naoghuman.lib.action.core.TransferData} during the 
+     * {@link javafx.event.ActionEvent} is disabled or not.
+     * <p>
+     * {@code Default} the logging is enabled.
+     * 
+     * @return {@code TRUE} if the logging from the {@code TransferData} disabled
+     *         during the handling from the {@code ActionEvent} otherwise {@code FALSE}.
+     * @see    javafx.event.ActionEvent
+     */
+    public boolean isLoggingDisabled();
 
 }

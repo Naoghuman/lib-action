@@ -101,28 +101,53 @@ public interface IActionConfiguration {
 
 The interface [TransferData](#TrDa) is a simple readonly POJO to store optional 
 values in an [ActionEvent]. An implementation from this interface can be generated 
-with the builder class [TransferDataBuilder](#TrDaBu). All optional attributes 
-if not set will returned an [Optional#empty()].  
-The following picture shows __how__ to use the `TransferDataBuilder` to generate 
+with the builder class [TransferDataBuilder](#TrDaBu).  
+The following code snippet shows __how__ to use the `TransferDataBuilder` to generate 
 an instance from the interface `TransferData`:
 
-_Image:_ How to generate a `TransferData` with the class `TransferDataBuilder`  
-![transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33.png][transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33]
-
-The same like above __as__ a [Business process modeling (BPM)] diagram (create with the tool [Bizagi Modeler BPMN]):
-
-_Image:_ Business process modeling diagram from `TransferDataBuilder`  
-![transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43.png][transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43]
-
-> __Hint__  
-> . The generation from a `TransferData` starts with the method `create()`.  
-> . `Green` rectangles are `mandory` attributes.  
-> . `Blue` rectangles are `optional` attributes.  
-> . The `TransferData` will then created with the last method `build()`.
+```java
+TransferDataBuilderAllowedSteps() {
+        
+    /*
+    The TransferDataBuilder creates an TransferData which can be used to store
+    additional data in an ActionEvent.
+     - The attribute 'actionId' is mandory. The attribute is needed to identify
+       the associated EventHandler which fires the ActionEvent.
+     - All other attributes are optional. If not set then Optional<T>.empty()
+       will returned.
+     - Exception is the method 'disableLogging()' which allowed the developer
+       to disable the logging from the 'TransferData' during the ActionEvent.
+    */
+    final TransferData transferData = TransferDataBuilder.create()
+            .actionId("actionId")                 // mandory (NOT NULL && NOT EMPTY)
+            .disableLogging()                     // optional (if used, then the logging is disabled)
+            .booleanValue(Boolean.FALSE)          // optional
+            .characterValue(Character.MIN_VALUE)  // optional
+            .doubleValue(Double.NaN)              // optional
+            .integerValue(Integer.MIN_VALUE)      // optional
+            .longValue(Long.MIN_VALUE)            // optional
+            .objectValue(new Point())             // optional
+            .stringValue("value")                 // optional
+            .responseActionId("responseActionId") // optional
+            .build();
+        
+    /*
+    Examples from diffrent combinations with the builder.
+     - The mandory attribute 'actionId' is the first attribute after the 
+       method create().
+     - The sequence from all optinal attributes aren't fixed.
+     - If one optional attribute used twice or more then the last usage will 
+       be stored.
+    */
+    TransferDataBuilder.create().actionId("actionId").build();
+    TransferDataBuilder.create().actionId("actionId").longValue(0L).build();
+    TransferDataBuilder.create().actionId("actionId").disableLogging().integerValue(1).longValue(0L).build();
+    TransferDataBuilder.create().actionId("actionId").disableLogging().integerValue(1).booleanValue(Boolean.FALSE).build();
+        
+}
+```
 
 __Additional informations__  
-* Api: [TransferData](#TrDa)
-* Api: [TransferDataBuilder](#TrDaBu)
 * Design Pattern: [Fluent Interface]
 * Design Pattern: [Builder pattern]
 * Design Pattern: [Step builder pattern]
@@ -158,8 +183,10 @@ public class ApplicationPresenter implements RegisterActions ... {
                 ACTION__APPLICATION__OPEN_TERM,
                 (ActionEvent event) -> {
                     final TransferData transferData = (TransferData) event.getSource();
-                    final long entityId = transferData.getLong();
-                    this.onActionOpenTermWithId(entityId);
+                    final Optional<Long> entityId = transferData.getLong();
+                    if (entityId.isPresent()) {
+                        this.onActionOpenTermWithId(entityId);
+                    }
                 });
     }
 }
@@ -353,12 +380,15 @@ public boolean remove(final String actionId);
  * {@link javafx.event.EventHandler}.</li>
  * <li>All other attributes are optional, that means skipping them returned 
  * {@link java.util.Optional#empty()}</li>
+ * <li>Exception is the method {@code disableLogging()} which allowed the developer
+ * to disable the logging from the {@code TransferData} during the {@link javafx.event.ActionEvent}.</li>
  * </ul>
  *
  * @author Naoghuman
  * @see    com.github.naoghuman.lib.action.core.TransferData
  * @see    com.github.naoghuman.lib.action.core.TransferDataBuilder
  * @see    java.util.Optional
+ * @see    javafx.event.ActionEvent
  * @see    javafx.event.EventHandler
  */
 public final class TransferDataBuilder
@@ -406,6 +436,20 @@ public Step actionId(final String actionId);
  * @see com.github.naoghuman.lib.action.core.TransferData
  */
 public interface Step
+```
+
+```java
+/**
+ * Let the developer disable the logging from the {@link com.github.naoghuman.lib.action.core.TransferData}
+ * during the {@link javafx.event.ActionEvent}.
+ * <p>
+ * {@code Default} the logging is activated.
+ * 
+ * @return The next {@code Step} {@code Interface}.
+ * @see    com.github.naoghuman.lib.action.core.TransferData
+ * @see    javafx.event.ActionEvent
+ */
+public Step disableLogging();
 ```
 
 ```java
@@ -699,6 +743,21 @@ public Optional<String> getString();
 public Optional<String> getResponseActionId();
 ```
 
+```java
+/**
+ * This flag allowed the developer to verify if the logging from the 
+ * {@link com.github.naoghuman.lib.action.core.TransferData} during the 
+ * {@link javafx.event.ActionEvent} is disabled or not.
+ * <p>
+ * {@code Default} the logging is enabled.
+ * 
+ * @return {@code TRUE} if the logging from the {@code TransferData} disabled
+ *         during the handling from the {@code ActionEvent} otherwise {@code FALSE}.
+ * @see    javafx.event.ActionEvent
+ */
+public boolean isLoggingDisabled();
+```
+
 
 ### com.github.naoghuman.lib.action.core.RegisterActions<a name="ReAc" />
 
@@ -827,8 +886,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
-[transferdatabuilder_allowed-combinations_v0.5.0_2017-05-29_18-43]:https://cloud.githubusercontent.com/assets/8161815/26557149/7d67dc6c-449f-11e7-9567-525e63ca79a8.png
-[transferdatabuilder_allowed-combinations_v0.5.0_2017-05-28_18-33]:https://cloud.githubusercontent.com/assets/8161815/26557100/39e271c8-449f-11e7-8925-6ba103800ca1.png
 [UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42]:https://user-images.githubusercontent.com/8161815/28494737-a28b46f6-6f37-11e7-8c66-01083545c092.png
 
 
@@ -836,8 +893,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [//]: # (Links)
 [ActionEvent]:http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html
 [Builder pattern]:https://en.wikipedia.org/wiki/Builder_pattern
-[Business process modeling (BPM)]:https://en.wikipedia.org/wiki/Business_process_modeling
-[Bizagi Modeler BPMN]:http://www.bizagi.com/de/produkte/plattform/modeler
 [Eclipse]:https://www.eclipse.org/
 [EventHandler]:http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html
 [Fluent Interface]:https://www.martinfowler.com/bliki/FluentInterface.html
@@ -857,7 +912,6 @@ You can reach me under <peter.rogge@yahoo.de>.
 [log4j-core-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
-[Optional#empty()]:https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#empty--
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
 [Release v0.5.0 (05.31.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.5.0

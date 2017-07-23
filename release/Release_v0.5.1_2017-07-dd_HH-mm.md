@@ -22,6 +22,7 @@ for more details.
 
 #### Enhancement
 #38 [documentation] Add UML diagram to the ReadMe.
+#34 [New] New flag in ActionFacade which allowed logging TransferData.
 
 
 
