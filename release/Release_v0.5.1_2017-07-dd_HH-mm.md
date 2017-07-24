@@ -33,6 +33,7 @@ for more details.
 #### Refactoring
 #40 [pom] Update the dependency to the library 'Lib-Logger'.
 #39 [JavaDoc] Use {@code xy} instead the tag <code> in JavaDoc.
+#36 [Documentation] Update JavaDoc from the interface Validator.
 
 
 
