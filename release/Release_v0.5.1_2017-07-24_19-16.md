@@ -7,8 +7,9 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a minor update.
+* In the ReadMe a new UML diagram shows classes and interfaces from the library.
+* It's now possible to enable/disable the logging from TransferData.
 
 
 

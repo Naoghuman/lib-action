@@ -15,7 +15,7 @@ _Image:_ [UML] Lib-Action
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
 
-Current `version` is `0.5.0` (05.31.2017 / MM.dd.yyyy).
+Current `version` is `0.5.1` (07.24.2017 / MM.dd.yyyy).
 
 
 
@@ -792,12 +792,10 @@ public void register();
 Download<a name="Download" />
 ---
 
-Current `version` is `0.5.0`. Main points in this release are:
-* This is a major update.
-* Create new package structure to reflect my new library conventions.
-* Deprecated all old classes and interfaces.
-* Update the readme to reflect the changes.
-* Update the examples in the readme to clearify the usage from the library.
+Current `version` is `0.5.1`. Main points in this release are:
+* This is a minor update.
+* In the ReadMe a new UML diagram shows classes and interfaces from the library.
+* It's now possible to enable/disable the logging from TransferData.
 
 **Maven coordinates**  
 In context from a [Maven] project you can use following maven coordinates: 
@@ -806,13 +804,18 @@ In context from a [Maven] project you can use following maven coordinates:
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-action</artifactId>
-        <version>0.5.0</version>
+        <version>0.5.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.naoghuman</groupId>
+        <artifactId>lib-logger</artifactId>
+        <version>0.5.1</version>
     </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.5.0 (05.31.2017)]
+* [Release v0.5.1 (07.24.2017)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Action]
@@ -826,7 +829,7 @@ Requirements<a name="Requirements" />
 * The library [lib-action-0.5.0.jar](#Installation).
 
 In the library are following libraries registered as dependencies:
-* The library [lib-logger-0.5.0.jar](#Installation).
+* The library [lib-logger-0.5.1.jar](#Installation).
   * Included in `Lib-Logger` is the library [log4j-api-2.8.2.jar].
   * Included is `Lib-Logger` is the library [log4j-core-2.8.2.jar].
 
@@ -914,7 +917,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.5.0 (05.31.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.5.0
+[Release v0.5.1 (07.24.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.5.1
 [Step builder pattern]:http://www.svlada.com/step-builder-pattern/
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 
