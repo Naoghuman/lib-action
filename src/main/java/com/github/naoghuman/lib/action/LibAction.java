@@ -19,7 +19,7 @@ package com.github.naoghuman.lib.action;
 import com.github.naoghuman.lib.action.api.ILibAction;
 
 import com.github.naoghuman.lib.action.api.TransferData;
-import com.github.naoghuman.lib.logger.api.LoggerFacade;
+import com.github.naoghuman.lib.logger.core.LoggerFacade;
 import java.util.HashMap;
 import java.util.List;
 import javafx.event.ActionEvent;

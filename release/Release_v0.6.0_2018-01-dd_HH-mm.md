@@ -29,6 +29,7 @@ for more details.
 
 
 #### Refactoring
+#43 [pom] Update dependencies in pom.xml.
 
 
 
