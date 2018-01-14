@@ -21,6 +21,7 @@ for more details.
 
 
 #### Enhancement
+#42 [api] Add new Interface Registerable to the core-packages.
 
 
 

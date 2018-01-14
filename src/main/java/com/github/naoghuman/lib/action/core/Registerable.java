@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 Naoghuman
+ * Copyright (C) 2018 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 package com.github.naoghuman.lib.action.core;
 
 /**
- * With this interface the developer have an {@code official} method to register all this methods in 
+ * With this interface the developer have an {@code official} method to register all methods in 
  * the implementing classes which will {@code register} {@link javafx.event.ActionEvent}s during the method
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }
  * with an specific {@code actionId}.
@@ -26,18 +26,17 @@ package com.github.naoghuman.lib.action.core;
  * @see    com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see    javafx.event.ActionEvent
  */
-@Deprecated
-public interface RegisterActions {
+public interface Registerable {
     
     /**
      * Implementing this method alloweds the developer to {@code register} all methods in the 
      * implementing class which will {@code register} {@link javafx.event.ActionEvent}s during the method
      * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }.
      * 
+     * @author Naoghuman
      * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
      * @see javafx.event.ActionEvent
      */
-    @Deprecated
     public void register();
     
 }
