@@ -96,6 +96,7 @@
         </plugins>
     </build>
     
+    
     <dependencies>
         <dependency>
             <groupId>com.github.naoghuman</groupId>
