@@ -39,6 +39,8 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public void handle(final String actionId) {
+        DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+            
         final TransferData transferData = TransferDataBuilder.create()
                 .actionId(actionId)
                 .build();
@@ -48,6 +50,9 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public void handle(final String actionId, final long value) {
+        DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+        DefaultValidator.getDefault().requireNonNull(value);
+        
         final TransferData transferData = TransferDataBuilder.create()
                 .actionId(actionId)
                 .longValue(value)
@@ -58,6 +63,8 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public void handle(final TransferData transferData) {
+        DefaultValidator.getDefault().requireNonNull(transferData);
+        
         if (!ACTIONS.containsKey(transferData.getActionId())) {
             LoggerFacade.getDefault().warn(ActionHandler.class, 
                     "Given [actionId==" + transferData.getActionId() // NOI18N
@@ -77,6 +84,8 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public void handle(final ObservableList<TransferData> transferDatas) {
+        DefaultValidator.getDefault().requireNonNull(transferDatas);
+        
         transferDatas.stream()
                 .forEach((transferData) -> {
                     this.handle(transferData);
@@ -85,6 +94,8 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public boolean isRegistered(final String actionId) {
+        DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+        
         boolean isRegistered = Boolean.FALSE;
         if (ACTIONS.containsKey(actionId)) {
             isRegistered = Boolean.TRUE;
@@ -99,6 +110,9 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public boolean register(final String actionId, final EventHandler<ActionEvent> eventHandler) {
+        DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+        DefaultValidator.getDefault().requireNonNull(eventHandler);
+        
         boolean isRegistered = Boolean.FALSE;
         if (!ACTIONS.containsKey(actionId)) {
             isRegistered = Boolean.TRUE;
@@ -114,6 +128,8 @@ public final class DefaultActionHandler implements ActionHandler {
 
     @Override
     public boolean remove(final String actionId) {
+        DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+        
         boolean isRemoved = Boolean.FALSE;
         if (ACTIONS.containsKey(actionId)) {
             isRemoved = Boolean.TRUE;
