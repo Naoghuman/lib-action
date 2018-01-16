@@ -23,6 +23,7 @@ for more details.
 #### Enhancement
 #53 [test] Add Unittests for the interface Validator.
 #52 [stability] Integrate DefaultValidator into DefaultActionHandler.
+#45 [test] Add Unittests for the class DefaultValidator.
 #42 [api] Add new Interface Registerable to the core-packages.
 
 
