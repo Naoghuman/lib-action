@@ -105,7 +105,7 @@ public final class DefaultTransferData implements TransferData {
             final String    responseActionId,
             final boolean   loggingDisabled
     ) {
-        DefaultTransferDataValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+        DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
         this.actionId = actionId;
         
         this.booleanValue     = Optional.ofNullable(booleanValue);

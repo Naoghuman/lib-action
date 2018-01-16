@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 Naoghuman
+ * Copyright (C) 2018 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,30 +16,30 @@
  */
 package com.github.naoghuman.lib.action.internal;
 
+import com.github.naoghuman.lib.action.core.Validator;
 import java.util.Optional;
 
 /**
  * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.internal.Validator} 
- * for the validation in context from the {@code Interface} {@link com.github.naoghuman.lib.action.core.TransferData}.
+ * for the validation.
  *
  * @author Naoghuman
- * @see    com.github.naoghuman.lib.action.core.TransferData
  * @see    com.github.naoghuman.lib.action.internal.Validator
  */
-public class DefaultTransferDataValidator implements Validator {
+public class DefaultValidator implements Validator {
     
-    private static final Optional<DefaultTransferDataValidator> INSTANCE = Optional.of(new DefaultTransferDataValidator());
+    private static final Optional<DefaultValidator> INSTANCE = Optional.of(new DefaultValidator());
 
     /**
-     * Returns a singleton instance from the class {@code DefaultTransferDataValidator}.
+     * Returns a singleton instance from the class {@code DefaultValidator}.
      *
-     * @return a singleton instance from this class {@code DefaultTransferDataValidator}.
+     * @return a singleton instance from this class {@code DefaultValidator}.
      */
-    public static final DefaultTransferDataValidator getDefault() {
+    public static final DefaultValidator getDefault() {
         return INSTANCE.get();
     }
 
-    private DefaultTransferDataValidator() {
+    private DefaultValidator() {
 
     }
     

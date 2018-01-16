@@ -30,6 +30,7 @@ for more details.
 
 
 #### Refactoring
+#51 [Impl] Rename the class DefaultTransferDataValidator. 
 #43 [pom] Update dependencies in pom.xml.
 #41 [deprecated] Remove deprecated packages, classes and interfaces.
 

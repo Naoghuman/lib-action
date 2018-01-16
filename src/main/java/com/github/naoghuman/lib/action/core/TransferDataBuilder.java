@@ -17,7 +17,7 @@
 package com.github.naoghuman.lib.action.core;
 
 import com.github.naoghuman.lib.action.internal.DefaultTransferData;
-import com.github.naoghuman.lib.action.internal.DefaultTransferDataValidator;
+import com.github.naoghuman.lib.action.internal.DefaultValidator;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -296,7 +296,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step actionId(final String actionId) {
-            DefaultTransferDataValidator.getDefault().requireNonNullAndNotEmpty(actionId);
+            DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
             
             properties.put(ATTR__ACTION_ID, new SimpleStringProperty(actionId));
             
@@ -312,7 +312,7 @@ public final class TransferDataBuilder {
         
         @Override
         public Step booleanValue(final Boolean value) {
-            DefaultTransferDataValidator.getDefault().requireNonNull(value);
+            DefaultValidator.getDefault().requireNonNull(value);
             
             properties.put(ATTR__BOOLEAN_VALUE, new SimpleBooleanProperty(value));
             
@@ -321,7 +321,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step characterValue(final Character value) {
-            DefaultTransferDataValidator.getDefault().requireNonNull(value);
+            DefaultValidator.getDefault().requireNonNull(value);
             
             properties.put(ATTR__CHARACTER_VALUE, new SimpleObjectProperty(value));
             
@@ -330,7 +330,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step doubleValue(final Double value) {
-            DefaultTransferDataValidator.getDefault().requireNonNull(value);
+            DefaultValidator.getDefault().requireNonNull(value);
             
             properties.put(ATTR__DOUBLE_VALUE, new SimpleDoubleProperty(value));
             
@@ -339,7 +339,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step integerValue(final Integer value) {
-            DefaultTransferDataValidator.getDefault().requireNonNull(value);
+            DefaultValidator.getDefault().requireNonNull(value);
             
             properties.put(ATTR__INTERGER_VALUE, new SimpleIntegerProperty(value));
             
@@ -348,7 +348,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step longValue(final Long value) {
-            DefaultTransferDataValidator.getDefault().requireNonNull(value);
+            DefaultValidator.getDefault().requireNonNull(value);
             
             properties.put(ATTR__LONG_VALUE, new SimpleLongProperty(value));
             
@@ -357,7 +357,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step objectValue(final Object value) {
-            DefaultTransferDataValidator.getDefault().requireNonNull(value);
+            DefaultValidator.getDefault().requireNonNull(value);
             
             properties.put(ATTR__OBJECT_VALUE, new SimpleObjectProperty(value));
             
@@ -366,7 +366,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step stringValue(final String value) {
-            DefaultTransferDataValidator.getDefault().requireNonNullAndNotEmpty(value);
+            DefaultValidator.getDefault().requireNonNullAndNotEmpty(value);
             
             properties.put(ATTR__STRING_VALUE, new SimpleStringProperty(value));
             
@@ -375,7 +375,7 @@ public final class TransferDataBuilder {
 
         @Override
         public Step responseActionId(final String responseActionId) {
-            DefaultTransferDataValidator.getDefault().requireNonNullAndNotEmpty(responseActionId);
+            DefaultValidator.getDefault().requireNonNullAndNotEmpty(responseActionId);
             
             properties.put(ATTR__RESPONSE_ACTION_ID, new SimpleStringProperty(responseActionId));
             
