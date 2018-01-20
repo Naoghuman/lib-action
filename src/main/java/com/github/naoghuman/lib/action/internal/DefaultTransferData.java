@@ -17,6 +17,7 @@
 package com.github.naoghuman.lib.action.internal;
 
 import com.github.naoghuman.lib.action.core.TransferData;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,7 +27,8 @@ import java.util.Optional;
  * will instead returned.
  * <p>
  * An instance from this class can be generated with the fluent builder 
- * {@link com.github.naoghuman.lib.action.core.TransferDataBuilder}.
+ * {@link com.github.naoghuman.lib.action.core.TransferDataBuilder} which is the 
+ * preferred way to the an instance from this class.
  *
  * @author Naoghuman
  * @see    com.github.naoghuman.lib.action.core.TransferData
@@ -40,44 +42,41 @@ public final class DefaultTransferData implements TransferData {
      * {@link com.github.naoghuman.lib.action.core.TransferData}.
      * 
      * @param actionId         mandory attribute which can't be NULL or EMPTY.
-     * @param booleanValue     optional attribute, if set then can't be NULL.
-     * @param characterValue   optional attribute, if set then can't be NULL.
-     * @param doubleValue      optional attribute, if set then can't be NULL.
-     * @param integerValue     optional attribute, if set then can't be NULL.
-     * @param longValue        optional attribute, if set then can't be NULL.
-     * @param objectValue      optional attribute, if set then can't be NULL.
-     * @param stringValue      optional attribute, if set then can't be NULL or EMPTY.
-     * @param responseActionId optional attribute, if set then can't be NULL or EMPTY.
-     * @param loggingDisabled  flag which dicides if the {@code TransferData} should be
-     *                         logged during the {@link javafx.event.ActionEvent} or not.
-     * @return                 an instance from the {@code Interface} {@code TransferData}.
-     * @see                    com.github.naoghuman.lib.action.core.TransferData
-     * @see                    java.util.Optional
-     * @see                    javafx.event.ActionEvent
+     * @param booleanValue     optional attribute which presented a {@code Boolean}.
+     * @param characterValue   optional attribute which presented a {@code Character}.
+     * @param doubleValue      optional attribute which presented a {@code Double}.
+     * @param integerValue     optional attribute which presented a {@code Integer}.
+     * @param longValue        optional attribute which presented a {@code Long}.
+     * @param objectValue      optional attribute which presented a {@code Object}.
+     * @param stringValue      optional attribute which presented a {@code String}.
+     * @param responseActionId optional attribute which presented the {@code actionId}
+     *                         which should be triggert as a {@code response}. If set
+     *                         then the value can't be NULL or EMPTY.
+     * @param loggingDisabled  flag which decides if the {@code TransferData} should 
+     *                         be logged during the {@link javafx.event.ActionEvent} 
+     *                         or not.
+     * @return a configured instance from the {@code Interface} {@code TransferData}.
+     * @see    com.github.naoghuman.lib.action.core.TransferData
+     * @see    java.lang.Boolean
+     * @see    java.lang.Character
+     * @see    java.lang.Double
+     * @see    java.lang.Integer
+     * @see    java.lang.Long
+     * @see    java.lang.Object
+     * @see    java.lang.String
+     * @see    java.util.Optional
+     * @see    javafx.event.ActionEvent
      */
     public static final TransferData create(
-            final String actionId,
-            final Boolean   booleanValue,
-            final Character characterValue,
-            final Double    doubleValue,
-            final Integer   integerValue,
-            final Long      longValue,
-            final Object    objectValue,
-            final String    stringValue,
-            final String    responseActionId,
-            final boolean   loggingDisabled
+            final String    actionId,         final Boolean booleanValue,
+            final Character characterValue,   final Double  doubleValue,
+            final Integer   integerValue,     final Long    longValue,
+            final Object    objectValue,      final String  stringValue,
+            final String    responseActionId, final boolean loggingDisabled
     ) {
-        return new DefaultTransferData(
-                actionId,
-                booleanValue,
-                characterValue,
-                doubleValue,
-                integerValue,
-                longValue,
-                objectValue,
-                stringValue,
-                responseActionId,
-                loggingDisabled);
+        return new DefaultTransferData(actionId, booleanValue, characterValue, 
+                doubleValue, integerValue, longValue, objectValue, stringValue,
+                responseActionId, loggingDisabled);
     }
     
     private final boolean loggingDisabled;
@@ -94,27 +93,26 @@ public final class DefaultTransferData implements TransferData {
     private final String actionId;
     
     private DefaultTransferData(
-            final String actionId,
-            final Boolean   booleanValue,
-            final Character characterValue,
-            final Double    doubleValue,
-            final Integer   integerValue,
-            final Long      longValue,
-            final Object    objectValue,
-            final String    stringValue,
-            final String    responseActionId,
-            final boolean   loggingDisabled
+            final String    actionId,         final Boolean booleanValue,
+            final Character characterValue,   final Double  doubleValue,
+            final Integer   integerValue,     final Long    longValue,
+            final Object    objectValue,      final String  stringValue,
+            final String    responseActionId, final boolean loggingDisabled
     ) {
         DefaultValidator.getDefault().requireNonNullAndNotEmpty(actionId);
         this.actionId = actionId;
         
-        this.booleanValue     = Optional.ofNullable(booleanValue);
-        this.characterValue   = Optional.ofNullable(characterValue);
-        this.doubleValue      = Optional.ofNullable(doubleValue);
-        this.integerValue     = Optional.ofNullable(integerValue);
-        this.longValue        = Optional.ofNullable(longValue);
-        this.objectValue      = Optional.ofNullable(objectValue);
-        this.stringValue      = Optional.ofNullable(stringValue);
+        this.booleanValue   = Optional.ofNullable(booleanValue);
+        this.characterValue = Optional.ofNullable(characterValue);
+        this.doubleValue    = Optional.ofNullable(doubleValue);
+        this.integerValue   = Optional.ofNullable(integerValue);
+        this.longValue      = Optional.ofNullable(longValue);
+        this.objectValue    = Optional.ofNullable(objectValue);
+        this.stringValue    = Optional.ofNullable(stringValue);
+        
+        if (!Objects.isNull(responseActionId)) {
+            DefaultValidator.getDefault().requireNonNullAndNotEmpty(responseActionId);
+        }
         this.responseActionId = Optional.ofNullable(responseActionId);
         
         this.loggingDisabled   = loggingDisabled;

@@ -456,7 +456,6 @@ public Step disableLogging();
 /**
  * Let the developer define an optional {@link java.lang.Boolean} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -476,7 +475,6 @@ public Step booleanValue(final Boolean value);
 /**
  * Let the developer define an optional {@link java.lang.Character} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -496,7 +494,6 @@ public Step characterValue(final Character value);
 /**
  * Let the developer define an optional {@link java.lang.Double} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -516,7 +513,6 @@ public Step doubleValue(final Double value);
 /**
  * Let the developer define an optional {@link java.lang.Integer} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -536,7 +532,6 @@ public Step integerValue(final Integer value);
 /**
  * Let the developer define an optional {@link java.lang.Long} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -556,7 +551,6 @@ public Step longValue(final Long value);
 /**
  * Let the developer define an optional {@link java.lang.Object} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -576,7 +570,6 @@ public Step objectValue(final Object value);
 /**
  * Let the developer define an optional {@link java.lang.String} attribute {@code value}. 
  * <ul>
- * <li>If set then the attribute can't be {@code NULL} or {@code EMPTY}.</li>
  * <li>If this method is used more then ones, then the last usage will be stored for the 
  * generation from the {@code Implementation}.</li>
  * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}

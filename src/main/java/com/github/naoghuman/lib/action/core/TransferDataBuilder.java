@@ -110,7 +110,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.Boolean} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -128,7 +127,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.Character} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -146,7 +144,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.Double} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -164,7 +161,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.Integer} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -182,7 +178,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.Long} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -200,7 +195,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.Object} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -218,7 +212,6 @@ public final class TransferDataBuilder {
         /**
          * Let the developer define an optional {@link java.lang.String} attribute {@code value}. 
          * <ul>
-         * <li>If set then the attribute can't be {@code NULL} or {@code EMPTY}.</li>
          * <li>If this method is used more then ones, then the last usage will be stored for the 
          * generation from the {@code Implementation}.</li>
          * <li>If not set then the {@code Implementation} from {@link com.github.naoghuman.lib.action.core.TransferData}
@@ -312,8 +305,6 @@ public final class TransferDataBuilder {
         
         @Override
         public Step booleanValue(final Boolean value) {
-            DefaultValidator.getDefault().requireNonNull(value);
-            
             properties.put(ATTR__BOOLEAN_VALUE, new SimpleBooleanProperty(value));
             
             return this;
@@ -321,8 +312,6 @@ public final class TransferDataBuilder {
 
         @Override
         public Step characterValue(final Character value) {
-            DefaultValidator.getDefault().requireNonNull(value);
-            
             properties.put(ATTR__CHARACTER_VALUE, new SimpleObjectProperty(value));
             
             return this;
@@ -330,8 +319,6 @@ public final class TransferDataBuilder {
 
         @Override
         public Step doubleValue(final Double value) {
-            DefaultValidator.getDefault().requireNonNull(value);
-            
             properties.put(ATTR__DOUBLE_VALUE, new SimpleDoubleProperty(value));
             
             return this;
@@ -339,8 +326,6 @@ public final class TransferDataBuilder {
 
         @Override
         public Step integerValue(final Integer value) {
-            DefaultValidator.getDefault().requireNonNull(value);
-            
             properties.put(ATTR__INTERGER_VALUE, new SimpleIntegerProperty(value));
             
             return this;
@@ -348,8 +333,6 @@ public final class TransferDataBuilder {
 
         @Override
         public Step longValue(final Long value) {
-            DefaultValidator.getDefault().requireNonNull(value);
-            
             properties.put(ATTR__LONG_VALUE, new SimpleLongProperty(value));
             
             return this;
@@ -357,8 +340,6 @@ public final class TransferDataBuilder {
 
         @Override
         public Step objectValue(final Object value) {
-            DefaultValidator.getDefault().requireNonNull(value);
-            
             properties.put(ATTR__OBJECT_VALUE, new SimpleObjectProperty(value));
             
             return this;
@@ -366,8 +347,6 @@ public final class TransferDataBuilder {
 
         @Override
         public Step stringValue(final String value) {
-            DefaultValidator.getDefault().requireNonNullAndNotEmpty(value);
-            
             properties.put(ATTR__STRING_VALUE, new SimpleStringProperty(value));
             
             return this;
@@ -385,15 +364,15 @@ public final class TransferDataBuilder {
         @Override
         public TransferData build() {
             // Catch data
-            final StringProperty actionId         = (StringProperty) properties.get(ATTR__ACTION_ID);
+            final StringProperty actionId         = (StringProperty)  properties.get(ATTR__ACTION_ID);
             final BooleanProperty booleanValue    = (BooleanProperty) properties.get(ATTR__BOOLEAN_VALUE);
-            final ObjectProperty characterValue   = (ObjectProperty) properties.get(ATTR__CHARACTER_VALUE);
-            final DoubleProperty  doubleValue     = (DoubleProperty) properties.get(ATTR__DOUBLE_VALUE);
+            final ObjectProperty characterValue   = (ObjectProperty)  properties.get(ATTR__CHARACTER_VALUE);
+            final DoubleProperty  doubleValue     = (DoubleProperty)  properties.get(ATTR__DOUBLE_VALUE);
             final IntegerProperty  integerValue   = (IntegerProperty) properties.get(ATTR__INTERGER_VALUE);
-            final LongProperty longValue          = (LongProperty) properties.get(ATTR__LONG_VALUE);
-            final ObjectProperty objectValue      = (ObjectProperty) properties.get(ATTR__OBJECT_VALUE);
-            final StringProperty stringValue      = (StringProperty) properties.get(ATTR__STRING_VALUE);
-            final StringProperty responseActionId = (StringProperty) properties.get(ATTR__RESPONSE_ACTION_ID);
+            final LongProperty longValue          = (LongProperty)    properties.get(ATTR__LONG_VALUE);
+            final ObjectProperty objectValue      = (ObjectProperty)  properties.get(ATTR__OBJECT_VALUE);
+            final StringProperty stringValue      = (StringProperty)  properties.get(ATTR__STRING_VALUE);
+            final StringProperty responseActionId = (StringProperty)  properties.get(ATTR__RESPONSE_ACTION_ID);
             final BooleanProperty logTransferData = (BooleanProperty) properties.get(ATTR__LOG_TRANSFERDATA);
             
             // Create a new TransferData
