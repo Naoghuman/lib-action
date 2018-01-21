@@ -24,6 +24,7 @@ for more details.
 #56 [api] Update validation and JavaDoc from the optional values in (Default)TransferData.
 #53 [test] Add Unittests for the interface Validator.
 #52 [stability] Integrate DefaultValidator into DefaultActionHandler.
+#46 [test] Add Unittests for the class DefaultTransferData.
 #45 [test] Add Unittests for the class DefaultValidator.
 #42 [api] Add new Interface Registerable to the core-packages.
 
