@@ -22,6 +22,7 @@ for more details.
 
 #### Enhancement
 #56 [api] Update validation and JavaDoc from the optional values in (Default)TransferData.
+#54 [test] Add Unittests for the class TransferDataBuilder.
 #53 [test] Add Unittests for the interface Validator.
 #52 [stability] Integrate DefaultValidator into DefaultActionHandler.
 #46 [test] Add Unittests for the class DefaultTransferData.
