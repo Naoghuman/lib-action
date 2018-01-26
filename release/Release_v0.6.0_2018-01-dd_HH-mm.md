@@ -25,6 +25,7 @@ for more details.
 #54 [test] Add Unittests for the class TransferDataBuilder.
 #53 [test] Add Unittests for the interface Validator.
 #52 [stability] Integrate DefaultValidator into DefaultActionHandler.
+#47 [test] Add Unittests for the class DefaultActionHandler.
 #46 [test] Add Unittests for the class DefaultTransferData.
 #45 [test] Add Unittests for the class DefaultValidator.
 #42 [api] Add new Interface Registerable to the core-packages.
