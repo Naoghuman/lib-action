@@ -7,8 +7,9 @@ for more details.
 
 
 #### Summary
-* ...
-* ...
+* This is a minor update.
+* Add for all default implementations and builders JUnitTests.
+* Remove the deprecated content.
 
 
 
@@ -29,6 +30,7 @@ for more details.
 #47 [test] Add Unittests for the class DefaultActionHandler.
 #46 [test] Add Unittests for the class DefaultTransferData.
 #45 [test] Add Unittests for the class DefaultValidator.
+#44 [documentation] Prepate the documentation to the new v0.6.0.
 #42 [api] Add new Interface Registerable to the core-packages.
 
 

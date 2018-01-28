@@ -10,12 +10,12 @@ Lib-Action is a library for `easy` storing and accessing actions ([EventHandler]
 in a [JavaFX] &amp; [Maven] desktop application.
 
 _Image:_ [UML] Lib-Action  
-![UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42.png][UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42]
+![UML-diagram_Lib-Action_v0.6.0_2018-01-27_04-10.png][UML-diagram_Lib-Action_v0.6.0_2018-01-27_04-10]
 
 > __Hint__  
 > The `UML` diagram is created with the `Online Modeling Platform` [GenMyModel].
 
-Current `version` is `0.5.1` (07.24.2017 / MM.dd.yyyy).
+Current `version` is `0.6.0` (01.28.2018 / MM.dd.yyyy).
 
 
 
@@ -25,13 +25,13 @@ Content
 * [Examples](#Examples)
     - [How to register, use and access an action](#HoToReUsAnAcAnAc)
     - [Usage from the builder TransferDataBuilder](#UsFrTheBuTr)
-    - [Usage from the interface RegisterActions](#UsFrThInReAc)
+    - [Usage from the interface Registerable](#UsFrThInReAb)
 * [Api](#Api)
     - [com.github.naoghuman.lib.action.core.ActionHandlerFacade](#AcHaFa)
     - [com.github.naoghuman.lib.action.core.ActionHandler](#AcHa)
     - [com.github.naoghuman.lib.action.core.TransferDataBuilder](#TrDaBu)
     - [com.github.naoghuman.lib.action.core.TransferData](#TrDa)
-    - [com.github.naoghuman.lib.action.core.RegisterActions](#ReAc)
+    - [com.github.naoghuman.lib.action.core.Registerable](#ReAb)
 * [Download](#Download)
 * [Requirements](#Requirements)
 * [Installation](#Installation)
@@ -153,16 +153,16 @@ __Additional informations__
 * Design Pattern: [Step builder pattern]
 
 
-### Usage from the interface RegisterActions<a name="UsFrThInReAc" />
+### Usage from the interface Registerable<a name="UsFrThInReAb" />
 
 In this example we will see how to use the method `register()` from the 
-interface [RegisterActions](#ReAc).  
+interface [Registerable](#ReAb).  
 ```java
-public class ApplicationPresenter implements RegisterActions ... {
+public class ApplicationPresenter implements Registerable ... {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // This method will be executed during the initialization from the class 
-        // ApplicationPresenter. So all methods in this method will be registered 
+        // ApplicationPresenter. So all methods from this method will be executed 
         // during the initialization.
         this.register();
         ...
@@ -752,11 +752,11 @@ public boolean isLoggingDisabled();
 ```
 
 
-### com.github.naoghuman.lib.action.core.RegisterActions<a name="ReAc" />
+### com.github.naoghuman.lib.action.core.Registerable<a name="ReAb" />
 
 ```java
 /**
- * With this interface the developer have an {@code official} method to register all this methods in 
+ * With this interface the developer have an {@code official} method to register all methods in 
  * the implementing classes which will {@code register} {@link javafx.event.ActionEvent}s during the method
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }
  * with an specific {@code actionId}.
@@ -765,7 +765,7 @@ public boolean isLoggingDisabled();
  * @see    com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see    javafx.event.ActionEvent
  */
-public interface RegisterActions
+public interface Registerable
 ```
 
 ```java
@@ -774,6 +774,7 @@ public interface RegisterActions
  * implementing class which will {@code register} {@link javafx.event.ActionEvent}s during the method
  * {@link com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler) }.
  * 
+ * @author Naoghuman
  * @see com.github.naoghuman.lib.action.core.ActionHandler#register(java.lang.String, javafx.event.EventHandler)
  * @see javafx.event.ActionEvent
  */
@@ -785,10 +786,10 @@ public void register();
 Download<a name="Download" />
 ---
 
-Current `version` is `0.5.1`. Main points in this release are:
+Current `version` is `0.6.0`. Main points in this release are:
 * This is a minor update.
-* In the ReadMe a new UML diagram shows classes and interfaces from the library.
-* It's now possible to enable/disable the logging from TransferData.
+* Add for all default implementations and builders JUnitTests.
+* Remove the deprecated content.
 
 **Maven coordinates**  
 In context from a [Maven] project you can use following maven coordinates: 
@@ -797,18 +798,18 @@ In context from a [Maven] project you can use following maven coordinates:
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-action</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.0</version>
     </dependency>
     <dependency>
         <groupId>com.github.naoghuman</groupId>
         <artifactId>lib-logger</artifactId>
-        <version>0.5.1</version>
+        <version>0.6.0</version>
     </dependency>
 </dependencies>
 ```
 
 Download:
-* [Release v0.5.1 (07.24.2017)]
+* [Release v6.0 (01.28.2018 / MM.dd.yyyy)]
 
 An overview about all existings releases can be found here:
 * [Overview from all releases in Lib-Action]
@@ -819,12 +820,12 @@ Requirements<a name="Requirements" />
 ---
 
 * On your system you need [JRE 8] or [JDK 8] installed.
-* The library [lib-action-0.5.0.jar](#Installation).
+* The library [lib-action-0.6.0.jar](#Installation).
 
 In the library are following libraries registered as dependencies:
-* The library [lib-logger-0.5.1.jar](#Installation).
-  * Included in `Lib-Logger` is the library [log4j-api-2.8.2.jar].
-  * Included is `Lib-Logger` is the library [log4j-core-2.8.2.jar].
+* The library [lib-logger-0.6.0.jar](#Installation).
+  * Included in `Lib-Logger` is the library [log4j-api-2.10.0.jar].
+  * Included is `Lib-Logger` is the library [log4j-core-2.10.0.jar].
 
 
 
@@ -882,7 +883,7 @@ You can reach me under <peter.rogge@yahoo.de>.
 
 
 [//]: # (Images)
-[UML-diagram_Lib-Action_v0.5.1_2017-07-22_23-42]:https://user-images.githubusercontent.com/8161815/28494737-a28b46f6-6f37-11e7-8c66-01083545c092.png
+[UML-diagram_Lib-Action_v0.6.0_2018-01-27_04-10]:https://user-images.githubusercontent.com/8161815/35468137-610bfce6-0318-11e8-891a-7c69cb1905a3.png
 
 
 
@@ -904,13 +905,13 @@ You can reach me under <peter.rogge@yahoo.de>.
 [JRE 8]:http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
 [Lib-Action]:https://github.com/Naoghuman/lib-action
 [Lib-Logger]:https://github.com/Naoghuman/lib-logger
-[log4j-api-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
-[log4j-core-2.8.2.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-api-2.10.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
+[log4j-core-2.10.0.jar]:https://logging.apache.org/log4j/2.0/log4j-web/dependencies.html
 [Maven]:http://maven.apache.org/
 [NetBeans]:https://netbeans.org/
 [Overview from all releases in Lib-Action]:https://github.com/Naoghuman/lib-action/releases
 [Pull Request]:https://help.github.com/articles/using-pull-requests
-[Release v0.5.1 (07.24.2017)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.5.1
+[Release v6.0 (01.28.2018 / MM.dd.yyyy)]:https://github.com/Naoghuman/lib-action/releases/tag/v0.6.0
 [Step builder pattern]:http://www.svlada.com/step-builder-pattern/
 [UML]:https://en.wikipedia.org/wiki/Unified_Modeling_Language
 
