@@ -20,11 +20,11 @@ import com.github.naoghuman.lib.action.core.Validator;
 import java.util.Optional;
 
 /**
- * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.internal.Validator} 
+ * An implementation from the {@code Interface} {@link com.github.naoghuman.lib.action.core.Validator} 
  * for the validation.
  *
  * @author Naoghuman
- * @see    com.github.naoghuman.lib.action.internal.Validator
+ * @see    com.github.naoghuman.lib.action.core.Validator
  */
 public class DefaultValidator implements Validator {
     

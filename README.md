@@ -263,7 +263,7 @@ public void handle(final String actionId);
  * and the given parameter {@code value}.
  * <p>
  * Internal the parameter {@code data} will be stored in a 
- * {@link com.github.naoghuman.lib.action.api.TransferData}. The data can 
+ * {@link com.github.naoghuman.lib.action.core.TransferData}. The data can 
  * be access via:<br>
  * public void handleOnAction(ActionEvent event) {<br>
  * &nbsp;&nbsp;&nbsp;&nbsp;final TransferData transferData = (TransferData) event.getSource();<br>
@@ -417,7 +417,7 @@ public interface ActionIdStep
  * Let the developer set the attribute {@code actionId} which is 
  * associated with an {@link javafx.event.EventHandler}.
  * <p>
- * This attribute is mandory and must not {@code NULL} && not {@code EMPTY}.
+ * This attribute is mandory and must {@code not NULL && not EMPTY}.
  * 
  * @param  actionId identifier for the associated EventHandler.
  * @return The next {@code Step} {@code Interface}.
